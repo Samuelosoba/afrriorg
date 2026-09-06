@@ -94,7 +94,6 @@ export default function AboutPreview() {
           px-5
 
           sm:px-6
-
           md:px-8
 
           lg:grid-cols-[0.88fr_1.12fr]
@@ -111,25 +110,14 @@ export default function AboutPreview() {
         <motion.div
           initial={{
             opacity: 0,
-            y: 15,
+            y: 8,
           }}
-          whileInView={{
+          animate={{
             opacity: 1,
             y: 0,
           }}
-          viewport={{
-            once: true,
-
-            // starts almost immediately
-            amount: 0.03,
-
-            // starts animation slightly before
-            // element fully enters viewport
-            margin: "80px 0px 80px 0px",
-          }}
           transition={{
-            // much quicker
-            duration: 0.35,
+            duration: 0.18,
             ease: "easeOut",
           }}
           className="relative"
@@ -186,17 +174,15 @@ export default function AboutPreview() {
               "
             >
               <picture>
-                {/* MOBILE */}
+                {/* MOBILE IMAGE */}
 
                 <source media="(max-width: 767px)" srcSet={HeroImage} />
 
-                {/* DESKTOP */}
+                {/* TABLET / DESKTOP */}
 
                 <img
                   src={AboutImage}
                   alt="Africa-RII working with local communities"
-                  // IMPORTANT:
-                  // tells browser to get this image ASAP
                   loading="eager"
                   fetchPriority="high"
                   decoding="async"
@@ -211,7 +197,7 @@ export default function AboutPreview() {
                 />
               </picture>
 
-              {/* OVERLAY */}
+              {/* IMAGE OVERLAY */}
 
               <div
                 className="
@@ -266,37 +252,10 @@ export default function AboutPreview() {
         </motion.div>
 
         {/* ======================================================
-                            CONTENT
+                            RIGHT CONTENT
         ====================================================== */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 12,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-
-            // don't wait for 20%
-            amount: 0.01,
-
-            // begin before content completely enters screen
-            margin: "100px 0px 100px 0px",
-          }}
-          transition={{
-            duration: 0.32,
-            ease: "easeOut",
-          }}
-          className="
-            relative
-
-            lg:pl-3
-          "
-        >
+        <div className="relative lg:pl-3">
           {/* EYEBROW */}
 
           <div className="mb-4 flex items-center gap-3">
@@ -338,7 +297,7 @@ export default function AboutPreview() {
             Who We Are
           </h2>
 
-          {/* ================= TEXT ================= */}
+          {/* ================= ABOUT TEXT ================= */}
 
           <div
             className="
@@ -388,7 +347,7 @@ export default function AboutPreview() {
             </p>
           </div>
 
-          {/* ================= BOTTOM ================= */}
+          {/* ================= QUOTE + CTA ================= */}
 
           <div
             className="
@@ -403,7 +362,7 @@ export default function AboutPreview() {
               lg:mt-5
             "
           >
-            {/* QUOTE */}
+            {/* QUOTE CARD */}
 
             <div
               className="
@@ -512,7 +471,7 @@ export default function AboutPreview() {
               </span>
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
