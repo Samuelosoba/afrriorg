@@ -35,9 +35,6 @@ const partners = [
   },
 ];
 
-// duplicate for seamless marquee
-const movingPartners = [...partners, ...partners];
-
 export default function PartnersSection() {
   return (
     <section
@@ -100,11 +97,8 @@ export default function PartnersSection() {
           px-5
 
           sm:px-6
-
           md:px-8
-
           lg:px-10
-
           xl:px-12
         "
       >
@@ -166,11 +160,8 @@ export default function PartnersSection() {
                 text-[var(--blue-dark)]
 
                 sm:text-[38px]
-
                 md:text-[42px]
-
                 lg:text-[46px]
-
                 xl:text-[50px]
               "
             >
@@ -210,6 +201,7 @@ export default function PartnersSection() {
               text-white
               transition-all
               duration-300
+
               hover:-translate-y-1
               hover:bg-[var(--blue-dark)]
 
@@ -229,6 +221,7 @@ export default function PartnersSection() {
                 text-[var(--blue-dark)]
                 transition-transform
                 duration-300
+
                 group-hover:rotate-45
               "
             >
@@ -237,20 +230,20 @@ export default function PartnersSection() {
           </motion.a>
         </div>
 
-        {/* ================= MOVING PARTNERS ================= */}
+        {/* ================= MARQUEE ================= */}
 
         <div
           className="
             relative
             mt-10
+            w-full
             overflow-hidden
 
             sm:mt-12
-
             lg:mt-10
           "
         >
-          {/* Fade left */}
+          {/* LEFT FADE */}
 
           <div
             className="
@@ -263,13 +256,14 @@ export default function PartnersSection() {
               w-12
               bg-gradient-to-r
               from-white
+              via-white/80
               to-transparent
 
               sm:w-20
             "
           />
 
-          {/* Fade right */}
+          {/* RIGHT FADE */}
 
           <div
             className="
@@ -282,116 +276,145 @@ export default function PartnersSection() {
               w-12
               bg-gradient-to-l
               from-white
+              via-white/80
               to-transparent
 
               sm:w-20
             "
           />
 
+          {/* MOVING TRACK */}
+
           <motion.div
+            className="
+              flex
+              w-max
+              will-change-transform
+            "
             animate={{
               x: ["0%", "-50%"],
             }}
             transition={{
-              duration: 24,
+              duration: 15,
               repeat: Infinity,
+              repeatType: "loop",
               ease: "linear",
             }}
-            className="
-              flex
-              w-max
-              items-center
-              gap-5
-
-              sm:gap-7
-
-              lg:gap-8
-            "
           >
-            {movingPartners.map((partner, index) => (
-              <div
-                key={`${partner.name}-${index}`}
-                className="
-                  group
-                  flex
-                  shrink-0
-                  flex-col
-                  items-center
-                  gap-3
-                "
-              >
-                {/* ROUND LOGO */}
+            {/* ================= FIRST GROUP ================= */}
 
-                <div
-                  className="
-                    relative
-                    flex
-                    h-[92px]
-                    w-[92px]
-                    items-center
-                    justify-center
-                    overflow-hidden
-                    rounded-full
-                    bg-[#f7f9fc]
-                    p-3
-                    shadow-[0_10px_35px_rgba(3,42,82,0.08)]
-                    transition-all
-                    duration-300
-                    group-hover:-translate-y-2
-                    group-hover:shadow-[0_16px_45px_rgba(3,42,82,0.14)]
+            <div
+              className="
+                flex
+                shrink-0
+                items-center
+                gap-6
+                pr-6
 
-                    sm:h-[110px]
-                    sm:w-[110px]
+                sm:gap-8
+                sm:pr-8
 
-                    md:h-[120px]
-                    md:w-[120px]
+                lg:gap-10
+                lg:pr-10
+              "
+            >
+              {partners.map((partner) => (
+                <PartnerLogo key={`first-${partner.name}`} partner={partner} />
+              ))}
+            </div>
 
-                    lg:h-[128px]
-                    lg:w-[128px]
-                  "
-                >
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="
-                      h-full
-                      w-full
-                      rounded-full
-                      object-cover
-                      opacity-75
-                      grayscale-0
-                      transition-all
-                      duration-300
-                      group-hover:scale-105
-                      group-hover:opacity-100
-                      group-hover:grayscale
-                    "
-                  />
-                </div>
+            {/* ================= SECOND GROUP ================= */}
 
-                {/* <span
-                  className="
-                    whitespace-nowrap
-                    text-[10px]
-                    font-bold
-                    uppercase
-                    tracking-[0.1em]
-                    text-slate-400
+            <div
+              aria-hidden="true"
+              className="
+                flex
+                shrink-0
+                items-center
+                gap-6
+                pr-6
 
-                    sm:text-[11px]
-                  "
-                >
-                  {partner.name}
-                </span> */}
-              </div>
-            ))}
+                sm:gap-8
+                sm:pr-8
+
+                lg:gap-10
+                lg:pr-10
+              "
+            >
+              {partners.map((partner) => (
+                <PartnerLogo key={`second-${partner.name}`} partner={partner} />
+              ))}
+            </div>
           </motion.div>
         </div>
-
-        {/* ================= COMPACT CTA ================= */}
-
-       
       </div>
     </section>
+  );
+}
+
+/* =========================================================
+                        PARTNER LOGO
+========================================================= */
+
+function PartnerLogo({ partner }) {
+  return (
+    <div
+      className="
+        group
+        flex
+        shrink-0
+        flex-col
+        items-center
+      "
+    >
+      <div
+        className="
+          relative
+          flex
+          h-[92px]
+          w-[92px]
+          items-center
+          justify-center
+          overflow-hidden
+          rounded-full
+          bg-[#f7f9fc]
+          p-3
+          shadow-[0_10px_35px_rgba(3,42,82,0.08)]
+          transition-all
+          duration-300
+
+          group-hover:-translate-y-1
+          group-hover:shadow-[0_16px_45px_rgba(3,42,82,0.14)]
+
+          sm:h-[110px]
+          sm:w-[110px]
+
+          md:h-[120px]
+          md:w-[120px]
+
+          lg:h-[128px]
+          lg:w-[128px]
+        "
+      >
+        <img
+          src={partner.logo}
+          alt={partner.name}
+          draggable="false"
+          className="
+            h-full
+            w-full
+            select-none
+            rounded-full
+            object-cover
+            opacity-80
+            transition-all
+            duration-300
+
+            group-hover:scale-105
+            group-hover:opacity-100
+          "
+        />
+      </div>
+    </div>
   );
 }

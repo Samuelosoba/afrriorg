@@ -21,7 +21,6 @@ const programs = [
     icon: BookOpen,
     image: EducationImg,
     dark: true,
-
     links: [
       {
         label: "TACT",
@@ -43,7 +42,6 @@ const programs = [
     icon: Building2,
     image: CommunityImg,
     dark: false,
-
     links: [
       {
         label: "CRC",
@@ -61,7 +59,6 @@ const programs = [
     icon: HeartPulse,
     image: HealthImg,
     dark: true,
-
     links: [
       {
         label: "LifeLine",
@@ -75,7 +72,6 @@ const programs = [
     icon: Venus,
     image: WomenImg,
     dark: false,
-
     links: [
       {
         label: "Sisters' Club",
@@ -89,7 +85,6 @@ const programs = [
     icon: Lightbulb,
     image: InnovationImg,
     dark: true,
-
     links: [
       {
         label: "Computer & IT",
@@ -149,7 +144,16 @@ export default function ProgramsPreview() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
-        <div
+        <motion.div
+          animate={{
+            x: [0, 22, 0],
+            y: [0, 14, 0],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           className="
             absolute
             -left-40
@@ -162,11 +166,20 @@ export default function ProgramsPreview() {
           "
         />
 
-        <div
+        <motion.div
+          animate={{
+            x: [0, -20, 0],
+            y: [0, -15, 0],
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           className="
             absolute
             -right-40
-            bottom-10
+            bottom-20
             h-[420px]
             w-[420px]
             rounded-full
@@ -178,8 +191,8 @@ export default function ProgramsPreview() {
         <div
           className="
             absolute
-            left-[5%]
-            top-[18%]
+            left-[6%]
+            top-[14%]
             h-20
             w-20
             rounded-full
@@ -191,8 +204,8 @@ export default function ProgramsPreview() {
         <div
           className="
             absolute
-            right-[6%]
-            top-[12%]
+            right-[7%]
+            top-[18%]
             h-14
             w-14
             rounded-full
@@ -203,7 +216,7 @@ export default function ProgramsPreview() {
       </div>
 
       {/* =====================================================
-                          MAIN CONTAINER
+                          CONTAINER
       ===================================================== */}
 
       <div
@@ -211,7 +224,7 @@ export default function ProgramsPreview() {
           relative
           mx-auto
           w-full
-          max-w-[1320px]
+          max-w-[1400px]
           px-5
 
           sm:px-6
@@ -232,7 +245,9 @@ export default function ProgramsPreview() {
             max-w-2xl
             text-center
 
-            lg:mb-12
+            sm:mb-12
+
+            lg:mb-14
           "
         >
           <motion.div
@@ -279,7 +294,7 @@ export default function ProgramsPreview() {
           <motion.h2
             initial={{
               opacity: 0,
-              y: 15,
+              y: 16,
             }}
             whileInView={{
               opacity: 1,
@@ -313,7 +328,7 @@ export default function ProgramsPreview() {
         </div>
 
         {/* =====================================================
-                            PROGRAM GRID
+                          PROGRAM GRID
         ===================================================== */}
 
         <motion.div
@@ -329,9 +344,10 @@ export default function ProgramsPreview() {
             grid-cols-1
             gap-6
 
-            md:grid-cols-2
-            md:gap-7
+            sm:grid-cols-2
+            sm:gap-7
 
+            lg:grid-cols-3
             lg:gap-8
 
             xl:gap-9
@@ -345,51 +361,52 @@ export default function ProgramsPreview() {
                 key={program.title}
                 variants={cardVariants}
                 whileHover={{
-                  y: -5,
+                  y: -6,
                 }}
                 className={`
                   group
                   relative
-                  grid
-                  min-h-[330px]
+                  flex
+                  min-h-[360px]
+                  flex-col
                   overflow-hidden
-                  rounded-[2rem]
+                  rounded-[1.9rem]
                   transition-all
                   duration-500
 
-                  sm:min-h-[350px]
+                  sm:min-h-[375px]
 
-                  lg:min-h-[320px]
-                  lg:grid-cols-[0.92fr_1.08fr]
+                  lg:min-h-[390px]
 
                   ${
                     program.dark
                       ? `
                           bg-[var(--blue-dark)]
                           text-white
-                          shadow-[0_20px_55px_rgba(3,42,82,0.12)]
+                          shadow-[0_18px_50px_rgba(3,42,82,0.12)]
                         `
                       : `
                           bg-white
                           text-[var(--blue-dark)]
-                          shadow-[0_20px_55px_rgba(3,42,82,0.07)]
+                          shadow-[0_18px_50px_rgba(3,42,82,0.07)]
                         `
                   }
                 `}
               >
-                {/* =============================================
-                                IMAGE
-                ============================================= */}
+                {/* =================================================
+                                  IMAGE
+                ================================================= */}
 
                 <div
                   className="
                     relative
                     h-[165px]
+                    shrink-0
                     overflow-hidden
 
-                    sm:h-[180px]
+                    sm:h-[175px]
 
-                    lg:h-full
+                    lg:h-[180px]
                   "
                 >
                   <img
@@ -401,12 +418,11 @@ export default function ProgramsPreview() {
                       object-cover
                       transition-transform
                       duration-700
+                      ease-out
 
                       group-hover:scale-105
                     "
                   />
-
-                  {/* IMAGE OVERLAY */}
 
                   <div
                     className={`
@@ -417,23 +433,15 @@ export default function ProgramsPreview() {
                         program.dark
                           ? `
                               bg-gradient-to-t
-                              from-[var(--blue-dark)]/65
-                              via-transparent
+                              from-[var(--blue-dark)]/75
+                              via-[var(--blue-dark)]/10
                               to-transparent
-
-                              lg:bg-gradient-to-r
-                              lg:from-transparent
-                              lg:to-[var(--blue-dark)]/45
                             `
                           : `
                               bg-gradient-to-t
-                              from-white/50
-                              via-transparent
+                              from-white/65
+                              via-white/5
                               to-transparent
-
-                              lg:bg-gradient-to-r
-                              lg:from-transparent
-                              lg:to-white/30
                             `
                       }
                     `}
@@ -456,7 +464,7 @@ export default function ProgramsPreview() {
 
                       ${
                         program.dark
-                          ? "bg-black/25 text-white"
+                          ? "bg-black/20 text-white"
                           : "bg-white/85 text-[var(--blue-dark)]"
                       }
                     `}
@@ -465,33 +473,47 @@ export default function ProgramsPreview() {
                   </span>
                 </div>
 
-                {/* =============================================
-                                CONTENT
-                ============================================= */}
+                {/* =================================================
+                                  CONTENT
+                ================================================= */}
 
                 <div
                   className="
                     relative
                     flex
+                    flex-1
                     flex-col
-                    justify-center
-                    p-5
+                    px-5
+                    pb-5
 
-                    sm:p-6
-
-                    lg:p-7
+                    sm:px-6
+                    sm:pb-6
                   "
                 >
                   {/* ICON */}
 
-                  <div
+                  <motion.div
+                    whileHover={{
+                      rotate: 6,
+                      scale: 1.05,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 280,
+                    }}
                     className={`
+                      -mt-6
                       flex
-                      h-11
-                      w-11
+                      h-12
+                      w-12
+                      shrink-0
                       items-center
                       justify-center
                       rounded-xl
+                      shadow-lg
+
+                      sm:h-13
+                      sm:w-13
 
                       ${
                         program.dark
@@ -506,29 +528,31 @@ export default function ProgramsPreview() {
                       }
                     `}
                   >
-                    <Icon size={19} strokeWidth={1.8} />
-                  </div>
+                    <Icon size={21} strokeWidth={1.8} />
+                  </motion.div>
 
                   {/* TITLE */}
 
                   <h3
-                    className="
+                    className={`
                       mt-4
                       max-w-sm
-                      text-[20px]
+                      text-[19px]
                       font-bold
-                      leading-[1.13]
-                      tracking-[-0.035em]
+                      leading-[1.15]
+                      tracking-[-0.03em]
 
-                      sm:text-[22px]
+                      sm:text-[20px]
 
-                      lg:text-[23px]
-                    "
+                      lg:text-[21px]
+
+                      ${program.dark ? "text-white" : "text-[var(--blue-dark)]"}
+                    `}
                   >
                     {program.title}
                   </h3>
 
-                  {/* LINE */}
+                  {/* ACCENT */}
 
                   <div
                     className={`
@@ -546,11 +570,13 @@ export default function ProgramsPreview() {
                     `}
                   />
 
-                  {/* LINKS */}
+                  {/* =================================================
+                                  LINKS
+                  ================================================= */}
 
                   <div
                     className="
-                      mt-5
+                      mt-4
                       flex
                       flex-wrap
                       gap-2
@@ -572,6 +598,8 @@ export default function ProgramsPreview() {
                           font-bold
                           transition-all
                           duration-300
+
+                          sm:text-xs
 
                           ${
                             program.dark
@@ -607,48 +635,48 @@ export default function ProgramsPreview() {
 
                   {/* EXPLORE */}
 
-                  <a
-                    href={program.links[0]?.href || "/programs"}
-                    className={`
-                      group/explore
-                      mt-6
-                      inline-flex
-                      w-fit
-                      items-center
-                      gap-2
-                      text-[10px]
-                      font-bold
-                      uppercase
-                      tracking-[0.13em]
-                      transition-colors
+                  <div className="mt-auto pt-5">
+                    <a
+                      href={program.links[0]?.href || "/programs"}
+                      className={`
+                        group/explore
+                        inline-flex
+                        items-center
+                        gap-2
+                        text-[10px]
+                        font-bold
+                        uppercase
+                        tracking-[0.13em]
+                        transition-colors
 
-                      ${
-                        program.dark
-                          ? `
-                              text-white/35
-                              hover:text-[var(--yellow)]
-                            `
-                          : `
-                              text-[var(--blue-dark)]/40
-                              hover:text-[var(--blue)]
-                            `
-                      }
-                    `}
-                  >
-                    Explore
-                    <ArrowUpRight
-                      size={12}
-                      className="
-                        transition-transform
-                        duration-300
+                        ${
+                          program.dark
+                            ? `
+                                text-white/35
+                                hover:text-[var(--yellow)]
+                              `
+                            : `
+                                text-[var(--blue-dark)]/40
+                                hover:text-[var(--blue)]
+                              `
+                        }
+                      `}
+                    >
+                      Explore program
+                      <ArrowUpRight
+                        size={12}
+                        className="
+                          transition-transform
+                          duration-300
 
-                        group-hover/explore:translate-x-1
-                      "
-                    />
-                  </a>
+                          group-hover/explore:translate-x-1
+                        "
+                      />
+                    </a>
+                  </div>
                 </div>
 
-                {/* HOVER GLOW */}
+                {/* GLOW */}
 
                 <div
                   className="
@@ -678,25 +706,25 @@ export default function ProgramsPreview() {
           <motion.article
             variants={cardVariants}
             whileHover={{
-              y: -5,
+              y: -6,
             }}
             className="
               group
               relative
               flex
-              min-h-[330px]
+              min-h-[360px]
               overflow-hidden
-              rounded-[2rem]
+              rounded-[1.9rem]
               bg-[var(--yellow)]
-              p-7
+              p-6
               text-[var(--blue-dark)]
-              shadow-[0_20px_55px_rgba(3,42,82,0.08)]
+              shadow-[0_18px_50px_rgba(3,42,82,0.08)]
 
-              sm:min-h-[350px]
-              sm:p-8
+              sm:min-h-[375px]
+              sm:p-7
 
-              lg:min-h-[320px]
-              lg:p-10
+              lg:min-h-[390px]
+              lg:p-8
             "
           >
             {/* LARGE BACKGROUND QUOTE */}
@@ -704,17 +732,17 @@ export default function ProgramsPreview() {
             <Quote
               className="
                 absolute
-                -right-4
+                -right-5
                 -top-8
                 h-40
                 w-40
                 rotate-180
-                text-[var(--blue-dark)]/[0.06]
+                text-[var(--blue-dark)]/[0.055]
 
-                sm:h-48
-                sm:w-48
+                lg:h-48
+                lg:w-48
               "
-              strokeWidth={1.2}
+              strokeWidth={1}
             />
 
             {/* DECORATIVE CIRCLE */}
@@ -723,7 +751,7 @@ export default function ProgramsPreview() {
               className="
                 absolute
                 -bottom-28
-                -left-20
+                -left-24
                 h-64
                 w-64
                 rounded-full
@@ -734,13 +762,27 @@ export default function ProgramsPreview() {
 
             <div
               className="
+                absolute
+                bottom-10
+                right-8
+                h-12
+                w-12
+                rounded-full
+                border
+                border-[var(--blue-dark)]/10
+              "
+            />
+
+            {/* CONTENT */}
+
+            <div
+              className="
                 relative
                 z-10
                 flex
                 h-full
                 w-full
                 flex-col
-                justify-between
               "
             >
               {/* TOP */}
@@ -758,38 +800,45 @@ export default function ProgramsPreview() {
                     text-[var(--yellow)]
                   "
                 >
-                  <Quote size={18} />
+                  <Quote size={17} />
                 </div>
 
                 <span
                   className="
-                    text-[9px]
+                    text-[8px]
                     font-bold
                     uppercase
                     tracking-[0.18em]
-                    text-[var(--blue-dark)]/45
+                    text-[var(--blue-dark)]/40
                   "
                 >
-                  Words to live by
+                  Inspiration
                 </span>
               </div>
 
               {/* QUOTE */}
 
-              <div className="my-8">
+              <div
+                className="
+                  flex
+                  flex-1
+                  items-center
+                  py-7
+                "
+              >
                 <blockquote
                   className="
-                    max-w-lg
-                    text-[27px]
+                    max-w-md
+                    text-[25px]
                     font-bold
                     leading-[1.08]
                     tracking-[-0.045em]
 
-                    sm:text-[30px]
+                    sm:text-[27px]
 
-                    lg:text-[32px]
+                    lg:text-[29px]
 
-                    xl:text-[35px]
+                    xl:text-[31px]
                   "
                 >
                   “The best way to find yourself is to lose yourself in the
@@ -811,7 +860,7 @@ export default function ProgramsPreview() {
                 <div>
                   <p
                     className="
-                      text-xs
+                      text-[10px]
                       font-bold
                       uppercase
                       tracking-[0.14em]
@@ -823,11 +872,11 @@ export default function ProgramsPreview() {
                   <p
                     className="
                       mt-1
-                      text-[9px]
-                      font-medium
+                      text-[8px]
+                      font-semibold
                       uppercase
                       tracking-[0.13em]
-                      text-[var(--blue-dark)]/45
+                      text-[var(--blue-dark)]/40
                     "
                   >
                     Service • Humanity • Community
