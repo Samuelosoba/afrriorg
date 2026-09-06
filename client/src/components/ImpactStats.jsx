@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import Impact1 from "../assets/computer.jpg";
@@ -9,23 +9,19 @@ import Impact4 from "../assets/health.webp";
 
 const impactStats = [
   {
-    value: 13,
-    suffix: "+",
+    value: "13+",
     label: "Years of impact",
   },
   {
-    value: 1000,
-    suffix: "+",
+    value: "1,000+",
     label: "People reached",
   },
   {
-    value: 50,
-    suffix: "+",
+    value: "50+",
     label: "Communities",
   },
   {
-    value: 15,
-    suffix: "+",
+    value: "15+",
     label: "Programs",
   },
 ];
@@ -53,50 +49,6 @@ const slides = [
   },
 ];
 
-function AnimatedNumber({ value, suffix = "" }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: true,
-    amount: 0.4,
-  });
-
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    let startTime = null;
-    let frameId;
-
-    const duration = 1300;
-
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-
-      const eased = 1 - Math.pow(1 - progress, 3);
-
-      setCount(Math.floor(value * eased));
-
-      if (progress < 1) {
-        frameId = requestAnimationFrame(animate);
-      }
-    };
-
-    frameId = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(frameId);
-  }, [isInView, value]);
-
-  return (
-    <span ref={ref}>
-      {count.toLocaleString()}
-      {suffix}
-    </span>
-  );
-}
-
 export default function ImpactStats() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -105,7 +57,7 @@ export default function ImpactStats() {
       setCurrentSlide((current) =>
         current === slides.length - 1 ? 0 : current + 1,
       );
-    }, 5000);
+    }, 7000);
 
     return () => clearInterval(timer);
   }, []);
@@ -130,19 +82,21 @@ export default function ImpactStats() {
         relative
         overflow-hidden
         bg-[var(--blue-dark)]
-        py-8
+        py-12
 
-        sm:py-10
+        sm:py-14
 
         lg:flex
-        lg:h-[100svh]
+        lg:min-h-[680px]
         lg:items-center
-        lg:py-4
+        lg:py-12
       "
     >
-      {/* BACKGROUND */}
+      {/* =====================================================
+                           BACKGROUND
+      ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0 hidden md:block">
         <div
           className="
             absolute
@@ -170,7 +124,9 @@ export default function ImpactStats() {
         />
       </div>
 
-      {/* MAIN */}
+      {/* =====================================================
+                              MAIN
+      ===================================================== */}
 
       <div
         className="
@@ -180,7 +136,7 @@ export default function ImpactStats() {
           w-full
           max-w-[1440px]
           items-center
-          gap-8
+          gap-10
           px-5
 
           sm:px-6
@@ -201,17 +157,15 @@ export default function ImpactStats() {
         ===================================================== */}
 
         <motion.div
-          initial={{
-            opacity: 0,
-            x: -30,
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{
+            once: true,
+            amount: 0.08,
           }}
-          whileInView={{
-            opacity: 1,
-            x: 0,
-          }}
-          viewport={{ once: true }}
           transition={{
-            duration: 0.7,
+            duration: 0.35,
+            ease: "easeOut",
           }}
         >
           {/* Eyebrow */}
@@ -236,20 +190,7 @@ export default function ImpactStats() {
 
           {/* Heading */}
 
-          <motion.h2
-            initial={{
-              opacity: 0,
-              y: 14,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.65,
-              delay: 0.08,
-            }}
+          <h2
             className="
               mt-3
               max-w-lg
@@ -268,7 +209,7 @@ export default function ImpactStats() {
           >
             13 Years Of{" "}
             <span className="text-[var(--yellow)]">Sustained Impact</span>
-          </motion.h2>
+          </h2>
 
           <p
             className="
@@ -293,47 +234,25 @@ export default function ImpactStats() {
           <div
             className="
               mt-7
-              flex
-              flex-wrap
-              gap-x-8
-              gap-y-6
+              grid
+              grid-cols-2
+              gap-x-6
+              gap-y-7
 
-              sm:gap-x-12
+              sm:grid-cols-4
+              sm:gap-x-7
 
               lg:mt-8
-              lg:gap-x-7
-
-              xl:gap-x-10
             "
           >
-            {impactStats.map((stat, index) => (
-              <motion.div
+            {impactStats.map((stat) => (
+              <div
                 key={stat.label}
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.08,
-                }}
                 className="
                   group
-                  min-w-[110px]
-                  flex-1
-
-                  sm:min-w-[130px]
-
-                  lg:min-w-[105px]
+                  min-w-0
                 "
               >
-                {/* Number */}
-
                 <div
                   className="
                     text-[34px]
@@ -342,17 +261,15 @@ export default function ImpactStats() {
                     tracking-[-0.055em]
                     text-white
 
-                    sm:text-[40px]
+                    sm:text-[34px]
 
                     lg:text-[36px]
 
                     xl:text-[42px]
                   "
                 >
-                  <AnimatedNumber value={stat.value} suffix={stat.suffix} />
+                  {stat.value}
                 </div>
-
-                {/* Label */}
 
                 <div
                   className="
@@ -369,18 +286,19 @@ export default function ImpactStats() {
                   {stat.label}
                 </div>
 
-                {/* Small accent */}
-
-                <motion.div
-                  initial={{ width: 24 }}
-                  whileHover={{ width: 48 }}
+                <div
                   className="
                     mt-3
                     h-[2px]
+                    w-6
                     bg-white/15
+
+                    lg:transition-[width]
+                    lg:duration-200
+                    lg:group-hover:w-12
                   "
                 />
-              </motion.div>
+              </div>
             ))}
           </div>
         </motion.div>
@@ -390,18 +308,15 @@ export default function ImpactStats() {
         ===================================================== */}
 
         <motion.div
-          initial={{
-            opacity: 0,
-            x: 35,
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{
+            once: true,
+            amount: 0.05,
           }}
-          whileInView={{
-            opacity: 1,
-            x: 0,
-          }}
-          viewport={{ once: true }}
           transition={{
-            duration: 0.75,
-            delay: 0.08,
+            duration: 0.35,
+            ease: "easeOut",
           }}
           className="relative"
         >
@@ -413,8 +328,6 @@ export default function ImpactStats() {
               max-w-[700px]
             "
           >
-            {/* IMAGE — NO BORDER */}
-
             <div
               className="
                 relative
@@ -434,124 +347,98 @@ export default function ImpactStats() {
                 2xl:h-[470px]
               "
             >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentSlide}
-                  initial={{
-                    opacity: 0,
-                    scale: 1.04,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    scale: 0.98,
-                  }}
-                  transition={{
-                    duration: 0.65,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0"
+              {/* Current image only */}
+
+              <img
+                key={currentSlide}
+                src={slides[currentSlide].image}
+                alt={slides[currentSlide].title}
+                loading="lazy"
+                decoding="async"
+                width="900"
+                height="600"
+                className="
+                  h-full
+                  w-full
+                  object-cover
+                "
+              />
+
+              {/* Overlay */}
+
+              <div
+                className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-t
+                  from-[var(--blue-dark)]/95
+                  via-transparent
+                  to-black/10
+                "
+              />
+
+              {/* Text */}
+
+              <div
+                className="
+                  absolute
+                  bottom-0
+                  left-0
+                  right-0
+                  p-4
+
+                  sm:p-5
+
+                  lg:p-6
+                "
+              >
+                <p
+                  className="
+                    text-[9px]
+                    font-bold
+                    uppercase
+                    tracking-[0.18em]
+                    text-[var(--yellow)]
+
+                    sm:text-[10px]
+                  "
                 >
-                  <img
-                    src={slides[currentSlide].image}
-                    alt={slides[currentSlide].title}
-                    className="
-                      h-full
-                      w-full
-                      object-cover
-                    "
-                  />
+                  Community impact
+                </p>
 
-                  <div
-                    className="
-                      absolute
-                      inset-0
-                      bg-gradient-to-t
-                      from-[var(--blue-dark)]/95
-                      via-transparent
-                      to-black/10
-                    "
-                  />
+                <h3
+                  className="
+                    mt-1
+                    max-w-md
+                    text-lg
+                    font-bold
+                    leading-tight
+                    text-white
 
-                  {/* Text */}
+                    sm:text-xl
 
-                  <motion.div
-                    initial={{
-                      opacity: 0,
-                      y: 15,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.18,
-                    }}
-                    className="
-                      absolute
-                      bottom-0
-                      left-0
-                      right-0
-                      p-4
+                    lg:text-[24px]
+                  "
+                >
+                  {slides[currentSlide].title}
+                </h3>
 
-                      sm:p-5
+                <p
+                  className="
+                    mt-1.5
+                    max-w-md
+                    text-[11px]
+                    leading-5
+                    text-white/60
 
-                      lg:p-6
-                    "
-                  >
-                    <p
-                      className="
-                        text-[9px]
-                        font-bold
-                        uppercase
-                        tracking-[0.18em]
-                        text-[var(--yellow)]
+                    sm:text-xs
 
-                        sm:text-[10px]
-                      "
-                    >
-                      Community impact
-                    </p>
-
-                    <h3
-                      className="
-                        mt-1
-                        max-w-md
-                        text-lg
-                        font-bold
-                        leading-tight
-                        text-white
-
-                        sm:text-xl
-
-                        lg:text-[24px]
-                      "
-                    >
-                      {slides[currentSlide].title}
-                    </h3>
-
-                    <p
-                      className="
-                        mt-1.5
-                        max-w-md
-                        text-[11px]
-                        leading-5
-                        text-white/60
-
-                        sm:text-xs
-
-                        lg:text-[13px]
-                      "
-                    >
-                      {slides[currentSlide].text}
-                    </p>
-                  </motion.div>
-                </motion.div>
-              </AnimatePresence>
+                    lg:text-[13px]
+                  "
+                >
+                  {slides[currentSlide].text}
+                </p>
+              </div>
 
               {/* Counter */}
 
@@ -562,14 +449,13 @@ export default function ImpactStats() {
                   top-3
                   z-20
                   rounded-full
-                  bg-[var(--blue-dark)]/55
+                  bg-[var(--blue-dark)]/70
                   px-3
                   py-1.5
                   text-[9px]
                   font-bold
                   tracking-[0.12em]
                   text-white
-                  backdrop-blur-md
 
                   sm:left-4
                   sm:top-4
@@ -605,12 +491,13 @@ export default function ImpactStats() {
                     items-center
                     justify-center
                     rounded-full
-                    bg-black/25
+                    bg-black/30
                     text-white
-                    backdrop-blur-md
-                    transition
-                    hover:bg-[var(--yellow)]
-                    hover:text-[var(--blue-dark)]
+
+                    lg:transition-colors
+                    lg:duration-200
+                    lg:hover:bg-[var(--yellow)]
+                    lg:hover:text-[var(--blue-dark)]
                   "
                 >
                   <ChevronLeft size={15} />
@@ -627,12 +514,13 @@ export default function ImpactStats() {
                     items-center
                     justify-center
                     rounded-full
-                    bg-black/25
+                    bg-black/30
                     text-white
-                    backdrop-blur-md
-                    transition
-                    hover:bg-[var(--yellow)]
-                    hover:text-[var(--blue-dark)]
+
+                    lg:transition-colors
+                    lg:duration-200
+                    lg:hover:bg-[var(--yellow)]
+                    lg:hover:text-[var(--blue-dark)]
                   "
                 >
                   <ChevronRight size={15} />
@@ -664,14 +552,15 @@ export default function ImpactStats() {
                     className={`
                       h-1.5
                       rounded-full
-                      transition-all
-                      duration-300
 
                       ${
                         currentSlide === index
                           ? "w-6 bg-[var(--yellow)]"
                           : "w-1.5 bg-white/40"
                       }
+
+                      lg:transition-[width,background-color]
+                      lg:duration-200
                     `}
                   />
                 ))}

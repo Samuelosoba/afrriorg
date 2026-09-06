@@ -22,106 +22,43 @@ const programs = [
     image: EducationImg,
     dark: true,
     links: [
-      {
-        label: "TACT",
-        href: "/programs/tact",
-      },
-      {
-        label: "Ajumobi",
-        href: "/programs/ajumobi",
-      },
-      {
-        label: "Summer School",
-        href: "/programs/summer-school",
-      },
+      { label: "TACT", href: "/programs/tact" },
+      { label: "Ajumobi", href: "/programs/ajumobi" },
+      { label: "Summer School", href: "/programs/summer-school" },
     ],
   },
-
   {
     title: "Community Resource Centre",
     icon: Building2,
     image: CommunityImg,
     dark: false,
     links: [
-      {
-        label: "CRC",
-        href: "/programs/community-resource-centre",
-      },
-      {
-        label: "Skills Acquisition",
-        href: "/programs/skills-acquisition",
-      },
+      { label: "CRC", href: "/programs/community-resource-centre" },
+      { label: "Skills Acquisition", href: "/programs/skills-acquisition" },
     ],
   },
-
   {
     title: "Community Health Awareness",
     icon: HeartPulse,
     image: HealthImg,
     dark: true,
-    links: [
-      {
-        label: "LifeLine",
-        href: "/programs/lifeline",
-      },
-    ],
+    links: [{ label: "LifeLine", href: "/programs/lifeline" }],
   },
-
   {
     title: "Gender Advocacy, Rights & Mentorship",
     icon: Venus,
     image: WomenImg,
     dark: false,
-    links: [
-      {
-        label: "Sisters' Club",
-        href: "/programs/sisters-club",
-      },
-    ],
+    links: [{ label: "Sisters' Club", href: "/programs/sisters-club" }],
   },
-
   {
     title: "Innovation & Social Enterprise",
     icon: Lightbulb,
     image: InnovationImg,
     dark: true,
-    links: [
-      {
-        label: "Computer & IT",
-        href: "/programs/computer-and-it",
-      },
-    ],
+    links: [{ label: "Computer & IT", href: "/programs/computer-and-it" }],
   },
 ];
-
-const containerVariants = {
-  hidden: {},
-
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-    scale: 0.98,
-  },
-
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-
-    transition: {
-      duration: 0.55,
-      ease: "easeOut",
-    },
-  },
-};
 
 export default function ProgramsPreview() {
   return (
@@ -140,20 +77,11 @@ export default function ProgramsPreview() {
       "
     >
       {/* =====================================================
-                          BACKGROUND
+                           BACKGROUND
       ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0">
-        <motion.div
-          animate={{
-            x: [0, 22, 0],
-            y: [0, 14, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+      <div className="pointer-events-none absolute inset-0 hidden md:block">
+        <div
           className="
             absolute
             -left-40
@@ -162,20 +90,11 @@ export default function ProgramsPreview() {
             w-[420px]
             rounded-full
             bg-[var(--yellow)]/10
-            blur-[110px]
+            blur-[90px]
           "
         />
 
-        <motion.div
-          animate={{
-            x: [0, -20, 0],
-            y: [0, -15, 0],
-          }}
-          transition={{
-            duration: 14,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+        <div
           className="
             absolute
             -right-40
@@ -184,39 +103,17 @@ export default function ProgramsPreview() {
             w-[420px]
             rounded-full
             bg-blue-100/60
-            blur-[110px]
+            blur-[90px]
           "
         />
 
-        <div
-          className="
-            absolute
-            left-[6%]
-            top-[14%]
-            h-20
-            w-20
-            rounded-full
-            border
-            border-[var(--blue)]/5
-          "
-        />
+        <div className="absolute left-[6%] top-[14%] h-20 w-20 rounded-full border border-[var(--blue)]/5" />
 
-        <div
-          className="
-            absolute
-            right-[7%]
-            top-[18%]
-            h-14
-            w-14
-            rounded-full
-            border
-            border-[var(--yellow)]/20
-          "
-        />
+        <div className="absolute right-[7%] top-[18%] h-14 w-14 rounded-full border border-[var(--yellow)]/20" />
       </div>
 
       {/* =====================================================
-                          CONTAINER
+                           CONTAINER
       ===================================================== */}
 
       <div
@@ -238,7 +135,17 @@ export default function ProgramsPreview() {
                               HEADER
         ===================================================== */}
 
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{
+            once: true,
+            amount: 0.08,
+          }}
+          transition={{
+            duration: 0.35,
+            ease: "easeOut",
+          }}
           className="
             mx-auto
             mb-10
@@ -250,28 +157,7 @@ export default function ProgramsPreview() {
             lg:mb-14
           "
         >
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 10,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.5,
-            }}
-            className="
-              flex
-              items-center
-              justify-center
-              gap-3
-            "
-          >
+          <div className="flex items-center justify-center gap-3">
             <span className="h-[2px] w-8 bg-[var(--yellow)]" />
 
             <span
@@ -289,24 +175,9 @@ export default function ProgramsPreview() {
             </span>
 
             <span className="h-[2px] w-8 bg-[var(--yellow)]" />
-          </motion.div>
+          </div>
 
-          <motion.h2
-            initial={{
-              opacity: 0,
-              y: 16,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.6,
-              delay: 0.08,
-            }}
+          <h2
             className="
               mt-3
               text-[30px]
@@ -324,21 +195,14 @@ export default function ProgramsPreview() {
           >
             Creating pathways
             <span className="block text-[var(--blue)]">to opportunity.</span>
-          </motion.h2>
-        </div>
+          </h2>
+        </motion.div>
 
         {/* =====================================================
-                          PROGRAM GRID
+                         PROGRAM GRID
         ===================================================== */}
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{
-            once: true,
-            amount: 0.08,
-          }}
+        <div
           className="
             grid
             grid-cols-1
@@ -359,9 +223,15 @@ export default function ProgramsPreview() {
             return (
               <motion.article
                 key={program.title}
-                variants={cardVariants}
-                whileHover={{
-                  y: -6,
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{
+                  once: true,
+                  amount: 0.05,
+                }}
+                transition={{
+                  duration: 0.3,
+                  ease: "easeOut",
                 }}
                 className={`
                   group
@@ -371,31 +241,30 @@ export default function ProgramsPreview() {
                   flex-col
                   overflow-hidden
                   rounded-[1.9rem]
-                  transition-all
-                  duration-500
 
                   sm:min-h-[375px]
 
                   lg:min-h-[390px]
+                  lg:transition-transform
+                  lg:duration-200
+                  lg:hover:-translate-y-1
 
                   ${
                     program.dark
                       ? `
-                          bg-[var(--blue-dark)]
-                          text-white
-                          shadow-[0_18px_50px_rgba(3,42,82,0.12)]
-                        `
+                        bg-[var(--blue-dark)]
+                        text-white
+                        shadow-[0_14px_35px_rgba(3,42,82,0.10)]
+                      `
                       : `
-                          bg-white
-                          text-[var(--blue-dark)]
-                          shadow-[0_18px_50px_rgba(3,42,82,0.07)]
-                        `
+                        bg-white
+                        text-[var(--blue-dark)]
+                        shadow-[0_14px_35px_rgba(3,42,82,0.06)]
+                      `
                   }
                 `}
               >
-                {/* =================================================
-                                  IMAGE
-                ================================================= */}
+                {/* IMAGE */}
 
                 <div
                   className="
@@ -412,15 +281,18 @@ export default function ProgramsPreview() {
                   <img
                     src={program.image}
                     alt={program.title}
+                    loading="lazy"
+                    decoding="async"
+                    width="640"
+                    height="420"
                     className="
                       h-full
                       w-full
                       object-cover
-                      transition-transform
-                      duration-700
-                      ease-out
 
-                      group-hover:scale-105
+                      lg:transition-transform
+                      lg:duration-300
+                      lg:group-hover:scale-[1.03]
                     "
                   />
 
@@ -432,17 +304,17 @@ export default function ProgramsPreview() {
                       ${
                         program.dark
                           ? `
-                              bg-gradient-to-t
-                              from-[var(--blue-dark)]/75
-                              via-[var(--blue-dark)]/10
-                              to-transparent
-                            `
+                            bg-gradient-to-t
+                            from-[var(--blue-dark)]/75
+                            via-[var(--blue-dark)]/10
+                            to-transparent
+                          `
                           : `
-                              bg-gradient-to-t
-                              from-white/65
-                              via-white/5
-                              to-transparent
-                            `
+                            bg-gradient-to-t
+                            from-white/65
+                            via-white/5
+                            to-transparent
+                          `
                       }
                     `}
                   />
@@ -460,12 +332,11 @@ export default function ProgramsPreview() {
                       text-[9px]
                       font-bold
                       tracking-[0.15em]
-                      backdrop-blur-md
 
                       ${
                         program.dark
-                          ? "bg-black/20 text-white"
-                          : "bg-white/85 text-[var(--blue-dark)]"
+                          ? "bg-black/25 text-white"
+                          : "bg-white/90 text-[var(--blue-dark)]"
                       }
                     `}
                   >
@@ -473,9 +344,7 @@ export default function ProgramsPreview() {
                   </span>
                 </div>
 
-                {/* =================================================
-                                  CONTENT
-                ================================================= */}
+                {/* CONTENT */}
 
                 <div
                   className="
@@ -492,15 +361,7 @@ export default function ProgramsPreview() {
                 >
                   {/* ICON */}
 
-                  <motion.div
-                    whileHover={{
-                      rotate: 6,
-                      scale: 1.05,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 280,
-                    }}
+                  <div
                     className={`
                       -mt-6
                       flex
@@ -510,26 +371,28 @@ export default function ProgramsPreview() {
                       items-center
                       justify-center
                       rounded-xl
-                      shadow-lg
-
-                      sm:h-13
-                      sm:w-13
+                      shadow-md
 
                       ${
                         program.dark
                           ? `
-                              bg-[var(--yellow)]
-                              text-[var(--blue-dark)]
-                            `
+                            bg-[var(--yellow)]
+                            text-[var(--blue-dark)]
+                          `
                           : `
-                              bg-[var(--blue)]
-                              text-white
-                            `
+                            bg-[var(--blue)]
+                            text-white
+                          `
                       }
+
+                      lg:transition-transform
+                      lg:duration-200
+                      lg:group-hover:rotate-[3deg]
+                      lg:group-hover:scale-[1.03]
                     `}
                   >
                     <Icon size={21} strokeWidth={1.8} />
-                  </motion.div>
+                  </div>
 
                   {/* TITLE */}
 
@@ -559,10 +422,10 @@ export default function ProgramsPreview() {
                       mt-3
                       h-[2px]
                       w-8
-                      transition-all
-                      duration-500
 
-                      group-hover:w-14
+                      lg:transition-[width]
+                      lg:duration-200
+                      lg:group-hover:w-14
 
                       ${
                         program.dark ? "bg-[var(--yellow)]" : "bg-[var(--blue)]"
@@ -570,18 +433,9 @@ export default function ProgramsPreview() {
                     `}
                   />
 
-                  {/* =================================================
-                                  LINKS
-                  ================================================= */}
+                  {/* LINKS */}
 
-                  <div
-                    className="
-                      mt-4
-                      flex
-                      flex-wrap
-                      gap-2
-                    "
-                  >
+                  <div className="mt-4 flex flex-wrap gap-2">
                     {program.links.map((link) => (
                       <a
                         key={link.label}
@@ -596,25 +450,28 @@ export default function ProgramsPreview() {
                           py-2
                           text-[11px]
                           font-bold
-                          transition-all
-                          duration-300
 
                           sm:text-xs
+
+                          lg:transition-colors
+                          lg:duration-200
 
                           ${
                             program.dark
                               ? `
-                                  bg-white/10
-                                  text-white
-                                  hover:bg-[var(--yellow)]
-                                  hover:text-[var(--blue-dark)]
-                                `
+                                bg-white/10
+                                text-white
+
+                                lg:hover:bg-[var(--yellow)]
+                                lg:hover:text-[var(--blue-dark)]
+                              `
                               : `
-                                  bg-[#eef4fb]
-                                  text-[var(--blue-dark)]
-                                  hover:bg-[var(--blue)]
-                                  hover:text-white
-                                `
+                                bg-[#eef4fb]
+                                text-[var(--blue-dark)]
+
+                                lg:hover:bg-[var(--blue)]
+                                lg:hover:text-white
+                              `
                           }
                         `}
                       >
@@ -623,10 +480,9 @@ export default function ProgramsPreview() {
                         <ArrowUpRight
                           size={11}
                           className="
-                            transition-transform
-                            duration-300
-
-                            group-hover/link:rotate-45
+                            lg:transition-transform
+                            lg:duration-200
+                            lg:group-hover/link:rotate-45
                           "
                         />
                       </a>
@@ -647,18 +503,20 @@ export default function ProgramsPreview() {
                         font-bold
                         uppercase
                         tracking-[0.13em]
-                        transition-colors
+
+                        lg:transition-colors
+                        lg:duration-200
 
                         ${
                           program.dark
                             ? `
-                                text-white/35
-                                hover:text-[var(--yellow)]
-                              `
+                              text-white/35
+                              lg:hover:text-[var(--yellow)]
+                            `
                             : `
-                                text-[var(--blue-dark)]/40
-                                hover:text-[var(--blue)]
-                              `
+                              text-[var(--blue-dark)]/40
+                              lg:hover:text-[var(--blue)]
+                            `
                         }
                       `}
                     >
@@ -666,47 +524,32 @@ export default function ProgramsPreview() {
                       <ArrowUpRight
                         size={12}
                         className="
-                          transition-transform
-                          duration-300
-
-                          group-hover/explore:translate-x-1
+                          lg:transition-transform
+                          lg:duration-200
+                          lg:group-hover/explore:translate-x-1
                         "
                       />
                     </a>
                   </div>
                 </div>
-
-                {/* GLOW */}
-
-                <div
-                  className="
-                    pointer-events-none
-                    absolute
-                    -right-20
-                    -top-20
-                    h-44
-                    w-44
-                    rounded-full
-                    bg-[var(--yellow)]/0
-                    blur-3xl
-                    transition-all
-                    duration-700
-
-                    group-hover:bg-[var(--yellow)]/10
-                  "
-                />
               </motion.article>
             );
           })}
 
           {/* =====================================================
-                              QUOTE CARD
+                            QUOTE CARD
           ===================================================== */}
 
           <motion.article
-            variants={cardVariants}
-            whileHover={{
-              y: -6,
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{
+              once: true,
+              amount: 0.05,
+            }}
+            transition={{
+              duration: 0.3,
+              ease: "easeOut",
             }}
             className="
               group
@@ -718,17 +561,18 @@ export default function ProgramsPreview() {
               bg-[var(--yellow)]
               p-6
               text-[var(--blue-dark)]
-              shadow-[0_18px_50px_rgba(3,42,82,0.08)]
+              shadow-[0_14px_35px_rgba(3,42,82,0.07)]
 
               sm:min-h-[375px]
               sm:p-7
 
               lg:min-h-[390px]
               lg:p-8
+              lg:transition-transform
+              lg:duration-200
+              lg:hover:-translate-y-1
             "
           >
-            {/* LARGE BACKGROUND QUOTE */}
-
             <Quote
               className="
                 absolute
@@ -744,8 +588,6 @@ export default function ProgramsPreview() {
               "
               strokeWidth={1}
             />
-
-            {/* DECORATIVE CIRCLE */}
 
             <div
               className="
@@ -773,20 +615,7 @@ export default function ProgramsPreview() {
               "
             />
 
-            {/* CONTENT */}
-
-            <div
-              className="
-                relative
-                z-10
-                flex
-                h-full
-                w-full
-                flex-col
-              "
-            >
-              {/* TOP */}
-
+            <div className="relative z-10 flex h-full w-full flex-col">
               <div className="flex items-center justify-between">
                 <div
                   className="
@@ -816,16 +645,7 @@ export default function ProgramsPreview() {
                 </span>
               </div>
 
-              {/* QUOTE */}
-
-              <div
-                className="
-                  flex
-                  flex-1
-                  items-center
-                  py-7
-                "
-              >
+              <div className="flex flex-1 items-center py-7">
                 <blockquote
                   className="
                     max-w-md
@@ -846,16 +666,8 @@ export default function ProgramsPreview() {
                 </blockquote>
               </div>
 
-              {/* AUTHOR */}
-
               <div className="flex items-center gap-3">
-                <span
-                  className="
-                    h-[2px]
-                    w-8
-                    bg-[var(--blue-dark)]
-                  "
-                />
+                <span className="h-[2px] w-8 bg-[var(--blue-dark)]" />
 
                 <div>
                   <p
@@ -885,7 +697,7 @@ export default function ProgramsPreview() {
               </div>
             </div>
           </motion.article>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -35,19 +35,23 @@ export default function GetInvolved() {
         relative
         overflow-hidden
         bg-[var(--yellow)]
-        py-8
+        py-12
 
-        sm:py-10
+        sm:py-14
 
         lg:flex
-        lg:h-[100svh]
+        lg:min-h-[650px]
         lg:items-center
-        lg:py-4
+        lg:py-12
       "
     >
-      {/* BACKGROUND */}
+      {/* =====================================================
+                           BACKGROUND
+      ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
+        {/* Lightweight mobile decoration */}
+
         <div
           className="
             absolute
@@ -57,31 +61,28 @@ export default function GetInvolved() {
             w-72
             rounded-full
             border
-            border-[var(--blue-dark)]/10
+            border-[var(--blue-dark)]/[0.07]
           "
         />
+
+        {/* Desktop only decoration */}
 
         <div
           className="
             absolute
             -bottom-32
             -right-24
+            hidden
             h-80
             w-80
             rounded-full
             bg-white/20
+
+            md:block
           "
         />
 
-        <motion.div
-          animate={{
-            y: [0, 15, 0],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+        <div
           className="
             absolute
             right-[10%]
@@ -98,7 +99,9 @@ export default function GetInvolved() {
         />
       </div>
 
-      {/* MAIN */}
+      {/* =====================================================
+                              MAIN
+      ===================================================== */}
 
       <div
         className="
@@ -117,9 +120,21 @@ export default function GetInvolved() {
           xl:px-12
         "
       >
-        {/* HEADER */}
+        {/* =====================================================
+                              HEADER
+        ===================================================== */}
 
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{
+            once: true,
+            amount: 0.08,
+          }}
+          transition={{
+            duration: 0.35,
+            ease: "easeOut",
+          }}
           className="
             flex
             flex-col
@@ -130,22 +145,7 @@ export default function GetInvolved() {
             md:justify-between
           "
         >
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -25,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.6,
-            }}
-          >
+          <div>
             <div className="flex items-center gap-3">
               <span className="h-[2px] w-8 bg-[var(--blue-dark)]" />
 
@@ -186,24 +186,9 @@ export default function GetInvolved() {
               Be part of what
               <span className="block">happens next.</span>
             </h2>
-          </motion.div>
+          </div>
 
-          <motion.p
-            initial={{
-              opacity: 0,
-              y: 15,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.6,
-              delay: 0.1,
-            }}
+          <p
             className="
               max-w-md
               text-[12px]
@@ -216,50 +201,42 @@ export default function GetInvolved() {
           >
             Give, volunteer or partner with us to create stronger opportunities
             for communities.
-          </motion.p>
-        </div>
+          </p>
+        </motion.div>
 
-        {/* ACTIONS */}
+        {/* =====================================================
+                              ACTIONS
+        ===================================================== */}
 
         <div
           className="
-            mt-7
+            mt-8
             grid
             gap-4
 
-            sm:mt-8
+            sm:mt-9
             sm:grid-cols-2
 
-            lg:mt-7
             lg:grid-cols-3
             lg:gap-5
           "
         >
-          {actions.map((action, index) => {
+          {actions.map((action) => {
             const Icon = action.icon;
 
             return (
               <motion.a
                 key={action.title}
                 href={action.href}
-                initial={{
-                  opacity: 0,
-                  y: 25,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{
                   once: true,
-                  amount: 0.2,
+                  amount: 0.08,
                 }}
                 transition={{
-                  duration: 0.55,
-                  delay: index * 0.08,
-                }}
-                whileHover={{
-                  y: -5,
+                  duration: 0.3,
+                  ease: "easeOut",
                 }}
                 className={`
                   group
@@ -267,41 +244,60 @@ export default function GetInvolved() {
                   overflow-hidden
                   rounded-[1.6rem]
                   p-5
-                  transition-all
-                  duration-300
 
                   sm:p-6
 
                   lg:min-h-[250px]
+                  lg:transition-transform
+                  lg:duration-200
+                  lg:hover:-translate-y-1
 
                   ${
                     action.featured
-                      ? "bg-[var(--blue-dark)] text-white shadow-[0_20px_55px_rgba(3,42,82,0.18)]"
-                      : "bg-white/60 text-[var(--blue-dark)] backdrop-blur-sm hover:bg-white"
+                      ? `
+                        bg-[var(--blue-dark)]
+                        text-white
+                        shadow-[0_16px_40px_rgba(3,42,82,0.15)]
+                      `
+                      : `
+                        bg-white/70
+                        text-[var(--blue-dark)]
+
+                        lg:transition-[background-color,transform]
+                        lg:hover:bg-white
+                      `
                   }
                 `}
               >
-                {/* Circle decoration */}
+                {/* =================================================
+                            CIRCLE DECORATION
+                ================================================= */}
 
                 <div
                   className={`
+                    pointer-events-none
                     absolute
                     -right-12
                     -top-12
                     h-32
                     w-32
                     rounded-full
-                    transition-transform
-                    duration-500
-                    group-hover:scale-125
 
                     ${
                       action.featured
                         ? "bg-[var(--yellow)]/10"
                         : "bg-[var(--yellow)]/35"
                     }
+
+                    lg:transition-transform
+                    lg:duration-300
+                    lg:group-hover:scale-110
                   `}
                 />
+
+                {/* =================================================
+                              CARD CONTENT
+                ================================================= */}
 
                 <div
                   className="
@@ -313,9 +309,11 @@ export default function GetInvolved() {
                   "
                 >
                   <div>
-                    {/* TOP ROW */}
+                    {/* TOP */}
 
                     <div className="flex items-start justify-between gap-4">
+                      {/* Icon */}
+
                       <div
                         className={`
                           flex
@@ -327,13 +325,21 @@ export default function GetInvolved() {
 
                           ${
                             action.featured
-                              ? "bg-[var(--yellow)] text-[var(--blue-dark)]"
-                              : "bg-[var(--blue-dark)] text-white"
+                              ? `
+                                bg-[var(--yellow)]
+                                text-[var(--blue-dark)]
+                              `
+                              : `
+                                bg-[var(--blue-dark)]
+                                text-white
+                              `
                           }
                         `}
                       >
                         <Icon size={19} />
                       </div>
+
+                      {/* Arrow */}
 
                       <span
                         className={`
@@ -343,15 +349,22 @@ export default function GetInvolved() {
                           items-center
                           justify-center
                           rounded-full
-                          transition-transform
-                          duration-300
-                          group-hover:rotate-45
 
                           ${
                             action.featured
-                              ? "bg-white/10 text-white"
-                              : "bg-[var(--blue-dark)]/5 text-[var(--blue-dark)]"
+                              ? `
+                                bg-white/10
+                                text-white
+                              `
+                              : `
+                                bg-[var(--blue-dark)]/5
+                                text-[var(--blue-dark)]
+                              `
                           }
+
+                          lg:transition-transform
+                          lg:duration-200
+                          lg:group-hover:rotate-45
                         `}
                       >
                         <ArrowUpRight size={14} />
@@ -421,11 +434,13 @@ export default function GetInvolved() {
                     </p>
                   </div>
 
-                  {/* BOTTOM */}
+                  {/* =================================================
+                                BOTTOM
+                  ================================================= */}
 
                   <div
                     className="
-                      mt-5
+                      mt-6
                       flex
                       items-center
                       justify-between
@@ -452,17 +467,20 @@ export default function GetInvolved() {
                           : "Work with us"}
                     </span>
 
-                    <motion.span
-                      initial={{ width: 22 }}
-                      whileHover={{ width: 42 }}
+                    <span
                       className={`
                         h-[2px]
+                        w-6
 
                         ${
                           action.featured
                             ? "bg-[var(--yellow)]"
                             : "bg-[var(--blue-dark)]/25"
                         }
+
+                        lg:transition-[width]
+                        lg:duration-200
+                        lg:group-hover:w-10
                       `}
                     />
                   </div>
@@ -472,26 +490,13 @@ export default function GetInvolved() {
           })}
         </div>
 
-        {/* SMALL FOOTER CTA */}
+        {/* =====================================================
+                         SMALL FOOTER CTA
+        ===================================================== */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 15,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.6,
-            delay: 0.15,
-          }}
+        <div
           className="
-            mt-6
+            mt-7
             flex
             items-center
             justify-between
@@ -499,7 +504,7 @@ export default function GetInvolved() {
             border-[var(--blue-dark)]/10
             pt-4
 
-            sm:mt-7
+            sm:mt-8
           "
         >
           <span
@@ -517,7 +522,7 @@ export default function GetInvolved() {
           <a
             href="/contact"
             className="
-              group
+              group/contact
               inline-flex
               items-center
               gap-2
@@ -532,13 +537,13 @@ export default function GetInvolved() {
             <ArrowUpRight
               size={14}
               className="
-                transition-transform
-                duration-300
-                group-hover:translate-x-1
+                lg:transition-transform
+                lg:duration-200
+                lg:group-hover/contact:translate-x-1
               "
             />
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

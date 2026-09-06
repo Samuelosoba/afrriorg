@@ -13,20 +13,20 @@ export default function AboutPreview() {
         relative
         overflow-hidden
         bg-[#fffdf7]
-        py-10
-
-        sm:py-12
-
+        py-14
+        sm:py-16
         lg:flex
-        lg:h-[100svh]
-        lg:min-h-0
+        lg:min-h-[90vh]
         lg:items-center
-        lg:py-8
+        lg:py-16
       "
     >
-      {/* ================= BACKGROUND ================= */}
+      {/* =====================================================
+                           BACKGROUND
+          Decorative effects are desktop only.
+      ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0 hidden md:block">
         <div
           className="
             absolute
@@ -80,7 +80,9 @@ export default function AboutPreview() {
         />
       </div>
 
-      {/* ================= MAIN ================= */}
+      {/* =====================================================
+                            MAIN
+      ===================================================== */}
 
       <div
         className="
@@ -103,21 +105,19 @@ export default function AboutPreview() {
           xl:gap-20
         "
       >
-        {/* ======================================================
+        {/* =====================================================
                             IMAGE
-        ====================================================== */}
+        ===================================================== */}
 
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 8,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{
+            once: true,
+            amount: 0.05,
           }}
           transition={{
-            duration: 0.18,
+            duration: 0.35,
             ease: "easeOut",
           }}
           className="relative"
@@ -130,7 +130,6 @@ export default function AboutPreview() {
               max-w-[540px]
 
               lg:max-w-[480px]
-
               xl:max-w-[520px]
             "
           >
@@ -144,6 +143,8 @@ export default function AboutPreview() {
                 h-[88%]
                 w-[92%]
                 rounded-[1.8rem]
+                border-2
+                border-[var(--yellow)]
 
                 sm:-left-5
                 sm:-top-5
@@ -154,37 +155,34 @@ export default function AboutPreview() {
               "
             />
 
-            {/* ================= IMAGE ================= */}
+            {/* IMAGE */}
 
             <div
               className="
                 relative
-                h-[280px]
+                h-[260px]
                 overflow-hidden
                 rounded-[1.8rem]
 
-                sm:h-[380px]
+                sm:h-[360px]
                 sm:rounded-[2.3rem]
 
-                md:h-[460px]
-
-                lg:h-[500px]
-
-                xl:h-[540px]
+                md:h-[430px]
+                lg:h-[480px]
+                xl:h-[520px]
               "
             >
               <picture>
-                {/* MOBILE IMAGE */}
+                {/* Mobile alternative */}
 
                 <source media="(max-width: 767px)" srcSet={HeroImage} />
 
-                {/* TABLET / DESKTOP */}
+                {/* Tablet/Desktop */}
 
                 <img
                   src={AboutImage}
                   alt="Africa-RII working with local communities"
-                  loading="eager"
-                  fetchPriority="high"
+                  loading="lazy"
                   decoding="async"
                   width="720"
                   height="900"
@@ -197,7 +195,7 @@ export default function AboutPreview() {
                 />
               </picture>
 
-              {/* IMAGE OVERLAY */}
+              {/* Lightweight overlay */}
 
               <div
                 className="
@@ -210,7 +208,7 @@ export default function AboutPreview() {
                 "
               />
 
-              {/* MOBILE CAPTION */}
+              {/* Mobile caption */}
 
               <div
                 className="
@@ -218,7 +216,6 @@ export default function AboutPreview() {
                   bottom-5
                   left-5
                   right-5
-
                   md:hidden
                 "
               >
@@ -251,9 +248,9 @@ export default function AboutPreview() {
           </div>
         </motion.div>
 
-        {/* ======================================================
-                            RIGHT CONTENT
-        ====================================================== */}
+        {/* =====================================================
+                         RIGHT CONTENT
+        ===================================================== */}
 
         <div className="relative lg:pl-3">
           {/* EYEBROW */}
@@ -268,7 +265,6 @@ export default function AboutPreview() {
                 uppercase
                 tracking-[0.2em]
                 text-[var(--blue)]
-
                 sm:text-xs
               "
             >
@@ -288,16 +284,16 @@ export default function AboutPreview() {
               text-[var(--blue-dark)]
 
               sm:text-[44px]
-
               lg:text-[48px]
-
               xl:text-[54px]
             "
           >
             Who We Are
           </h2>
 
-          {/* ================= ABOUT TEXT ================= */}
+          {/* =====================================================
+                              ABOUT TEXT
+          ===================================================== */}
 
           <div
             className="
@@ -311,7 +307,6 @@ export default function AboutPreview() {
               sm:text-base
               sm:leading-7
 
-              lg:mt-5
               lg:space-y-3
               lg:text-[14px]
               lg:leading-[1.65]
@@ -347,11 +342,13 @@ export default function AboutPreview() {
             </p>
           </div>
 
-          {/* ================= QUOTE + CTA ================= */}
+          {/* =====================================================
+                            QUOTE + CTA
+          ===================================================== */}
 
           <div
             className="
-              mt-5
+              mt-6
               flex
               flex-col
               gap-4
@@ -359,10 +356,10 @@ export default function AboutPreview() {
               sm:flex-row
               sm:items-center
 
-              lg:mt-5
+              lg:mt-6
             "
           >
-            {/* QUOTE CARD */}
+            {/* QUOTE */}
 
             <div
               className="
@@ -370,10 +367,9 @@ export default function AboutPreview() {
                 rounded-2xl
                 border
                 border-slate-200/80
-                bg-white/85
+                bg-white
                 p-4
-                shadow-[0_10px_35px_rgba(3,42,82,0.05)]
-                backdrop-blur-sm
+                shadow-[0_8px_25px_rgba(3,42,82,0.04)]
               "
             >
               <div className="flex items-start gap-3">
@@ -412,7 +408,6 @@ export default function AboutPreview() {
                       text-xs
                       leading-5
                       text-slate-600
-
                       sm:text-[13px]
                     "
                   >
@@ -442,10 +437,11 @@ export default function AboutPreview() {
                 text-sm
                 font-bold
                 text-[var(--blue-dark)]
-                transition-all
-                duration-300
 
-                hover:-translate-y-1
+                transition-colors
+                duration-200
+
+                md:hover:bg-[var(--yellow-light)]
 
                 sm:self-center
               "
@@ -461,10 +457,11 @@ export default function AboutPreview() {
                   rounded-full
                   bg-[var(--blue-dark)]
                   text-white
-                  transition-transform
-                  duration-300
 
-                  group-hover:rotate-45
+                  transition-transform
+                  duration-200
+
+                  md:group-hover:rotate-45
                 "
               >
                 <ArrowUpRight size={14} />

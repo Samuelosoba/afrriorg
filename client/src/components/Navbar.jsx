@@ -106,7 +106,7 @@ export default function Navbar() {
             {/* Mobile button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-[var(--blue)] lg:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full  text-white lg:hidden"
               aria-label="Toggle navigation"
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
