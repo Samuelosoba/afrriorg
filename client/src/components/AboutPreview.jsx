@@ -13,28 +13,74 @@ export default function AboutPreview() {
         relative
         overflow-hidden
         bg-[#fffdf7]
-        py-12
-        sm:py-14
+        py-10
+
+        sm:py-12
+
         lg:flex
         lg:h-[100svh]
-        lg:min-h-[700px]
+        lg:min-h-0
         lg:items-center
         lg:py-8
       "
     >
-      {/* ================= BACKGROUND DECORATION ================= */}
+      {/* ================= BACKGROUND ================= */}
 
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-32 top-16 h-72 w-72 rounded-full bg-[var(--yellow)]/10 blur-3xl" />
+        <div
+          className="
+            absolute
+            -left-32
+            top-16
+            h-72
+            w-72
+            rounded-full
+            bg-[var(--yellow)]/10
+            blur-3xl
+          "
+        />
 
-        <div className="absolute -bottom-28 -right-28 h-96 w-96 rounded-full bg-blue-100/60 blur-3xl" />
+        <div
+          className="
+            absolute
+            -bottom-28
+            -right-28
+            h-96
+            w-96
+            rounded-full
+            bg-blue-100/60
+            blur-3xl
+          "
+        />
 
-        <div className="absolute right-[8%] top-[12%] h-24 w-24 rounded-full border border-[var(--blue)]/5" />
+        <div
+          className="
+            absolute
+            right-[8%]
+            top-[12%]
+            h-24
+            w-24
+            rounded-full
+            border
+            border-[var(--blue)]/5
+          "
+        />
 
-        <div className="absolute bottom-[10%] left-[5%] h-16 w-16 rounded-full border border-[var(--yellow)]/20" />
+        <div
+          className="
+            absolute
+            bottom-[10%]
+            left-[5%]
+            h-16
+            w-16
+            rounded-full
+            border
+            border-[var(--yellow)]/20
+          "
+        />
       </div>
 
-      {/* ================= MAIN CONTAINER ================= */}
+      {/* ================= MAIN ================= */}
 
       <div
         className="
@@ -44,26 +90,46 @@ export default function AboutPreview() {
           w-full
           max-w-[1440px]
           items-center
-          gap-14
+          gap-10
           px-5
+
           sm:px-6
+
           md:px-8
+
           lg:grid-cols-[0.88fr_1.12fr]
           lg:gap-14
           lg:px-12
+
           xl:gap-20
         "
       >
         {/* ======================================================
-                            LEFT IMAGE
+                            IMAGE
         ====================================================== */}
 
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          initial={{
+            opacity: 0,
+            y: 15,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+
+            // starts almost immediately
+            amount: 0.03,
+
+            // starts animation slightly before
+            // element fully enters viewport
+            margin: "80px 0px 80px 0px",
+          }}
           transition={{
-            duration: 0.8,
+            // much quicker
+            duration: 0.35,
             ease: "easeOut",
           }}
           className="relative"
@@ -74,11 +140,13 @@ export default function AboutPreview() {
               mx-auto
               w-full
               max-w-[540px]
+
               lg:max-w-[480px]
+
               xl:max-w-[520px]
             "
           >
-            {/* Yellow frame */}
+            {/* YELLOW FRAME */}
 
             <div
               className="
@@ -88,10 +156,11 @@ export default function AboutPreview() {
                 h-[88%]
                 w-[92%]
                 rounded-[1.8rem]
-               
+
                 sm:-left-5
                 sm:-top-5
                 sm:rounded-[2.3rem]
+
                 lg:-left-6
                 lg:-top-6
               "
@@ -102,24 +171,37 @@ export default function AboutPreview() {
             <div
               className="
                 relative
-                h-[300px]
+                h-[280px]
                 overflow-hidden
                 rounded-[1.8rem]
+
                 sm:h-[380px]
                 sm:rounded-[2.3rem]
+
                 md:h-[460px]
+
                 lg:h-[500px]
+
                 xl:h-[540px]
               "
             >
               <picture>
-                {/* MOBILE IMAGE */}
+                {/* MOBILE */}
+
                 <source media="(max-width: 767px)" srcSet={HeroImage} />
 
-                {/* TABLET / DESKTOP IMAGE */}
+                {/* DESKTOP */}
+
                 <img
                   src={AboutImage}
                   alt="Africa-RII working with local communities"
+                  // IMPORTANT:
+                  // tells browser to get this image ASAP
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  width="720"
+                  height="900"
                   className="
                     h-full
                     w-full
@@ -129,91 +211,152 @@ export default function AboutPreview() {
                 />
               </picture>
 
-              {/* Image overlay */}
+              {/* OVERLAY */}
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--blue-dark)]/45 via-transparent to-transparent" />
+              <div
+                className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-t
+                  from-[var(--blue-dark)]/45
+                  via-transparent
+                  to-transparent
+                "
+              />
 
-              {/* Mobile image caption */}
+              {/* MOBILE CAPTION */}
 
-              <div className="absolute bottom-6 left-6 right-6 md:hidden">
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--blue)]">
+              <div
+                className="
+                  absolute
+                  bottom-5
+                  left-5
+                  right-5
+
+                  md:hidden
+                "
+              >
+                <p
+                  className="
+                    text-[9px]
+                    font-bold
+                    uppercase
+                    tracking-[0.18em]
+                    text-[var(--yellow)]
+                  "
+                >
                   Africa-RII
                 </p>
 
-                <p className="mt-1 max-w-[250px] text-lg font-semibold leading-snug text-white">
+                <p
+                  className="
+                    mt-1
+                    max-w-[250px]
+                    text-lg
+                    font-semibold
+                    leading-snug
+                    text-white
+                  "
+                >
                   Empowering communities through opportunity.
                 </p>
               </div>
             </div>
-
-            {/* ================= FLOATING CARD ================= */}
-
-            {/* ================= AFRICA-RII BADGE ================= */}
           </div>
         </motion.div>
 
         {/* ======================================================
-                            RIGHT CONTENT
+                            CONTENT
         ====================================================== */}
 
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{
+            opacity: 0,
+            y: 12,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
           viewport={{
             once: true,
-            amount: 0.2,
+
+            // don't wait for 20%
+            amount: 0.01,
+
+            // begin before content completely enters screen
+            margin: "100px 0px 100px 0px",
           }}
           transition={{
-            duration: 0.8,
+            duration: 0.32,
             ease: "easeOut",
           }}
-          className="relative lg:pl-3"
+          className="
+            relative
+
+            lg:pl-3
+          "
         >
-          {/* Eyebrow */}
+          {/* EYEBROW */}
 
           <div className="mb-4 flex items-center gap-3">
             <span className="h-[2px] w-10 bg-[var(--yellow)]" />
 
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--blue)]">
+            <span
+              className="
+                text-[10px]
+                font-bold
+                uppercase
+                tracking-[0.2em]
+                text-[var(--blue)]
+
+                sm:text-xs
+              "
+            >
               About Us
             </span>
           </div>
 
-          {/* Heading */}
+          {/* HEADING */}
 
           <h2
             className="
               max-w-2xl
-              text-[36px]
+              text-[34px]
               font-bold
               leading-[1.03]
               tracking-[-0.04em]
               text-[var(--blue-dark)]
+
               sm:text-[44px]
+
               lg:text-[48px]
+
               xl:text-[54px]
             "
           >
             Who We Are
-            <span className="block text-[var(--blue)]"></span>
           </h2>
 
-          {/* ================= ABOUT PARAGRAPHS ================= */}
+          {/* ================= TEXT ================= */}
 
           <div
             className="
-              mt-6
+              mt-5
               max-w-2xl
               space-y-4
-              text-[15px]
-              leading-7
+              text-[14px]
+              leading-6
               text-slate-600
+
               sm:text-base
               sm:leading-7
+
               lg:mt-5
               lg:space-y-3
               lg:text-[14px]
               lg:leading-[1.65]
+
               xl:text-[15px]
             "
           >
@@ -245,20 +388,22 @@ export default function AboutPreview() {
             </p>
           </div>
 
-          {/* ================= QUOTE + CTA ================= */}
+          {/* ================= BOTTOM ================= */}
 
           <div
             className="
-              mt-6
+              mt-5
               flex
               flex-col
               gap-4
+
               sm:flex-row
               sm:items-center
+
               lg:mt-5
             "
           >
-            {/* Quote card */}
+            {/* QUOTE */}
 
             <div
               className="
@@ -290,11 +435,28 @@ export default function AboutPreview() {
                 </div>
 
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--blue)]">
+                  <p
+                    className="
+                      text-[10px]
+                      font-bold
+                      uppercase
+                      tracking-[0.14em]
+                      text-[var(--blue)]
+                    "
+                  >
                     — Mahatma Gandhi
                   </p>
 
-                  <p className="mt-1.5 text-xs leading-5 text-slate-600 sm:text-[13px]">
+                  <p
+                    className="
+                      mt-1.5
+                      text-xs
+                      leading-5
+                      text-slate-600
+
+                      sm:text-[13px]
+                    "
+                  >
                     The best way to find yourself is to lose yourself in the
                     service of others.
                   </p>
@@ -323,7 +485,9 @@ export default function AboutPreview() {
                 text-[var(--blue-dark)]
                 transition-all
                 duration-300
+
                 hover:-translate-y-1
+
                 sm:self-center
               "
             >
@@ -340,6 +504,7 @@ export default function AboutPreview() {
                   text-white
                   transition-transform
                   duration-300
+
                   group-hover:rotate-45
                 "
               >
