@@ -136,15 +136,21 @@ export default function ProgramsPreview() {
         ===================================================== */}
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{
+            opacity: 0,
+            y: 10,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
           viewport={{
             once: true,
             amount: 0.08,
           }}
           transition={{
-            duration: 0.35,
-            ease: "easeOut",
+            duration: 0.4,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="
             mx-auto
@@ -223,15 +229,29 @@ export default function ProgramsPreview() {
             return (
               <motion.article
                 key={program.title}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{
+                  opacity: 0,
+                  y: 14,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
                 viewport={{
                   once: true,
-                  amount: 0.05,
+                  amount: 0.1,
                 }}
                 transition={{
-                  duration: 0.3,
-                  ease: "easeOut",
+                  duration: 0.4,
+                  delay: index * 0.06,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{
+                  y: -4,
+                  transition: {
+                    duration: 0.2,
+                    ease: "easeOut",
+                  },
                 }}
                 className={`
                   group
@@ -245,9 +265,6 @@ export default function ProgramsPreview() {
                   sm:min-h-[375px]
 
                   lg:min-h-[390px]
-                  lg:transition-transform
-                  lg:duration-200
-                  lg:hover:-translate-y-1
 
                   ${
                     program.dark
@@ -264,7 +281,9 @@ export default function ProgramsPreview() {
                   }
                 `}
               >
-                {/* IMAGE */}
+                {/* =================================================
+                                 IMAGE
+                ================================================= */}
 
                 <div
                   className="
@@ -344,7 +363,9 @@ export default function ProgramsPreview() {
                   </span>
                 </div>
 
-                {/* CONTENT */}
+                {/* =================================================
+                                CONTENT
+                ================================================= */}
 
                 <div
                   className="
@@ -433,7 +454,9 @@ export default function ProgramsPreview() {
                     `}
                   />
 
-                  {/* LINKS */}
+                  {/* =================================================
+                                  LINKS
+                  ================================================= */}
 
                   <div className="mt-4 flex flex-wrap gap-2">
                     {program.links.map((link) => (
@@ -489,7 +512,9 @@ export default function ProgramsPreview() {
                     ))}
                   </div>
 
-                  {/* EXPLORE */}
+                  {/* =================================================
+                                EXPLORE
+                  ================================================= */}
 
                   <div className="mt-auto pt-5">
                     <a
@@ -537,19 +562,33 @@ export default function ProgramsPreview() {
           })}
 
           {/* =====================================================
-                            QUOTE CARD
+                           QUOTE CARD
           ===================================================== */}
 
           <motion.article
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{
+              opacity: 0,
+              y: 14,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
             viewport={{
               once: true,
-              amount: 0.05,
+              amount: 0.1,
             }}
             transition={{
-              duration: 0.3,
-              ease: "easeOut",
+              duration: 0.4,
+              delay: 0.12,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            whileHover={{
+              y: -4,
+              transition: {
+                duration: 0.2,
+                ease: "easeOut",
+              },
             }}
             className="
               group
@@ -568,11 +607,10 @@ export default function ProgramsPreview() {
 
               lg:min-h-[390px]
               lg:p-8
-              lg:transition-transform
-              lg:duration-200
-              lg:hover:-translate-y-1
             "
           >
+            {/* LARGE QUOTE */}
+
             <Quote
               className="
                 absolute
@@ -588,6 +626,8 @@ export default function ProgramsPreview() {
               "
               strokeWidth={1}
             />
+
+            {/* DECORATION */}
 
             <div
               className="
@@ -615,7 +655,11 @@ export default function ProgramsPreview() {
               "
             />
 
+            {/* CONTENT */}
+
             <div className="relative z-10 flex h-full w-full flex-col">
+              {/* TOP */}
+
               <div className="flex items-center justify-between">
                 <div
                   className="
@@ -645,6 +689,8 @@ export default function ProgramsPreview() {
                 </span>
               </div>
 
+              {/* QUOTE */}
+
               <div className="flex flex-1 items-center py-7">
                 <blockquote
                   className="
@@ -665,6 +711,8 @@ export default function ProgramsPreview() {
                   service of others.”
                 </blockquote>
               </div>
+
+              {/* AUTHOR */}
 
               <div className="flex items-center gap-3">
                 <span className="h-[2px] w-8 bg-[var(--blue-dark)]" />

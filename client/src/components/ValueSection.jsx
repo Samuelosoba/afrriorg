@@ -200,37 +200,46 @@ export default function ValuesSection() {
             return (
               <motion.article
                 key={item.title}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{
+                  opacity: 0,
+                  y: 14,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
                 viewport={{
                   once: true,
-                  amount: 0.08,
+                  amount: 0.12,
                 }}
                 transition={{
-                  duration: 0.3,
-                  ease: "easeOut",
+                  duration: 0.4,
+                  delay: index * 0.06,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{
+                  y: -4,
+                  transition: {
+                    duration: 0.2,
+                    ease: "easeOut",
+                  },
                 }}
                 className="
-                  group
-                  relative
-                  overflow-hidden
-                  rounded-[1.5rem]
-                  border
-                  border-white/10
-                  bg-[var(--blue-dark)]
-                  p-5
+    group
+    relative
+    overflow-hidden
+    rounded-[1.5rem]
+    border
+    border-white/10
+    bg-[var(--blue-dark)]
+    p-5
+    shadow-[0_12px_30px_rgba(0,0,0,0.10)]
 
-                  shadow-[0_12px_30px_rgba(0,0,0,0.10)]
+    md:min-h-[250px]
 
-                  md:min-h-[250px]
-
-                  lg:min-h-[265px]
-                  lg:p-6
-
-                  lg:transition-transform
-                  lg:duration-200
-                  lg:hover:-translate-y-1
-                "
+    lg:min-h-[265px]
+    lg:p-6
+  "
               >
                 {/* Static card accent */}
                 <div
