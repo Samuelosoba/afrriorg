@@ -50,8 +50,6 @@ export default function GetInvolved() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
-        {/* Lightweight mobile decoration */}
-
         <div
           className="
             absolute
@@ -64,8 +62,6 @@ export default function GetInvolved() {
             border-[var(--blue-dark)]/[0.07]
           "
         />
-
-        {/* Desktop only decoration */}
 
         <div
           className="
@@ -125,15 +121,21 @@ export default function GetInvolved() {
         ===================================================== */}
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{
+            opacity: 0,
+            y: 12,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
           viewport={{
             once: true,
-            amount: 0.08,
+            amount: 0.1,
           }}
           transition={{
-            duration: 0.35,
-            ease: "easeOut",
+            duration: 0.4,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="
             flex
@@ -221,22 +223,36 @@ export default function GetInvolved() {
             lg:gap-5
           "
         >
-          {actions.map((action) => {
+          {actions.map((action, index) => {
             const Icon = action.icon;
 
             return (
               <motion.a
                 key={action.title}
                 href={action.href}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{
+                  opacity: 0,
+                  y: 14,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
                 viewport={{
                   once: true,
-                  amount: 0.08,
+                  amount: 0.1,
                 }}
                 transition={{
-                  duration: 0.3,
-                  ease: "easeOut",
+                  duration: 0.4,
+                  delay: index * 0.06,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{
+                  y: -4,
+                  transition: {
+                    duration: 0.2,
+                    ease: "easeOut",
+                  },
                 }}
                 className={`
                   group
@@ -248,9 +264,6 @@ export default function GetInvolved() {
                   sm:p-6
 
                   lg:min-h-[250px]
-                  lg:transition-transform
-                  lg:duration-200
-                  lg:hover:-translate-y-1
 
                   ${
                     action.featured
@@ -263,7 +276,8 @@ export default function GetInvolved() {
                         bg-white/70
                         text-[var(--blue-dark)]
 
-                        lg:transition-[background-color,transform]
+                        lg:transition-colors
+                        lg:duration-200
                         lg:hover:bg-white
                       `
                   }
@@ -334,6 +348,11 @@ export default function GetInvolved() {
                                 text-white
                               `
                           }
+
+                          lg:transition-transform
+                          lg:duration-200
+                          lg:group-hover:scale-[1.04]
+                          lg:group-hover:rotate-[3deg]
                         `}
                       >
                         <Icon size={19} />
@@ -494,7 +513,24 @@ export default function GetInvolved() {
                          SMALL FOOTER CTA
         ===================================================== */}
 
-        <div
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 8,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: 0.35,
+            delay: 0.1,
+            ease: [0.22, 1, 0.36, 1],
+          }}
           className="
             mt-7
             flex
@@ -543,7 +579,7 @@ export default function GetInvolved() {
               "
             />
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 
 import Impact1 from "../assets/computer.jpg";
 import Impact2 from "../assets/sisters.webp";
@@ -9,19 +8,23 @@ import Impact4 from "../assets/health.webp";
 
 const impactStats = [
   {
-    value: "13+",
+    value: 13,
+    suffix: "+",
     label: "Years of impact",
   },
   {
-    value: "1,000+",
+    value: 1000,
+    suffix: "+",
     label: "People reached",
   },
   {
-    value: "50+",
+    value: 50,
+    suffix: "+",
     label: "Communities",
   },
   {
-    value: "15+",
+    value: 15,
+    suffix: "+",
     label: "Programs",
   },
 ];
@@ -49,6 +52,55 @@ const slides = [
   },
 ];
 
+function AnimatedNumber({ value, suffix = "" }) {
+  const ref = useRef(null);
+
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.3,
+  });
+
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let frameId;
+    let startTime = null;
+
+    const duration = 800;
+
+    const animateCount = (timestamp) => {
+      if (!startTime) {
+        startTime = timestamp;
+      }
+
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      setCount(Math.floor(value * eased));
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(animateCount);
+      }
+    };
+
+    frameId = requestAnimationFrame(animateCount);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+    };
+  }, [isInView, value]);
+
+  return (
+    <span ref={ref}>
+      {count.toLocaleString()}
+      {suffix}
+    </span>
+  );
+}
+
 export default function ImpactStats() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -61,18 +113,6 @@ export default function ImpactStats() {
 
     return () => clearInterval(timer);
   }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((current) =>
-      current === slides.length - 1 ? 0 : current + 1,
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((current) =>
-      current === 0 ? slides.length - 1 : current - 1,
-    );
-  };
 
   return (
     <section
@@ -291,7 +331,7 @@ export default function ImpactStats() {
                     xl:text-[42px]
                   "
                 >
-                  {stat.value}
+                  <AnimatedNumber value={stat.value} suffix={stat.suffix} />
                 </div>
 
                 <div
@@ -499,107 +539,19 @@ export default function ImpactStats() {
                 </p>
               </motion.div>
 
-              {/* Counter */}
+              {/* =====================================================
+                                DOTS ONLY
+              ===================================================== */}
 
               <div
                 className="
                   absolute
-                  left-3
-                  top-3
-                  z-20
-                  rounded-full
-                  bg-[var(--blue-dark)]/70
-                  px-3
-                  py-1.5
-                  text-[9px]
-                  font-bold
-                  tracking-[0.12em]
-                  text-white
-
-                  sm:left-4
-                  sm:top-4
-                "
-              >
-                0{currentSlide + 1}
-                <span className="mx-1 text-white/30">/</span>0{slides.length}
-              </div>
-
-              {/* Controls */}
-
-              <div
-                className="
-                  absolute
-                  right-3
-                  top-3
-                  z-20
-                  flex
-                  gap-2
-
-                  sm:right-4
-                  sm:top-4
-                "
-              >
-                <button
-                  type="button"
-                  onClick={prevSlide}
-                  aria-label="Previous slide"
-                  className="
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-black/30
-                    text-white
-
-                    lg:transition-colors
-                    lg:duration-200
-                    lg:hover:bg-[var(--yellow)]
-                    lg:hover:text-[var(--blue-dark)]
-                  "
-                >
-                  <ChevronLeft size={15} />
-                </button>
-
-                <button
-                  type="button"
-                  onClick={nextSlide}
-                  aria-label="Next slide"
-                  className="
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-black/30
-                    text-white
-
-                    lg:transition-colors
-                    lg:duration-200
-                    lg:hover:bg-[var(--yellow)]
-                    lg:hover:text-[var(--blue-dark)]
-                  "
-                >
-                  <ChevronRight size={15} />
-                </button>
-              </div>
-
-              {/* Dots */}
-
-              <div
-                className="
-                  absolute
-                  bottom-3
-                  right-3
+                  bottom-4
+                  right-4
                   z-20
                   flex
                   items-center
                   gap-1.5
-
-                  sm:bottom-4
-                  sm:right-4
                 "
               >
                 {slides.map((_, index) => (
