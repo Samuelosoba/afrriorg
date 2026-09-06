@@ -157,15 +157,22 @@ export default function ImpactStats() {
         ===================================================== */}
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{
+            opacity: 0,
+            y: 28,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
           viewport={{
             once: true,
-            amount: 0.08,
+            amount: 0.1,
+            margin: "0px 0px -50px 0px",
           }}
           transition={{
-            duration: 0.35,
-            ease: "easeOut",
+            duration: 0.55,
+            ease: [0.22, 1, 0.36, 1],
           }}
         >
           {/* Eyebrow */}
@@ -211,6 +218,8 @@ export default function ImpactStats() {
             <span className="text-[var(--yellow)]">Sustained Impact</span>
           </h2>
 
+          {/* Description */}
+
           <p
             className="
               mt-3
@@ -245,13 +254,27 @@ export default function ImpactStats() {
               lg:mt-8
             "
           >
-            {impactStats.map((stat) => (
-              <div
+            {impactStats.map((stat, index) => (
+              <motion.div
                 key={stat.label}
-                className="
-                  group
-                  min-w-0
-                "
+                initial={{
+                  opacity: 0,
+                  y: 16,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.2,
+                }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.06,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="group min-w-0"
               >
                 <div
                   className="
@@ -298,7 +321,7 @@ export default function ImpactStats() {
                     lg:group-hover:w-12
                   "
                 />
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
@@ -308,15 +331,23 @@ export default function ImpactStats() {
         ===================================================== */}
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{
+            opacity: 0,
+            y: 32,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
           viewport={{
             once: true,
-            amount: 0.05,
+            amount: 0.08,
+            margin: "0px 0px -50px 0px",
           }}
           transition={{
-            duration: 0.35,
-            ease: "easeOut",
+            duration: 0.6,
+            delay: 0.08,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="relative"
         >
@@ -347,9 +378,9 @@ export default function ImpactStats() {
                 2xl:h-[470px]
               "
             >
-              {/* Current image only */}
+              {/* Current image */}
 
-              <img
+              <motion.img
                 key={currentSlide}
                 src={slides[currentSlide].image}
                 alt={slides[currentSlide].title}
@@ -357,10 +388,23 @@ export default function ImpactStats() {
                 decoding="async"
                 width="900"
                 height="600"
+                initial={{
+                  opacity: 0,
+                  scale: 1.025,
+                }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 className="
                   h-full
                   w-full
                   object-cover
+                  will-change-transform
                 "
               />
 
@@ -368,6 +412,7 @@ export default function ImpactStats() {
 
               <div
                 className="
+                  pointer-events-none
                   absolute
                   inset-0
                   bg-gradient-to-t
@@ -379,7 +424,21 @@ export default function ImpactStats() {
 
               {/* Text */}
 
-              <div
+              <motion.div
+                key={`text-${currentSlide}`}
+                initial={{
+                  opacity: 0,
+                  y: 8,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.35,
+                  delay: 0.08,
+                  ease: "easeOut",
+                }}
                 className="
                   absolute
                   bottom-0
@@ -438,7 +497,7 @@ export default function ImpactStats() {
                 >
                   {slides[currentSlide].text}
                 </p>
-              </div>
+              </motion.div>
 
               {/* Counter */}
 
