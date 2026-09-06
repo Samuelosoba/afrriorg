@@ -25,7 +25,7 @@ export default function Home() {
 {/*      
       <ActionGallery /> */}
 
-      <PartnersSection />
+      {/* <PartnersSection /> */}
       <GetInvolved />
       <Footer />
     </main>
