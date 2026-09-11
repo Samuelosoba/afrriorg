@@ -4,7 +4,6 @@ import { ArrowUpRight, Quote } from "lucide-react";
 import AboutImage from "../assets/about.png";
 import HeroImage from "../assets/hero-transparent.png";
 
-
 export default function AboutPreview() {
   return (
     <section
@@ -24,7 +23,6 @@ export default function AboutPreview() {
     >
       {/* =====================================================
                            BACKGROUND
-          Decorative effects are desktop only.
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 hidden md:block">
@@ -82,7 +80,7 @@ export default function AboutPreview() {
       </div>
 
       {/* =====================================================
-                            MAIN
+                              MAIN
       ===================================================== */}
 
       <div
@@ -95,31 +93,34 @@ export default function AboutPreview() {
           items-center
           gap-10
           px-5
-
           sm:px-6
           md:px-8
-
           lg:grid-cols-[0.88fr_1.12fr]
           lg:gap-14
           lg:px-12
-
           xl:gap-20
         "
       >
         {/* =====================================================
-                            IMAGE
+                              IMAGE
         ===================================================== */}
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{
+            opacity: 0,
+            y: 28,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
           viewport={{
             once: true,
-            amount: 0.05,
+            amount: 0.08,
           }}
           transition={{
-            duration: 0.35,
-            ease: "easeOut",
+            duration: 0.55,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="relative"
         >
@@ -128,22 +129,26 @@ export default function AboutPreview() {
               relative
               mx-auto
               w-full
-              max-w-[540px]
-
+              max-w-[460px]
+              sm:max-w-[560px]
+              md:max-w-[540px]
               lg:max-w-[480px]
               xl:max-w-[520px]
             "
           >
-            {/* IMAGE */}
+            {/* IMAGE FRAME */}
 
             <div
               className="
+                about-photo
                 relative
-                about-photo h-[260px]
+                h-[520px]
                 overflow-hidden
                 rounded-[1.8rem]
 
-                sm:h-[360px]
+                min-[390px]:h-[560px]
+
+                sm:h-[600px]
                 sm:rounded-[2.3rem]
 
                 md:h-[430px]
@@ -152,10 +157,10 @@ export default function AboutPreview() {
               "
             >
               <picture>
+                {/* MOBILE IMAGE */}
                 <source media="(max-width: 767px)" srcSet={HeroImage} />
 
-                {/* Tablet/Desktop */}
-
+                {/* TABLET / DESKTOP IMAGE */}
                 <img
                   src={AboutImage}
                   alt="Africa-RII working with local communities"
@@ -168,29 +173,34 @@ export default function AboutPreview() {
                     w-full
                     object-cover
                     object-center
+
+                    max-md:scale-[1.38]
+
+                    md:scale-100
                   "
                 />
               </picture>
 
-              {/* Lightweight overlay */}
+              {/* IMAGE OVERLAY */}
 
               <div
                 className="
+                  pointer-events-none
                   absolute
                   inset-0
                   bg-gradient-to-t
-                  from-[var(--ink)]/45
+                  from-[var(--ink)]/50
                   via-transparent
                   to-transparent
                 "
               />
 
-              {/* Mobile caption */}
+              {/* MOBILE IMAGE CAPTION */}
 
               <div
                 className="
                   absolute
-                  bottom-5
+                  bottom-6
                   left-5
                   right-5
                   md:hidden
@@ -211,7 +221,7 @@ export default function AboutPreview() {
                 <p
                   className="
                     mt-1
-                    max-w-[250px]
+                    max-w-[290px]
                     text-lg
                     font-semibold
                     leading-snug
@@ -226,17 +236,70 @@ export default function AboutPreview() {
         </motion.div>
 
         {/* =====================================================
-                         RIGHT CONTENT
+                          RIGHT CONTENT
         ===================================================== */}
 
-        <div className="relative lg:pl-3">
-          {/* EYEBROW */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 26,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.08,
+          }}
+          transition={{
+            duration: 0.55,
+            delay: 0.05,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="
+            relative
+            mt-10
+            text-left
 
-          <div className="mb-4 flex items-center gap-3">
-            <span className="h-[2px] w-10 bg-[var(--green-soft)]" />
+            sm:mt-12
+
+            lg:mt-0
+            lg:pl-3
+          "
+        >
+          {/* =====================================================
+                   ABOUT US — CENTERED ON MOBILE ONLY
+          ===================================================== */}
+
+          <div
+            className="
+              mb-5
+              flex
+              w-full
+              items-center
+              justify-center
+              gap-3
+
+              lg:justify-start
+            "
+          >
+            {/* LEFT LINE */}
 
             <span
               className="
+                h-[2px]
+                w-9
+                bg-[var(--green-soft)]
+                sm:w-10
+              "
+            />
+
+            {/* ABOUT US */}
+
+            <span
+              className="
+                whitespace-nowrap
                 text-[10px]
                 font-bold
                 uppercase
@@ -247,39 +310,64 @@ export default function AboutPreview() {
             >
               About Us
             </span>
+
+            {/* RIGHT LINE — MOBILE/TABLET ONLY */}
+
+            <span
+              className="
+                h-[2px]
+                w-9
+                bg-[var(--green-soft)]
+                sm:w-10
+                lg:hidden
+              "
+            />
           </div>
 
-          {/* HEADING */}
+          {/* =====================================================
+                     WHO WE ARE — LEFT ALIGNED
+          ===================================================== */}
 
           <h2
             className="
-              max-w-2xl
-              text-[34px]
-              font-bold
-              leading-[1.03]
-              tracking-[-0.04em]
-              text-[var(--ink)]
+    mx-auto
+    max-w-2xl
+    text-center
+    text-[34px]
+    font-bold
+    leading-[1.03]
+    tracking-[-0.04em]
+    text-[var(--ink)]
 
-              sm:text-[44px]
-              lg:text-[48px]
-              xl:text-[54px]
-            "
+    sm:text-[44px]
+
+    lg:mx-0
+    lg:text-left
+    lg:text-[48px]
+
+    xl:text-[54px]
+  "
           >
             Who We Are
           </h2>
 
           {/* =====================================================
-                              ABOUT TEXT
+                         DESKTOP ABOUT TEXT
           ===================================================== */}
 
           <div
             className="
+              about-copy
               mt-5
+              hidden
               max-w-2xl
-              about-copy hidden md:block space-y-4
+              space-y-4
+              text-left
               text-[14px]
               leading-6
               text-neutral-600
+
+              md:block
 
               sm:text-base
               sm:leading-7
@@ -319,45 +407,77 @@ export default function AboutPreview() {
             </p>
           </div>
 
-          <div className="about-mobile-copy mt-3 space-y-3 text-sm leading-6 text-neutral-600 md:hidden">
+          {/* =====================================================
+                    MOBILE ABOUT TEXT — LEFT ALIGNED
+          ===================================================== */}
+
+          <div
+            className="
+              about-mobile-copy
+              mt-5
+              max-w-[410px]
+              space-y-4
+              text-left
+              text-sm
+              leading-6
+              text-neutral-600
+
+              md:hidden
+            "
+          >
             <p>
-              Since 2012, Africa-RII has helped underserved communities in
-              Nigeria access education, skills and opportunities.
+              Since 2012, Africa-RII has worked with underserved communities in
+              Nigeria to improve access to education, practical skills and
+              opportunities that help people build better futures.
             </p>
+
             <p>
-              Through our Community Resource Centre in Ilora, we support young
-              people with learning, mentorship and practical skills to build
-              brighter futures.
+              What began with providing school supplies to children in rural
+              communities has grown into a wider commitment to education, youth
+              development, mentorship and community empowerment.
+            </p>
+
+            <p>
+              Through our Community Resource Centre in Ilora, young people are
+              given a safe and supportive space to learn, develop practical
+              skills, receive mentorship and gain the confidence needed to
+              pursue new opportunities.
             </p>
           </div>
+
           {/* =====================================================
                             QUOTE + CTA
           ===================================================== */}
 
           <div
             className="
-              mt-6
+              about-actions
+              mt-7
               flex
               flex-col
+              items-start
               gap-4
 
-              about-actions sm:flex-row
+              sm:flex-row
               sm:items-center
 
               lg:mt-6
             "
           >
-            {/* Quote is reserved for larger screens to keep mobile concise. */}
+            {/* QUOTE — DESKTOP */}
 
             <div
               className="
-                hidden md:block flex-1
+                hidden
+                flex-1
                 rounded-2xl
                 border
                 border-neutral-200/80
                 bg-white
                 p-4
                 shadow-[0_8px_25px_rgba(0,40,20,0.04)]
+
+                md:block
               "
             >
               <div className="flex items-start gap-3">
@@ -377,7 +497,7 @@ export default function AboutPreview() {
                   <Quote size={17} />
                 </div>
 
-                <div>
+                <div className="text-left">
                   <p
                     className="
                       text-[10px]
@@ -417,7 +537,6 @@ export default function AboutPreview() {
                 items-center
                 justify-center
                 gap-3
-                self-start
                 rounded-full
                 bg-[var(--green)]
                 px-6
@@ -425,13 +544,10 @@ export default function AboutPreview() {
                 text-sm
                 font-bold
                 text-white
-
                 transition-colors
                 duration-200
 
                 md:hover:bg-[var(--green-hover)]
-
-                sm:self-center
               "
             >
               Discover our story
@@ -445,7 +561,6 @@ export default function AboutPreview() {
                   rounded-full
                   bg-[var(--ink)]
                   text-white
-
                   transition-transform
                   duration-200
 
@@ -456,7 +571,7 @@ export default function AboutPreview() {
               </span>
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
