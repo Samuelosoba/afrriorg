@@ -1,153 +1,51 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+﻿import { useEffect, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X, ArrowUpRight } from "lucide-react";
-import logo from "../assets/afrilogo.png"
+import logo from "../assets/afrilogo.png";
+import { categories } from "../data/content";
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Programs", href: "#programs", dropdown: true },
-  { label: "Impact", href: "#impact" },
-  { label: "Get involved", href: "#donate" },
-];
-
-const programs = [
-  "Education",
-  "Skills Acquisition",
-  "Community Resource Centre",
-  "Sisters' Club",
-  "LifeLine",
-];
+const navLinks = [{ label: "About", href: "/about" }, { label: "Impact", href: "/impact" }, { label: "Get involved", href: "/get-involved" }];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [programOpen, setProgramOpen] = useState(false);
-
+  const dropdown = useRef(null);
+  const location = useLocation();
+  const close = () => { setMobileOpen(false); setProgramOpen(false); };
+  useEffect(() => {
+    function dismiss(event) {
+      if (event.type === "keydown" && event.key === "Escape") {
+        setMobileOpen(false); setProgramOpen(false);
+        document.getElementById("program-menu-toggle")?.focus();
+      } else if (event.type === "pointerdown" && dropdown.current && !dropdown.current.contains(event.target)) setProgramOpen(false);
+    }
+    document.addEventListener("pointerdown", dismiss);
+    document.addEventListener("keydown", dismiss);
+    return () => { document.removeEventListener("pointerdown", dismiss); document.removeEventListener("keydown", dismiss); };
+  }, []);
   return (
     <header className="site-header fixed top-0 left-0 right-0 z-50 border-b border-neutral-200/60 bg-white/95 backdrop-blur-md">
-      <nav className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
-        <div className="px-2 py-4 sm:px-6">
-          <div className="flex h-12 items-center justify-between">
-            {/* Logo */}
-            <a href="#home" aria-label="Africa-RII home">
-        <img
-                src={logo}
-                alt="Africa-RII logo"
-                className="
-                  h-auto
-                  w-[105px]
-                  object-contain
-                  sm:w-[125px]
-                  md:w-[140px]
-                  lg:w-[155px]
-                "
-              />
-            </a>
-
-            {/* Desktop navigation */}
-            <div className="hidden items-center gap-8 lg:flex">
-              {navLinks.map((link) => (
-                <div key={link.label} className="relative">
-                  {link.dropdown ? (
-                    <button
-                      aria-expanded={programOpen} onClick={() => setProgramOpen(!programOpen)}
-                      className="flex items-center gap-1.5 text-sm font-medium text-[var(--ink)] transition hover:text-[var(--green)]"
-                    >
-                      {link.label}
-                      <ChevronDown
-                        size={15}
-                        className={`transition-transform ${
-                          programOpen ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                  ) : (
-                    <a
-                      href={link.href}
-                      className="text-sm font-medium text-[var(--ink)] transition hover:text-[var(--green)]"
-                    >
-                      {link.label}
-                    </a>
-                  )}
-
-                  <AnimatePresence>
-                    {link.dropdown && programOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 8 }}
-                        className="absolute left-1/2 top-10 w-64 -translate-x-1/2 rounded-2xl border border-neutral-100 bg-white p-2 shadow-xl"
-                      >
-                        {programs.map((program) => (
-                          <a
-                            key={program}
-                            href="#programs"
-                            onClick={() => setProgramOpen(false)}
-                            className="block rounded-xl px-4 py-3 text-sm text-neutral-600 transition hover:bg-[#eaf6ef] hover:text-[var(--green)]"
-                          >
-                            {program}
-                          </a>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
-            </div>
-
-            {/* Desktop CTA */}
-            <a
-              href="#donate"
-              className="hidden items-center gap-2 rounded-full bg-[var(--green)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--green-hover)] lg:flex"
-            >
-              Donate
-              <ArrowUpRight size={16} />
-            </a>
-
-            {/* Mobile button */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="flex h-10 w-10 items-center justify-center rounded-full text-[var(--ink)] lg:hidden"
-              aria-label="Toggle navigation" aria-expanded={mobileOpen}
-            >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+      <nav className="site-nav" aria-label="Main navigation">
+        <Link to="/" onClick={close} aria-label="Africa-RII home"><img className="nav-logo" src={logo} alt="Africa-RII"/></Link>
+        <div className="desktop-nav">
+          <NavLink to="/about" onClick={close}>About</NavLink>
+          <div className="nav-programs" ref={dropdown}>
+            <NavLink to="/programs" onClick={close}>Programs</NavLink>
+            <button id="program-menu-toggle" type="button" aria-label="Show programme categories" aria-expanded={programOpen} aria-controls="program-menu" onClick={()=>setProgramOpen(!programOpen)}><ChevronDown size={16}/></button>
+            {programOpen && <div id="program-menu" className="program-menu">{categories.map(c=><Link key={c.slug} to={"/programs/"+c.slug} onClick={close}>{c.title}</Link>)}</div>}
           </div>
-
-          {/* Mobile navigation */}
-          <AnimatePresence>
-            {mobileOpen && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                className="overflow-hidden lg:hidden"
-              >
-                <div className="border-t border-neutral-100 pb-3 pt-4">
-                  {navLinks.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="block rounded-xl px-3 py-3 text-sm font-medium text-[var(--ink)] hover:bg-[var(--green-soft)]"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
-
-                  <a
-                    href="#donate"
-                    onClick={() => setMobileOpen(false)}
-                    className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[var(--green)] px-4 py-3 text-sm font-semibold text-white"
-                  >
-                    Donate
-                    <ArrowUpRight size={16} />
-                  </a>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {navLinks.slice(1).map(link=><NavLink key={link.href} to={link.href} onClick={close}>{link.label}</NavLink>)}
         </div>
+        <Link to="/donate" onClick={close} className="button-primary nav-donate">Donate <ArrowUpRight size={16}/></Link>
+        <button type="button" className="mobile-toggle" aria-label="Toggle navigation" aria-expanded={mobileOpen} aria-controls="mobile-nav" onClick={()=>setMobileOpen(!mobileOpen)}>{mobileOpen?<X/>:<Menu/>}</button>
       </nav>
+      {mobileOpen && <nav id="mobile-nav" className="mobile-nav" aria-label="Mobile navigation" key={location.pathname}>
+        <NavLink to="/about" onClick={close}>About</NavLink>
+        <NavLink to="/programs" onClick={close}>All programs</NavLink>
+        <div className="mobile-categories">{categories.map(c=><Link key={c.slug} to={"/programs/"+c.slug} onClick={close}>{c.title}</Link>)}</div>
+        {navLinks.slice(1).map(link=><NavLink key={link.href} to={link.href} onClick={close}>{link.label}</NavLink>)}
+        <Link to="/donate" className="button-primary" onClick={close}>Donate <ArrowUpRight size={16}/></Link>
+      </nav>}
     </header>
   );
 }

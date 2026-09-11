@@ -61,3 +61,79 @@ export const aboutParagraphs = [
  "Guided by the belief that dignity can be restored through education, skills and mentorship, Africa-RII established a Community Resource Centre in Ilora — a safe space where young people can learn, build practical skills and receive mentorship. Since 2019, our work has expanded to include free summer schools, JAMB support, university tuition scholarships, career mentorship and gender-focused programmes.",
  "Today, Africa-RII works across education, youth development, skills acquisition, health awareness and economic empowerment. By working directly with communities, we help individuals gain the knowledge, confidence and opportunities they need to build resilient livelihoods and create lasting change.",
 ];
+
+// Details adapted from Africa-RII's published programme pages.
+const verifiedPrograms = {
+  "skills-acquisition": {
+    source: "https://africarii.org/skill-acquisition/",
+    paragraphs: [
+      "Free vocational and digital workshops help young people and women develop practical skills. Training is informed by community needs and delivered with local professionals and partner organisations.",
+      "In 2022, a three-day workshop introduced 35 participants to tie-dye and resin jewellery with the Women and Youths Arts Foundation. The 2023 programme reached 105 participants through digital skills, small-business learning, soap making, beads and Adire, working with the foundation and Master Art Classes.",
+      "Africa-RII's published programme report records 140 participants across these two cohorts. Contact the team about current training and opportunities to support equipment or facilitation."
+    ]
+  },
+  ajumobi: {
+    title: "Àjùmòbí Scholarships",
+    source: "https://africarii.org/ajumobi-scholarships/",
+    summary: "Examination and undergraduate support, connected with mentorship and community responsibility.",
+    paragraphs: [
+      "Àjùmòbí Scholarships combine financial assistance with an emphasis on self-reliance, integrity and service. Support includes entrance-examination fees, tuition, learning materials and mentorship.",
+      "The published programme history records seven awardees in the 2024 pilot and 37 in 2025. The initiative encourages scholars to contribute through volunteering, mentoring and leadership.",
+      "Contact Africa-RII for current eligibility criteria, application dates and support arrangements."
+    ]
+  },
+  "sisters-club": {
+    source: "https://africarii.org/education_project/sisters-club/",
+    paragraphs: [
+      "Sisters' Club connects reading, discussion and writing with mentorship, leadership and digital access for girls and young women.",
+      "Its approach combines learning beyond literacy, role-model relationships, access to technology, inclusive community participation and collective advocacy. Together, these activities create space to question inequalities and develop the confidence to participate in change."
+    ]
+  },
+  lifeline: {
+    source: "https://africarii.org/enterprise-data-collection-survey/",
+    paragraphs: [
+      "LifeLine combines female-health education with fundraising for urgent healthcare needs. Awareness sessions connect with Sisters' Club and offer young women a space to discuss health questions without stigma.",
+      "Africa-RII's 2025 report describes an education session involving 12 girls and young women and financial assistance towards one woman's surgery. Enquiries about support and current activities should be directed to the team."
+    ]
+  },
+  crc: {
+    source: "https://africarii.org/community-centre/",
+    paragraphs: [
+      "A former family home in Ilora became a community learning space through local collaboration and fundraising. The centre opened in 2021 and developed from a library into a hub for study, mentorship and practical learning.",
+      "Its activities include reading and book lending, vocational workshops and computer learning. In 2025, the centre added new books, Sisters' Club activities and a donated projector.",
+      "Visit by arrangement at 5 First Baptist Church Cemetery Road, Oke-gege, Ilora, Oyo State."
+    ]
+  },
+  "summer-school": {
+    source: "https://africarii.org/education_project/skill-acquisition/",
+    paragraphs: [
+      "Africa-RII's free four-week Summer School combines classroom learning with meals and extracurricular opportunities. Local educators, volunteers and supporters help deliver the programme.",
+      "Browse the 2025 report and the journal spaces for 2024 and 2026 below. The latter two await confirmed records."
+    ]
+  }
+};
+for (const category of categories) {
+  for (const program of category.programs) Object.assign(program, verifiedPrograms[program.slug] || {});
+}
+export const team = [
+  { name: "Oladapo O Ajayi", role: "Founder" },
+  { name: "Ridwan Shittu", role: "IT / Documentation" },
+  { name: "Simisola Wright Esq", role: "Secretary — Legal, Policy & HR" },
+  { name: "Celine Okpani", role: "Human Resources" },
+  { name: "Olamide Awoyemi", role: "Accounting" },
+];
+import summer2025Learning from "../assets/summer-2025-learning.jpg";
+import summer2025Classroom from "../assets/summer-2025-classroom.jpg";
+Object.assign(summerStories.find(s => s.year === "2025"), {
+  title: "Learning across classrooms and communities",
+  subtitle: "The fifth edition brought 190 learners together through academic study and new creative activities.",
+  verified: true,
+  source: "https://africarii.org/education_project/skill-acquisition/",
+  image: summer2025Learning,
+  secondImage: summer2025Classroom,
+  sections: [
+    { heading: "The fifth edition", text: "Africa-RII reports that its 2025 Summer School enrolled 190 students from different villages. The fifth edition continued the organisation's free summer-learning programme, widening the opportunities available to learners during the holiday period." },
+    { heading: "Learning beyond textbooks", text: "The curriculum added graphic design, Monopoly and Ludo, film screenings and career counselling. These activities brought practical, creative and reflective experiences alongside academic study." },
+    { heading: "What the report records", text: "The organisation reports an average 87% increase in knowledge of subjects taught. This figure is presented as Africa-RII's reported result; the source does not provide a detailed assessment methodology. The photographs on this page come from the 2025 section of its Summer School archive." },
+  ],
+});

@@ -373,7 +373,7 @@ export default function Footer() {
 
             <div className="mt-3 space-y-2">
               <a
-                href="mailto:info@africarii.org"
+                href="mailto:hello@africarii.org"
                 className="
                   block
                   text-xs
@@ -383,7 +383,7 @@ export default function Footer() {
                   hover:text-[var(--ink)]
                 "
               >
-                info@africarii.org
+                hello@africarii.org
               </a>
 
               <p

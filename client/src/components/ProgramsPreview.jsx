@@ -17,7 +17,7 @@ import InnovationImg from "../assets/computer2.webp";
 
 const programs = [
   {
-    title: "Education",
+    title: "Education", href: "/programs/education",
     icon: BookOpen,
     image: EducationImg,
     dark: false,
@@ -28,7 +28,7 @@ const programs = [
     ],
   },
   {
-    title: "Community Resource Centre",
+    title: "Community Resource Centre", href: "/programs/community-resource-centre",
     icon: Building2,
     image: CommunityImg,
     dark: false,
@@ -38,21 +38,21 @@ const programs = [
     ],
   },
   {
-    title: "Community Health Awareness",
+    title: "Community Health Awareness", href: "/programs/community-health",
     icon: HeartPulse,
     image: HealthImg,
     dark: false,
     links: [{ label: "LifeLine", href: "/programs/lifeline" }],
   },
   {
-    title: "Gender Advocacy, Rights & Mentorship",
+    title: "Gender Advocacy, Rights & Mentorship", href: "/programs/women-and-girls",
     icon: Venus,
     image: WomenImg,
     dark: false,
     links: [{ label: "Sisters' Club", href: "/programs/sisters-club" }],
   },
   {
-    title: "Innovation & Social Enterprise",
+    title: "Innovation & Social Enterprise", href: "/programs/innovation",
     icon: Lightbulb,
     image: InnovationImg,
     dark: false,
@@ -518,7 +518,7 @@ export default function ProgramsPreview() {
 
                   <div className="program-explore mt-auto pt-5">
                     <a
-                      href={program.links[0]?.href || "/programs"}
+                      href={program.href}
                       className={`
                         group/explore
                         inline-flex

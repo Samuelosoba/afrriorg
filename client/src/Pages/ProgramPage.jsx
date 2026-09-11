@@ -1,0 +1,72 @@
+import { Link, useParams } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
+import PageShell from "../components/PageShell";
+import Cta from "../components/Cta";
+import StoryCards from "../components/StoryCards";
+import NotFoundPage from "./NotFoundPage";
+import { categories } from "../data/content";
+import ProgrammeResources from "../components/ProgrammeResources";
+
+export default function ProgramPage() {
+  const { categorySlug, programSlug } = useParams();
+  const category = categories.find((c) => c.slug === categorySlug);
+  const program = category?.programs.find((p) => p.slug === programSlug);
+  if (!program) return <NotFoundPage />;
+  return (
+    <PageShell
+      title={program.title}
+      eyebrow={category.title}
+      intro={program.summary}
+      crumbs={[
+        { title: "Programmes", href: "/programs" },
+        { title: category.title, href: "/programs/" + category.slug },
+      ]}
+    >
+      <section className="page-split">
+        <div>
+          <h2>About the programme</h2>
+          {program.paragraphs.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+          {program.source && (
+            <p>
+              <a
+                href={program.source}
+                target="_blank"
+                rel="noreferrer"
+                className="source-link"
+              >
+                Read the original Africa-RII programme report
+              </a>
+            </p>
+          )}
+          <Link className="button-outline" to="/contact">
+            Enquire about participation <ArrowUpRight size={16} />
+          </Link>
+        </div>
+        <img
+          className="feature-photo"
+          src={category.image}
+          alt={category.title + " — community photograph"}
+        />
+      </section>
+      <ProgrammeResources
+        key={program.slug}
+        slug={program.slug}
+        title={program.title}
+      />
+      {program.slug === "summer-school" && (
+        <section className="page-section">
+          <p className="page-eyebrow">The summer journal</p>
+          <h2>Every year has a story.</h2>
+          <p>
+            Read the 2025 programme report. The 2024 and 2026 entries await
+            confirmed records.
+          </p>
+          <StoryCards />
+        </section>
+      )}
+      <Cta />
+    </PageShell>
+  );
+}
