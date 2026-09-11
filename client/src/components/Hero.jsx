@@ -1,4 +1,4 @@
-﻿import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import HeroImage from "../assets/hero-transparent.png";
 import EducationImage from "../assets/afriihero.webp";
 import CommunityImage from "../assets/skills.webp";

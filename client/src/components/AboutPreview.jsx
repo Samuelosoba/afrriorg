@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Quote } from "lucide-react";
 
 import AboutImage from "../assets/about.png";
+import HeroImage from "../assets/hero-transparent.png";
 
 
 export default function AboutPreview() {
@@ -151,7 +152,7 @@ export default function AboutPreview() {
               "
             >
               <picture>
-                {/* Mobile alternative */}
+                <source media="(max-width: 767px)" srcSet={HeroImage} />
 
                 {/* Tablet/Desktop */}
 
@@ -275,7 +276,7 @@ export default function AboutPreview() {
             className="
               mt-5
               max-w-2xl
-              about-copy space-y-4
+              about-copy hidden md:block space-y-4
               text-[14px]
               leading-6
               text-neutral-600
@@ -318,6 +319,17 @@ export default function AboutPreview() {
             </p>
           </div>
 
+          <div className="about-mobile-copy mt-3 space-y-3 text-sm leading-6 text-neutral-600 md:hidden">
+            <p>
+              Since 2012, Africa-RII has helped underserved communities in
+              Nigeria access education, skills and opportunities.
+            </p>
+            <p>
+              Through our Community Resource Centre in Ilora, we support young
+              people with learning, mentorship and practical skills to build
+              brighter futures.
+            </p>
+          </div>
           {/* =====================================================
                             QUOTE + CTA
           ===================================================== */}
@@ -335,11 +347,11 @@ export default function AboutPreview() {
               lg:mt-6
             "
           >
-            {/* QUOTE */}
+            {/* Quote is reserved for larger screens to keep mobile concise. */}
 
             <div
               className="
-                flex-1
+                hidden md:block flex-1
                 rounded-2xl
                 border
                 border-neutral-200/80
