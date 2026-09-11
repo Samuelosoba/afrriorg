@@ -50,12 +50,12 @@ export default function Footer() {
 
   return (
     <footer
-      data-navbar="dark"
+      data-navbar="light"
       className="
         relative
-        overflow-hidden
-        bg-[var(--blue-dark)]
-        text-white
+        overflow-hidden border-t border-neutral-200
+        bg-white
+        text-[var(--ink)]
       "
     >
       {/* BACKGROUND */}
@@ -69,7 +69,7 @@ export default function Footer() {
             h-72
             w-72
             rounded-full
-            bg-[var(--yellow)]/10
+            bg-[var(--green-soft)]/10
             blur-3xl
           "
         />
@@ -82,7 +82,7 @@ export default function Footer() {
             h-80
             w-80
             rounded-full
-            bg-[var(--blue)]/40
+            bg-[var(--green-soft)]/5
             blur-3xl
           "
         />
@@ -118,7 +118,7 @@ export default function Footer() {
             flex-col
             gap-6
             border-b
-            border-white/10
+            border-neutral-200
             pb-7
 
             md:flex-row
@@ -144,7 +144,7 @@ export default function Footer() {
                   text-[26px]
                   font-bold
                   tracking-[-0.05em]
-                  text-white
+                  text-[var(--ink)]
 
                   sm:text-[30px]
                 "
@@ -157,7 +157,7 @@ export default function Footer() {
                   h-2.5
                   w-2.5
                   rounded-full
-                  bg-[var(--yellow)]
+                  bg-[var(--green-soft)]
                 "
               />
             </a>
@@ -170,7 +170,7 @@ export default function Footer() {
                 font-bold
                 leading-[1.08]
                 tracking-[-0.035em]
-                text-white
+                text-[var(--ink)]
 
                 sm:text-[30px]
 
@@ -178,7 +178,7 @@ export default function Footer() {
               "
             >
               Creating opportunities.
-              <span className="block text-[var(--yellow)]">
+              <span className="block text-[var(--green)]">
                 Strengthening communities.
               </span>
             </h2>
@@ -203,15 +203,15 @@ export default function Footer() {
                     justify-center
                     rounded-full
                     border
-                    border-white/10
-                    text-white/65
+                    border-neutral-200
+                    text-[var(--muted)]
                     transition-all
                     duration-300
 
-                    hover:-translate-y-1
-                    hover:border-[var(--yellow)]
-                    hover:bg-[var(--yellow)]
-                    hover:text-[var(--blue-dark)]
+                    hover:-tranneutral-y-1
+                    hover:border-[var(--green-soft)]
+                    hover:bg-[var(--green-soft)]
+                    hover:text-[var(--ink)]
                   "
                 >
                   <Icon size={15} />
@@ -230,7 +230,7 @@ export default function Footer() {
             grid
             gap-8
             border-b
-            border-white/10
+            border-neutral-200
             py-7
 
             sm:grid-cols-2
@@ -253,8 +253,8 @@ export default function Footer() {
               className="
                 rounded-[1.4rem]
                 border
-                border-white/10
-                bg-white/[0.045]
+                border-neutral-200
+                bg-white
                 p-4
                 backdrop-blur-sm
 
@@ -272,8 +272,8 @@ export default function Footer() {
                     items-center
                     justify-center
                     rounded-xl
-                    bg-[var(--yellow)]
-                    text-[var(--blue-dark)]
+                    bg-[var(--green-soft)]
+                    text-[var(--ink)]
                   "
                 >
                   <Mail size={16} />
@@ -286,7 +286,7 @@ export default function Footer() {
                       font-bold
                       uppercase
                       tracking-[0.18em]
-                      text-[var(--yellow)]
+                      text-[var(--green)]
                     "
                   >
                     Stay connected
@@ -297,7 +297,7 @@ export default function Footer() {
                       mt-0.5
                       text-sm
                       font-bold
-                      text-white
+                      text-[var(--ink)]
                     "
                   >
                     Get updates from Africa-RII.
@@ -321,15 +321,15 @@ export default function Footer() {
                     flex-1
                     rounded-full
                     border
-                    border-white/10
-                    bg-white/[0.07]
+                    border-neutral-200
+                    bg-white
                     px-4
                     py-2.5
                     text-xs
-                    text-white
+                    text-[var(--ink)]
                     outline-none
-                    placeholder:text-white/30
-                    focus:border-[var(--yellow)]
+                    placeholder:text-[var(--muted)]
+                    focus:border-[var(--green-soft)]
                   "
                 />
 
@@ -345,12 +345,12 @@ export default function Footer() {
                     items-center
                     justify-center
                     rounded-full
-                    bg-[var(--yellow)]
-                    text-[var(--blue-dark)]
+                    bg-[var(--green-soft)]
+                    text-[var(--ink)]
                     transition-transform
                     duration-300
 
-                    hover:-translate-y-1
+                    hover:-tranneutral-y-1
                   "
                 >
                   <ArrowUpRight
@@ -378,9 +378,9 @@ export default function Footer() {
                   block
                   text-xs
                   leading-5
-                  text-white/55
+                  text-[var(--muted)]
                   transition
-                  hover:text-white
+                  hover:text-[var(--ink)]
                 "
               >
                 info@africarii.org
@@ -390,7 +390,7 @@ export default function Footer() {
                 className="
                   text-xs
                   leading-5
-                  text-white/40
+                  text-[var(--muted)]
                 "
               >
                 Africa-Rural Interventions Initiative
@@ -416,7 +416,7 @@ export default function Footer() {
             gap-3
             pt-5
             text-[10px]
-            text-white/35
+            text-[var(--muted)]
 
             sm:flex-row
             sm:items-center
@@ -432,7 +432,7 @@ export default function Footer() {
               href="/privacy"
               className="
                 transition
-                hover:text-white
+                hover:text-[var(--ink)]
               "
             >
               Privacy
@@ -442,7 +442,7 @@ export default function Footer() {
               href="/terms"
               className="
                 transition
-                hover:text-white
+                hover:text-[var(--ink)]
               "
             >
               Terms
@@ -462,7 +462,7 @@ function FooterTitle({ children }) {
         font-bold
         uppercase
         tracking-[0.17em]
-        text-[var(--yellow)]
+        text-[var(--green)]
 
         sm:text-[10px]
       "
@@ -490,9 +490,9 @@ function FooterColumn({ title, links }) {
               gap-1.5
               text-xs
               leading-5
-              text-white/50
+              text-[var(--muted)]
               transition
-              hover:text-white
+              hover:text-[var(--ink)]
             "
           >
             {link.label}
@@ -503,7 +503,7 @@ function FooterColumn({ title, links }) {
                 opacity-0
                 transition-all
                 duration-300
-                group-hover:translate-x-0.5
+                group-hover:tranneutral-x-0.5
                 group-hover:opacity-100
               "
             />

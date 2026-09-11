@@ -48,9 +48,9 @@ export default function PartnersSection() {
         sm:py-12
 
         lg:flex
-        lg:h-[100svh]
+        lg:min-h-[360px]
         lg:items-center
-        lg:py-5
+        lg:py-16
       "
     >
       {/* ================= BACKGROUND ================= */}
@@ -64,7 +64,7 @@ export default function PartnersSection() {
             h-72
             w-72
             rounded-full
-            bg-[var(--yellow)]/10
+            bg-[var(--green-soft)]/10
             blur-3xl
           "
         />
@@ -77,7 +77,7 @@ export default function PartnersSection() {
             h-80
             w-80
             rounded-full
-            bg-blue-100/60
+            bg-[var(--green-soft)]/5
             blur-3xl
           "
         />
@@ -132,7 +132,7 @@ export default function PartnersSection() {
             }}
           >
             <div className="flex items-center gap-3">
-              <span className="h-[2px] w-8 bg-[var(--yellow)]" />
+              <span className="h-[2px] w-8 bg-[var(--green-soft)]" />
 
               <span
                 className="
@@ -140,7 +140,7 @@ export default function PartnersSection() {
                   font-bold
                   uppercase
                   tracking-[0.2em]
-                  text-[var(--blue)]
+                  text-[var(--green)]
 
                   sm:text-xs
                 "
@@ -157,7 +157,7 @@ export default function PartnersSection() {
                 font-bold
                 leading-[1.04]
                 tracking-[-0.04em]
-                text-[var(--blue-dark)]
+                text-[var(--ink)]
 
                 sm:text-[38px]
                 md:text-[42px]
@@ -193,17 +193,17 @@ export default function PartnersSection() {
               items-center
               gap-3
               rounded-full
-              bg-[var(--blue)]
+              bg-[var(--green-soft)]
               px-5
               py-3
               text-xs
               font-bold
-              text-white
+              text-[var(--ink)]
               transition-all
               duration-300
 
-              hover:-translate-y-1
-              hover:bg-[var(--blue-dark)]
+              hover:-tranneutral-y-1
+              hover:bg-[var(--green-hover)]
 
               sm:text-sm
             "
@@ -217,8 +217,8 @@ export default function PartnersSection() {
                 items-center
                 justify-center
                 rounded-full
-                bg-[var(--yellow)]
-                text-[var(--blue-dark)]
+                bg-[var(--green-soft)]
+                text-[var(--ink)]
                 transition-transform
                 duration-300
 
@@ -377,14 +377,14 @@ function PartnerLogo({ partner }) {
           justify-center
           overflow-hidden
           rounded-full
-          bg-[#f7f9fc]
+          bg-[var(--background)]
           p-3
-          shadow-[0_10px_35px_rgba(3,42,82,0.08)]
+          shadow-[0_10px_35px_rgba(0,40,20,0.08)]
           transition-all
           duration-300
 
-          group-hover:-translate-y-1
-          group-hover:shadow-[0_16px_45px_rgba(3,42,82,0.14)]
+          group-hover:-tranneutral-y-1
+          group-hover:shadow-[0_16px_45px_rgba(0,40,20,0.14)]
 
           sm:h-[110px]
           sm:w-[110px]

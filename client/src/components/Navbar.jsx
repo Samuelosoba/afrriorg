@@ -7,7 +7,7 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Programs", href: "#programs", dropdown: true },
   { label: "Impact", href: "#impact" },
-  { label: "Stories", href: "#stories" },
+  { label: "Get involved", href: "#donate" },
 ];
 
 const programs = [
@@ -23,12 +23,12 @@ export default function Navbar() {
   const [programOpen, setProgramOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <nav className="mx-auto max-w-[1440px] px-4 pt-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-black/5 bg-/95 px-4 py-3 shadow-[0_10px_40px_rgba(3,42,82,0.08)] backdrop-blur-xl sm:px-6">
+    <header className="site-header fixed top-0 left-0 right-0 z-50 border-b border-neutral-200/60 bg-white/95 backdrop-blur-md">
+      <nav className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+        <div className="px-2 py-4 sm:px-6">
           <div className="flex h-12 items-center justify-between">
             {/* Logo */}
-            <a>
+            <a href="#home" aria-label="Africa-RII home">
         <img
                 src={logo}
                 alt="Africa-RII logo"
@@ -49,8 +49,8 @@ export default function Navbar() {
                 <div key={link.label} className="relative">
                   {link.dropdown ? (
                     <button
-                      onClick={() => setProgramOpen(!programOpen)}
-                      className="flex items-center gap-1.5 text-sm font-medium text-white transition hover:text-[var(--blue)]"
+                      aria-expanded={programOpen} onClick={() => setProgramOpen(!programOpen)}
+                      className="flex items-center gap-1.5 text-sm font-medium text-[var(--ink)] transition hover:text-[var(--green)]"
                     >
                       {link.label}
                       <ChevronDown
@@ -63,7 +63,7 @@ export default function Navbar() {
                   ) : (
                     <a
                       href={link.href}
-                      className="text-sm font-medium text-white transition hover:text-[var(--blue)]"
+                      className="text-sm font-medium text-[var(--ink)] transition hover:text-[var(--green)]"
                     >
                       {link.label}
                     </a>
@@ -75,14 +75,14 @@ export default function Navbar() {
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 8 }}
-                        className="absolute left-1/2 top-10 w-64 -translate-x-1/2 rounded-2xl border border-slate-100 bg-white p-2 shadow-xl"
+                        className="absolute left-1/2 top-10 w-64 -translate-x-1/2 rounded-2xl border border-neutral-100 bg-white p-2 shadow-xl"
                       >
                         {programs.map((program) => (
                           <a
                             key={program}
                             href="#programs"
                             onClick={() => setProgramOpen(false)}
-                            className="block rounded-xl px-4 py-3 text-sm text-slate-600 transition hover:bg-[#fff8df] hover:text-[var(--blue)]"
+                            className="block rounded-xl px-4 py-3 text-sm text-neutral-600 transition hover:bg-[#eaf6ef] hover:text-[var(--green)]"
                           >
                             {program}
                           </a>
@@ -97,17 +97,17 @@ export default function Navbar() {
             {/* Desktop CTA */}
             <a
               href="#donate"
-              className="hidden items-center gap-2 rounded-full bg-[var(--blue)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--blue-dark)] lg:flex"
+              className="hidden items-center gap-2 rounded-full bg-[var(--green)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--green-hover)] lg:flex"
             >
-              Get involved
+              Donate
               <ArrowUpRight size={16} />
             </a>
 
             {/* Mobile button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="flex h-10 w-10 items-center justify-center rounded-full  text-white lg:hidden"
-              aria-label="Toggle navigation"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-[var(--ink)] lg:hidden"
+              aria-label="Toggle navigation" aria-expanded={mobileOpen}
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -122,13 +122,13 @@ export default function Navbar() {
                 exit={{ height: 0, opacity: 0 }}
                 className="overflow-hidden lg:hidden"
               >
-                <div className="border-t border-slate-100 pb-3 pt-4">
+                <div className="border-t border-neutral-100 pb-3 pt-4">
                   {navLinks.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="block rounded-xl px-3 py-3 text-sm font-medium text-white hover:bg-slate-50"
+                      className="block rounded-xl px-3 py-3 text-sm font-medium text-[var(--ink)] hover:bg-[var(--green-soft)]"
                     >
                       {link.label}
                     </a>
@@ -137,9 +137,9 @@ export default function Navbar() {
                   <a
                     href="#donate"
                     onClick={() => setMobileOpen(false)}
-                    className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[var(--blue)] px-4 py-3 text-sm font-semibold text-white"
+                    className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[var(--green)] px-4 py-3 text-sm font-semibold text-white"
                   >
-                    Get involved
+                    Donate
                     <ArrowUpRight size={16} />
                   </a>
                 </div>

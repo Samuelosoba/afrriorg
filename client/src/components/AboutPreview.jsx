@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Quote } from "lucide-react";
 
 import AboutImage from "../assets/about.png";
-import HeroImage from "../assets/hero.png";
+
 
 export default function AboutPreview() {
   return (
@@ -12,7 +12,7 @@ export default function AboutPreview() {
       className="
         relative
         overflow-hidden
-        bg-[#fffdf7]
+        bg-[var(--surface)]
         py-14
         sm:py-16
         lg:flex
@@ -35,7 +35,7 @@ export default function AboutPreview() {
             h-72
             w-72
             rounded-full
-            bg-[var(--yellow)]/10
+            bg-[var(--green-soft)]/10
             blur-3xl
           "
         />
@@ -48,7 +48,7 @@ export default function AboutPreview() {
             h-96
             w-96
             rounded-full
-            bg-blue-100/60
+            bg-[var(--green-soft)]/5
             blur-3xl
           "
         />
@@ -62,7 +62,7 @@ export default function AboutPreview() {
             w-24
             rounded-full
             border
-            border-[var(--blue)]/5
+            border-[var(--green)]/5
           "
         />
 
@@ -75,7 +75,7 @@ export default function AboutPreview() {
             w-16
             rounded-full
             border
-            border-[var(--yellow)]/20
+            border-[var(--green-soft)]/20
           "
         />
       </div>
@@ -133,34 +133,12 @@ export default function AboutPreview() {
               xl:max-w-[520px]
             "
           >
-            {/* YELLOW FRAME */}
-
-            <div
-              className="
-                absolute
-                -left-3
-                -top-3
-                h-[88%]
-                w-[92%]
-                rounded-[1.8rem]
-                border-2
-                border-[var(--yellow)]
-
-                sm:-left-5
-                sm:-top-5
-                sm:rounded-[2.3rem]
-
-                lg:-left-6
-                lg:-top-6
-              "
-            />
-
             {/* IMAGE */}
 
             <div
               className="
                 relative
-                h-[260px]
+                about-photo h-[260px]
                 overflow-hidden
                 rounded-[1.8rem]
 
@@ -174,8 +152,6 @@ export default function AboutPreview() {
             >
               <picture>
                 {/* Mobile alternative */}
-
-                <source media="(max-width: 767px)" srcSet={HeroImage} />
 
                 {/* Tablet/Desktop */}
 
@@ -202,7 +178,7 @@ export default function AboutPreview() {
                   absolute
                   inset-0
                   bg-gradient-to-t
-                  from-[var(--blue-dark)]/45
+                  from-[var(--ink)]/45
                   via-transparent
                   to-transparent
                 "
@@ -225,7 +201,7 @@ export default function AboutPreview() {
                     font-bold
                     uppercase
                     tracking-[0.18em]
-                    text-[var(--yellow)]
+                    text-[var(--green)]
                   "
                 >
                   Africa-RII
@@ -256,7 +232,7 @@ export default function AboutPreview() {
           {/* EYEBROW */}
 
           <div className="mb-4 flex items-center gap-3">
-            <span className="h-[2px] w-10 bg-[var(--yellow)]" />
+            <span className="h-[2px] w-10 bg-[var(--green-soft)]" />
 
             <span
               className="
@@ -264,7 +240,7 @@ export default function AboutPreview() {
                 font-bold
                 uppercase
                 tracking-[0.2em]
-                text-[var(--blue)]
+                text-[var(--green)]
                 sm:text-xs
               "
             >
@@ -281,7 +257,7 @@ export default function AboutPreview() {
               font-bold
               leading-[1.03]
               tracking-[-0.04em]
-              text-[var(--blue-dark)]
+              text-[var(--ink)]
 
               sm:text-[44px]
               lg:text-[48px]
@@ -299,10 +275,10 @@ export default function AboutPreview() {
             className="
               mt-5
               max-w-2xl
-              space-y-4
+              about-copy space-y-4
               text-[14px]
               leading-6
-              text-slate-600
+              text-neutral-600
 
               sm:text-base
               sm:leading-7
@@ -353,7 +329,7 @@ export default function AboutPreview() {
               flex-col
               gap-4
 
-              sm:flex-row
+              about-actions sm:flex-row
               sm:items-center
 
               lg:mt-6
@@ -366,10 +342,10 @@ export default function AboutPreview() {
                 flex-1
                 rounded-2xl
                 border
-                border-slate-200/80
+                border-neutral-200/80
                 bg-white
                 p-4
-                shadow-[0_8px_25px_rgba(3,42,82,0.04)]
+                shadow-[0_8px_25px_rgba(0,40,20,0.04)]
               "
             >
               <div className="flex items-start gap-3">
@@ -382,8 +358,8 @@ export default function AboutPreview() {
                     items-center
                     justify-center
                     rounded-xl
-                    bg-[#fff5c7]
-                    text-[var(--blue-dark)]
+                    bg-[#eaf6ef]
+                    text-[var(--ink)]
                   "
                 >
                   <Quote size={17} />
@@ -396,7 +372,7 @@ export default function AboutPreview() {
                       font-bold
                       uppercase
                       tracking-[0.14em]
-                      text-[var(--blue)]
+                      text-[var(--green)]
                     "
                   >
                     — Mahatma Gandhi
@@ -407,7 +383,7 @@ export default function AboutPreview() {
                       mt-1.5
                       text-xs
                       leading-5
-                      text-slate-600
+                      text-neutral-600
                       sm:text-[13px]
                     "
                   >
@@ -431,17 +407,17 @@ export default function AboutPreview() {
                 gap-3
                 self-start
                 rounded-full
-                bg-[var(--yellow)]
+                bg-[var(--green)]
                 px-6
                 py-3.5
                 text-sm
                 font-bold
-                text-[var(--blue-dark)]
+                text-white
 
                 transition-colors
                 duration-200
 
-                md:hover:bg-[var(--yellow-light)]
+                md:hover:bg-[var(--green-hover)]
 
                 sm:self-center
               "
@@ -455,7 +431,7 @@ export default function AboutPreview() {
                   items-center
                   justify-center
                   rounded-full
-                  bg-[var(--blue-dark)]
+                  bg-[var(--ink)]
                   text-white
 
                   transition-transform

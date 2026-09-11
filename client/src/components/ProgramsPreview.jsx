@@ -20,7 +20,7 @@ const programs = [
     title: "Education",
     icon: BookOpen,
     image: EducationImg,
-    dark: true,
+    dark: false,
     links: [
       { label: "TACT", href: "/programs/tact" },
       { label: "Ajumobi", href: "/programs/ajumobi" },
@@ -41,7 +41,7 @@ const programs = [
     title: "Community Health Awareness",
     icon: HeartPulse,
     image: HealthImg,
-    dark: true,
+    dark: false,
     links: [{ label: "LifeLine", href: "/programs/lifeline" }],
   },
   {
@@ -55,7 +55,7 @@ const programs = [
     title: "Innovation & Social Enterprise",
     icon: Lightbulb,
     image: InnovationImg,
-    dark: true,
+    dark: false,
     links: [{ label: "Computer & IT", href: "/programs/computer-and-it" }],
   },
 ];
@@ -68,7 +68,7 @@ export default function ProgramsPreview() {
       className="
         relative
         overflow-hidden
-        bg-[#f7f9fc]
+        bg-[var(--background)]
         py-12
 
         sm:py-14
@@ -89,7 +89,7 @@ export default function ProgramsPreview() {
             h-[420px]
             w-[420px]
             rounded-full
-            bg-[var(--yellow)]/10
+            bg-[var(--green-soft)]/10
             blur-[90px]
           "
         />
@@ -102,14 +102,14 @@ export default function ProgramsPreview() {
             h-[420px]
             w-[420px]
             rounded-full
-            bg-blue-100/60
+            bg-[var(--green-soft)]/5
             blur-[90px]
           "
         />
 
-        <div className="absolute left-[6%] top-[14%] h-20 w-20 rounded-full border border-[var(--blue)]/5" />
+        <div className="absolute left-[6%] top-[14%] h-20 w-20 rounded-full border border-[var(--green)]/5" />
 
-        <div className="absolute right-[7%] top-[18%] h-14 w-14 rounded-full border border-[var(--yellow)]/20" />
+        <div className="absolute right-[7%] top-[18%] h-14 w-14 rounded-full border border-[var(--green-soft)]/20" />
       </div>
 
       {/* =====================================================
@@ -154,7 +154,7 @@ export default function ProgramsPreview() {
           }}
           className="
             mx-auto
-            mb-10
+            programs-heading mb-10
             max-w-2xl
             text-center
 
@@ -164,7 +164,7 @@ export default function ProgramsPreview() {
           "
         >
           <div className="flex items-center justify-center gap-3">
-            <span className="h-[2px] w-8 bg-[var(--yellow)]" />
+            <span className="h-[2px] w-8 bg-[var(--green-soft)]" />
 
             <span
               className="
@@ -172,7 +172,7 @@ export default function ProgramsPreview() {
                 font-bold
                 uppercase
                 tracking-[0.2em]
-                text-[var(--blue)]
+                text-[var(--green)]
 
                 sm:text-xs
               "
@@ -180,7 +180,7 @@ export default function ProgramsPreview() {
               What we do
             </span>
 
-            <span className="h-[2px] w-8 bg-[var(--yellow)]" />
+            <span className="h-[2px] w-8 bg-[var(--green-soft)]" />
           </div>
 
           <h2
@@ -190,7 +190,7 @@ export default function ProgramsPreview() {
               font-bold
               leading-[1.04]
               tracking-[-0.04em]
-              text-[var(--blue-dark)]
+              text-[var(--ink)]
 
               sm:text-[38px]
 
@@ -200,7 +200,7 @@ export default function ProgramsPreview() {
             "
           >
             Creating pathways
-            <span className="block text-[var(--blue)]">to opportunity.</span>
+            <span className="block text-[var(--green)]">to opportunity.</span>
           </h2>
         </motion.div>
 
@@ -211,7 +211,7 @@ export default function ProgramsPreview() {
         <div
           className="
             grid
-            grid-cols-1
+            programs-grid grid-cols-1
             gap-6
 
             sm:grid-cols-2
@@ -257,7 +257,7 @@ export default function ProgramsPreview() {
                   group
                   relative
                   flex
-                  min-h-[360px]
+                  program-card min-h-[360px]
                   flex-col
                   overflow-hidden
                   rounded-[1.9rem]
@@ -269,14 +269,14 @@ export default function ProgramsPreview() {
                   ${
                     program.dark
                       ? `
-                        bg-[var(--blue-dark)]
+                        bg-[var(--ink)]
                         text-white
-                        shadow-[0_14px_35px_rgba(3,42,82,0.10)]
+                        shadow-[0_14px_35px_rgba(0,40,20,0.10)]
                       `
                       : `
                         bg-white
-                        text-[var(--blue-dark)]
-                        shadow-[0_14px_35px_rgba(3,42,82,0.06)]
+                        text-[var(--ink)]
+                        shadow-[0_14px_35px_rgba(0,40,20,0.06)]
                       `
                   }
                 `}
@@ -288,7 +288,7 @@ export default function ProgramsPreview() {
                 <div
                   className="
                     relative
-                    h-[165px]
+                    program-photo h-[165px]
                     shrink-0
                     overflow-hidden
 
@@ -324,8 +324,8 @@ export default function ProgramsPreview() {
                         program.dark
                           ? `
                             bg-gradient-to-t
-                            from-[var(--blue-dark)]/75
-                            via-[var(--blue-dark)]/10
+                            from-[var(--ink)]/75
+                            via-[var(--ink)]/10
                             to-transparent
                           `
                           : `
@@ -355,7 +355,7 @@ export default function ProgramsPreview() {
                       ${
                         program.dark
                           ? "bg-black/25 text-white"
-                          : "bg-white/90 text-[var(--blue-dark)]"
+                          : "bg-white/90 text-[var(--ink)]"
                       }
                     `}
                   >
@@ -371,7 +371,7 @@ export default function ProgramsPreview() {
                   className="
                     relative
                     flex
-                    flex-1
+                    program-body flex-1
                     flex-col
                     px-5
                     pb-5
@@ -397,11 +397,11 @@ export default function ProgramsPreview() {
                       ${
                         program.dark
                           ? `
-                            bg-[var(--yellow)]
-                            text-[var(--blue-dark)]
+                            bg-[var(--green-soft)]
+                            text-[var(--ink)]
                           `
                           : `
-                            bg-[var(--blue)]
+                            bg-[var(--green)]
                             text-white
                           `
                       }
@@ -430,7 +430,7 @@ export default function ProgramsPreview() {
 
                       lg:text-[21px]
 
-                      ${program.dark ? "text-white" : "text-[var(--blue-dark)]"}
+                      ${program.dark ? "text-white" : "text-[var(--ink)]"}
                     `}
                   >
                     {program.title}
@@ -449,7 +449,7 @@ export default function ProgramsPreview() {
                       lg:group-hover:w-14
 
                       ${
-                        program.dark ? "bg-[var(--yellow)]" : "bg-[var(--blue)]"
+                        program.dark ? "bg-[var(--green-soft)]" : "bg-[var(--green)]"
                       }
                     `}
                   />
@@ -458,7 +458,7 @@ export default function ProgramsPreview() {
                                   LINKS
                   ================================================= */}
 
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="program-links mt-4 flex flex-wrap gap-2">
                     {program.links.map((link) => (
                       <a
                         key={link.label}
@@ -485,14 +485,14 @@ export default function ProgramsPreview() {
                                 bg-white/10
                                 text-white
 
-                                lg:hover:bg-[var(--yellow)]
-                                lg:hover:text-[var(--blue-dark)]
+                                lg:hover:bg-[var(--green-soft)]
+                                lg:hover:text-[var(--ink)]
                               `
                               : `
-                                bg-[#eef4fb]
-                                text-[var(--blue-dark)]
+                                bg-[var(--background)]
+                                text-[var(--ink)]
 
-                                lg:hover:bg-[var(--blue)]
+                                lg:hover:bg-[var(--green)]
                                 lg:hover:text-white
                               `
                           }
@@ -516,7 +516,7 @@ export default function ProgramsPreview() {
                                 EXPLORE
                   ================================================= */}
 
-                  <div className="mt-auto pt-5">
+                  <div className="program-explore mt-auto pt-5">
                     <a
                       href={program.links[0]?.href || "/programs"}
                       className={`
@@ -536,11 +536,11 @@ export default function ProgramsPreview() {
                           program.dark
                             ? `
                               text-white/35
-                              lg:hover:text-[var(--yellow)]
+                              lg:hover:text-[var(--green)]
                             `
                             : `
-                              text-[var(--blue-dark)]/40
-                              lg:hover:text-[var(--blue)]
+                              text-[var(--muted)]
+                              lg:hover:text-[var(--green)]
                             `
                         }
                       `}
@@ -551,7 +551,7 @@ export default function ProgramsPreview() {
                         className="
                           lg:transition-transform
                           lg:duration-200
-                          lg:group-hover/explore:translate-x-1
+                          lg:group-hover/explore:tranneutral-x-1
                         "
                       />
                     </a>
@@ -594,13 +594,13 @@ export default function ProgramsPreview() {
               group
               relative
               flex
-              min-h-[360px]
+              program-quote min-h-[360px]
               overflow-hidden
               rounded-[1.9rem]
-              bg-[var(--yellow)]
+              bg-[var(--green-soft)]
               p-6
-              text-[var(--blue-dark)]
-              shadow-[0_14px_35px_rgba(3,42,82,0.07)]
+              text-[var(--ink)]
+              shadow-[0_14px_35px_rgba(0,40,20,0.07)]
 
               sm:min-h-[375px]
               sm:p-7
@@ -619,7 +619,7 @@ export default function ProgramsPreview() {
                 h-40
                 w-40
                 rotate-180
-                text-[var(--blue-dark)]/[0.055]
+                text-[var(--ink)]/[0.055]
 
                 lg:h-48
                 lg:w-48
@@ -638,7 +638,7 @@ export default function ProgramsPreview() {
                 w-64
                 rounded-full
                 border
-                border-[var(--blue-dark)]/10
+                border-[var(--ink)]/10
               "
             />
 
@@ -651,7 +651,7 @@ export default function ProgramsPreview() {
                 w-12
                 rounded-full
                 border
-                border-[var(--blue-dark)]/10
+                border-[var(--ink)]/10
               "
             />
 
@@ -669,8 +669,8 @@ export default function ProgramsPreview() {
                     items-center
                     justify-center
                     rounded-full
-                    bg-[var(--blue-dark)]
-                    text-[var(--yellow)]
+                    bg-[var(--ink)]
+                    text-[var(--green)]
                   "
                 >
                   <Quote size={17} />
@@ -682,7 +682,7 @@ export default function ProgramsPreview() {
                     font-bold
                     uppercase
                     tracking-[0.18em]
-                    text-[var(--blue-dark)]/40
+                    text-[var(--muted)]
                   "
                 >
                   Inspiration
@@ -715,7 +715,7 @@ export default function ProgramsPreview() {
               {/* AUTHOR */}
 
               <div className="flex items-center gap-3">
-                <span className="h-[2px] w-8 bg-[var(--blue-dark)]" />
+                <span className="h-[2px] w-8 bg-[var(--ink)]" />
 
                 <div>
                   <p
@@ -736,7 +736,7 @@ export default function ProgramsPreview() {
                       font-semibold
                       uppercase
                       tracking-[0.13em]
-                      text-[var(--blue-dark)]/40
+                      text-[var(--muted)]
                     "
                   >
                     Service • Humanity • Community

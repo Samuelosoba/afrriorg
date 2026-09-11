@@ -34,7 +34,7 @@ export default function GetInvolved() {
       className="
         relative
         overflow-hidden
-        bg-[var(--yellow)]
+        bg-[var(--background)]
         py-12
 
         sm:py-14
@@ -59,7 +59,7 @@ export default function GetInvolved() {
             w-72
             rounded-full
             border
-            border-[var(--blue-dark)]/[0.07]
+            border-[var(--ink)]/[0.07]
           "
         />
 
@@ -88,7 +88,7 @@ export default function GetInvolved() {
             w-20
             rounded-full
             border
-            border-[var(--blue-dark)]/10
+            border-[var(--ink)]/10
 
             lg:block
           "
@@ -149,7 +149,7 @@ export default function GetInvolved() {
         >
           <div>
             <div className="flex items-center gap-3">
-              <span className="h-[2px] w-8 bg-[var(--blue-dark)]" />
+              <span className="h-[2px] w-8 bg-[var(--green-soft)]" />
 
               <span
                 className="
@@ -157,7 +157,7 @@ export default function GetInvolved() {
                   font-bold
                   uppercase
                   tracking-[0.2em]
-                  text-[var(--blue-dark)]
+                  text-[var(--ink)]
 
                   sm:text-xs
                 "
@@ -174,7 +174,7 @@ export default function GetInvolved() {
                 font-bold
                 leading-[1.02]
                 tracking-[-0.045em]
-                text-[var(--blue-dark)]
+                text-[var(--ink)]
 
                 sm:text-[38px]
 
@@ -195,7 +195,7 @@ export default function GetInvolved() {
               max-w-md
               text-[12px]
               leading-5
-              text-[var(--blue-dark)]/65
+              text-[var(--ink)]/65
 
               sm:text-sm
               sm:leading-6
@@ -268,13 +268,13 @@ export default function GetInvolved() {
                   ${
                     action.featured
                       ? `
-                        bg-[var(--blue-dark)]
-                        text-white
-                        shadow-[0_16px_40px_rgba(3,42,82,0.15)]
+                        bg-[var(--green-soft)]
+                        text-[var(--ink)]
+                        shadow-[0_16px_40px_rgba(0,40,20,0.15)]
                       `
                       : `
                         bg-white/70
-                        text-[var(--blue-dark)]
+                        text-[var(--ink)]
 
                         lg:transition-colors
                         lg:duration-200
@@ -299,8 +299,8 @@ export default function GetInvolved() {
 
                     ${
                       action.featured
-                        ? "bg-[var(--yellow)]/10"
-                        : "bg-[var(--yellow)]/35"
+                        ? "bg-[var(--background)]/10"
+                        : "bg-[var(--background)]/35"
                     }
 
                     lg:transition-transform
@@ -340,12 +340,12 @@ export default function GetInvolved() {
                           ${
                             action.featured
                               ? `
-                                bg-[var(--yellow)]
-                                text-[var(--blue-dark)]
+                                bg-[var(--background)]
+                                text-[var(--ink)]
                               `
                               : `
-                                bg-[var(--blue-dark)]
-                                text-white
+                                bg-[var(--green-soft)]
+                                text-[var(--ink)]
                               `
                           }
 
@@ -373,11 +373,11 @@ export default function GetInvolved() {
                             action.featured
                               ? `
                                 bg-white/10
-                                text-white
+                                text-[var(--ink)]
                               `
                               : `
-                                bg-[var(--blue-dark)]/5
-                                text-[var(--blue-dark)]
+                                bg-[var(--green-soft)]/5
+                                text-[var(--ink)]
                               `
                           }
 
@@ -404,8 +404,8 @@ export default function GetInvolved() {
 
                         ${
                           action.featured
-                            ? "text-[var(--yellow)]"
-                            : "text-[var(--blue)]"
+                            ? "text-[var(--ink)]"
+                            : "text-[var(--green)]"
                         }
                       `}
                     >
@@ -444,8 +444,8 @@ export default function GetInvolved() {
 
                         ${
                           action.featured
-                            ? "text-white/55"
-                            : "text-[var(--blue-dark)]/55"
+                            ? "text-[var(--muted)]"
+                            : "text-[var(--ink)]/55"
                         }
                       `}
                     >
@@ -474,8 +474,8 @@ export default function GetInvolved() {
 
                         ${
                           action.featured
-                            ? "text-white"
-                            : "text-[var(--blue-dark)]"
+                            ? "text-[var(--ink)]"
+                            : "text-[var(--ink)]"
                         }
                       `}
                     >
@@ -493,8 +493,8 @@ export default function GetInvolved() {
 
                         ${
                           action.featured
-                            ? "bg-[var(--yellow)]"
-                            : "bg-[var(--blue-dark)]/25"
+                            ? "bg-[var(--background)]"
+                            : "bg-[var(--green-soft)]/25"
                         }
 
                         lg:transition-[width]
@@ -537,7 +537,7 @@ export default function GetInvolved() {
             items-center
             justify-between
             border-t
-            border-[var(--blue-dark)]/10
+            border-[var(--ink)]/10
             pt-4
 
             sm:mt-8
@@ -547,7 +547,7 @@ export default function GetInvolved() {
             className="
               text-[10px]
               font-semibold
-              text-[var(--blue-dark)]/50
+              text-[var(--ink)]/50
 
               sm:text-xs
             "
@@ -564,7 +564,7 @@ export default function GetInvolved() {
               gap-2
               text-[11px]
               font-bold
-              text-[var(--blue-dark)]
+              text-[var(--ink)]
 
               sm:text-xs
             "
@@ -575,7 +575,7 @@ export default function GetInvolved() {
               className="
                 lg:transition-transform
                 lg:duration-200
-                lg:group-hover/contact:translate-x-1
+                lg:group-hover/contact:tranneutral-x-1
               "
             />
           </a>

@@ -117,11 +117,11 @@ export default function ImpactStats() {
   return (
     <section
       id="impact"
-      data-navbar="dark"
+      data-navbar="light"
       className="
         relative
         overflow-hidden
-        bg-[var(--blue-dark)]
+        bg-[var(--surface)]
         py-12
 
         sm:py-14
@@ -145,7 +145,7 @@ export default function ImpactStats() {
             h-72
             w-72
             rounded-full
-            bg-[var(--yellow)]/10
+            bg-[var(--green-soft)]/10
             blur-3xl
           "
         />
@@ -158,7 +158,7 @@ export default function ImpactStats() {
             h-80
             w-80
             rounded-full
-            bg-[var(--blue)]/50
+            bg-[var(--green-soft)]/5
             blur-3xl
           "
         />
@@ -218,7 +218,7 @@ export default function ImpactStats() {
           {/* Eyebrow */}
 
           <div className="flex items-center gap-3">
-            <span className="h-[2px] w-8 bg-[var(--yellow)]" />
+            <span className="h-[2px] w-8 bg-[var(--green-soft)]" />
 
             <span
               className="
@@ -226,7 +226,7 @@ export default function ImpactStats() {
                 font-bold
                 uppercase
                 tracking-[0.2em]
-                text-[var(--yellow)]
+                text-[var(--green)]
 
                 sm:text-xs
               "
@@ -245,7 +245,7 @@ export default function ImpactStats() {
               font-bold
               leading-[1.02]
               tracking-[-0.045em]
-              text-white
+              text-[var(--ink)]
 
               sm:text-[38px]
 
@@ -255,7 +255,7 @@ export default function ImpactStats() {
             "
           >
             13 Years Of{" "}
-            <span className="text-[var(--yellow)]">Sustained Impact</span>
+            <span className="text-[var(--green)]">Sustained Impact</span>
           </h2>
 
           {/* Description */}
@@ -266,7 +266,7 @@ export default function ImpactStats() {
               max-w-md
               text-[12px]
               leading-5
-              text-white/50
+              text-[var(--muted)]
 
               sm:text-sm
               sm:leading-6
@@ -322,7 +322,7 @@ export default function ImpactStats() {
                     font-bold
                     leading-none
                     tracking-[-0.055em]
-                    text-white
+                    text-[var(--ink)]
 
                     sm:text-[34px]
 
@@ -341,7 +341,7 @@ export default function ImpactStats() {
                     font-bold
                     uppercase
                     tracking-[0.12em]
-                    text-[var(--yellow)]
+                    text-[var(--green)]
 
                     sm:text-[11px]
                   "
@@ -354,7 +354,7 @@ export default function ImpactStats() {
                     mt-3
                     h-[2px]
                     w-6
-                    bg-white/15
+                    bg-[var(--green-soft)]
 
                     lg:transition-[width]
                     lg:duration-200
@@ -402,7 +402,7 @@ export default function ImpactStats() {
             <div
               className="
                 relative
-                h-[220px]
+                impact-photo h-[220px]
                 overflow-hidden
                 rounded-[1.5rem]
 
@@ -456,7 +456,7 @@ export default function ImpactStats() {
                   absolute
                   inset-0
                   bg-gradient-to-t
-                  from-[var(--blue-dark)]/95
+                  from-[var(--ink)]/95
                   via-transparent
                   to-black/10
                 "
@@ -497,7 +497,7 @@ export default function ImpactStats() {
                     font-bold
                     uppercase
                     tracking-[0.18em]
-                    text-[var(--yellow)]
+                    text-[var(--green)]
 
                     sm:text-[10px]
                   "
@@ -566,7 +566,7 @@ export default function ImpactStats() {
 
                       ${
                         currentSlide === index
-                          ? "w-6 bg-[var(--yellow)]"
+                          ? "w-6 bg-[var(--green-soft)]"
                           : "w-1.5 bg-white/40"
                       }
 

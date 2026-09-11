@@ -25,11 +25,11 @@ const values = [
 export default function ValuesSection() {
   return (
     <section
-      data-navbar="dark"
+      data-navbar="light"
       className="
         relative
         overflow-hidden
-        bg-[var(--blue)]
+        bg-[var(--background)]
         py-12
 
         sm:py-14
@@ -55,7 +55,7 @@ export default function ValuesSection() {
             h-[380px]
             w-[380px]
             rounded-full
-            bg-[var(--yellow)]/10
+            bg-[var(--green-soft)]/10
             blur-[90px]
           "
         />
@@ -69,15 +69,15 @@ export default function ValuesSection() {
             h-[420px]
             w-[420px]
             rounded-full
-            bg-[var(--blue-dark)]/70
+            bg-[var(--green-soft)]/5
             blur-[90px]
           "
         />
 
         {/* Decorative rings */}
-        <div className="absolute left-[8%] top-[14%] h-16 w-16 rounded-full border border-white/5" />
+        <div className="absolute left-[8%] top-[14%] h-16 w-16 rounded-full border border-neutral-200" />
 
-        <div className="absolute right-[7%] top-[10%] h-20 w-20 rounded-full border border-[var(--yellow)]/10" />
+        <div className="absolute right-[7%] top-[10%] h-20 w-20 rounded-full border border-[var(--green-soft)]/10" />
       </div>
 
       {/* =====================================================
@@ -124,7 +124,7 @@ export default function ValuesSection() {
           "
         >
           <div className="flex items-center justify-center gap-3">
-            <span className="h-[2px] w-7 bg-[var(--yellow)]" />
+            <span className="h-[2px] w-7 bg-[var(--green-soft)]" />
 
             <span
               className="
@@ -132,13 +132,13 @@ export default function ValuesSection() {
                 font-bold
                 uppercase
                 tracking-[0.2em]
-                text-[var(--yellow)]
+                text-[var(--green)]
               "
             >
               What defines us
             </span>
 
-            <span className="h-[2px] w-7 bg-[var(--yellow)]" />
+            <span className="h-[2px] w-7 bg-[var(--green-soft)]" />
           </div>
 
           <h2
@@ -148,7 +148,7 @@ export default function ValuesSection() {
               font-bold
               leading-[1.03]
               tracking-[-0.04em]
-              text-white
+              text-[var(--ink)]
 
               sm:text-[36px]
 
@@ -158,7 +158,7 @@ export default function ValuesSection() {
             "
           >
             Built on values that
-            <span className="block text-[var(--yellow)]">
+            <span className="block text-[var(--green)]">
               shape lasting impact.
             </span>
           </h2>
@@ -170,7 +170,7 @@ export default function ValuesSection() {
               max-w-xl
               text-[13px]
               leading-5
-              text-white/65
+              text-[var(--muted)]
 
               sm:text-sm
             "
@@ -230,8 +230,8 @@ export default function ValuesSection() {
     overflow-hidden
     rounded-[1.5rem]
     border
-    border-white/10
-    bg-[var(--blue-dark)]
+    border-neutral-200
+    bg-white
     p-5
     shadow-[0_12px_30px_rgba(0,0,0,0.10)]
 
@@ -252,7 +252,7 @@ export default function ValuesSection() {
                     h-32
                     w-32
                     rounded-full
-                    bg-[var(--yellow)]/[0.07]
+                    bg-[var(--green-soft)]/[0.07]
                     blur-3xl
 
                     lg:block
@@ -268,7 +268,7 @@ export default function ValuesSection() {
                     text-5xl
                     font-bold
                     tracking-[-0.08em]
-                    text-white/[0.035]
+                    text-[var(--muted)]
                   "
                 >
                   0{index + 1}
@@ -287,8 +287,8 @@ export default function ValuesSection() {
                       justify-center
                       rounded-full
                       border
-                      border-[var(--yellow)]/70
-                      bg-white/[0.03]
+                      border-[var(--green-soft)]/70
+                      bg-white
 
                       lg:transition-transform
                       lg:duration-200
@@ -296,12 +296,12 @@ export default function ValuesSection() {
                       lg:group-hover:scale-[1.04]
                     "
                   >
-                    <div className="absolute inset-1.5 rounded-full border border-white/5" />
+                    <div className="absolute inset-1.5 rounded-full border border-neutral-200" />
 
                     <Icon
                       size={23}
                       strokeWidth={1.8}
-                      className="relative text-[var(--yellow)]"
+                      className="relative text-[var(--green)]"
                     />
                   </div>
 
@@ -313,7 +313,7 @@ export default function ValuesSection() {
                         text-xl
                         font-bold
                         tracking-[-0.03em]
-                        text-[var(--yellow)]
+                        text-[var(--green)]
 
                         lg:text-[22px]
                       "
@@ -326,7 +326,7 @@ export default function ValuesSection() {
                         mt-3
                         h-px
                         w-10
-                        bg-[var(--yellow)]/50
+                        bg-[var(--green-soft)]/50
 
                         lg:transition-[width]
                         lg:duration-200
@@ -339,7 +339,7 @@ export default function ValuesSection() {
                         mt-3
                         text-[12px]
                         leading-[1.6]
-                        text-white/65
+                        text-[var(--muted)]
 
                         sm:text-[13px]
 
@@ -354,13 +354,13 @@ export default function ValuesSection() {
 
                   <div className="mt-auto pt-4">
                     <div className="flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-[var(--yellow)]" />
+                      <span className="h-2 w-2 rounded-full bg-[var(--green-soft)]" />
 
                       <span
                         className="
                           h-px
                           w-9
-                          bg-white/15
+                          bg-white
 
                           lg:transition-[width]
                           lg:duration-200
