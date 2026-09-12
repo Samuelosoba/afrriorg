@@ -1,11 +1,13 @@
+import impactImage from "../assets/afriihero.webp";
+import { useProgrammes } from "../utils/useProgrammes";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import PageShell from "../components/PageShell";
 import Cta from "../components/Cta";
 import StoryCards from "../components/StoryCards";
-import { categories } from "../data/content";
 
 export default function ImpactPage() {
+  const { categories } = useProgrammes();
   return (
     <PageShell
       title="Our impact"
@@ -30,7 +32,7 @@ export default function ImpactPage() {
         </div>
         <img
           className="feature-photo"
-          src={categories[0].image}
+          src={categories[0]?.image || impactImage}
           alt="Africa-RII education activity"
         />
       </section>
@@ -54,9 +56,7 @@ export default function ImpactPage() {
       </section>
       <section className="page-section">
         <h2>Stories from our work</h2>
-        <p>
-          Explore the 2025 report and draft journal entries for 2024 and 2026.
-        </p>
+        <p>Explore stories and reports from our Summer School editions.</p>
         <StoryCards />
       </section>
       <Cta />

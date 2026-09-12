@@ -1,13 +1,14 @@
+import { useProgrammes } from "../utils/useProgrammes";
 import { Link, useParams } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import PageShell from "../components/PageShell";
 import Cta from "../components/Cta";
 import NotFoundPage from "./NotFoundPage";
-import { categories } from "../data/content";
 import ProgramCards from "../components/ProgramCards";
 import ProgrammeResources from "../components/ProgrammeResources";
 
 export default function CategoryPage() {
+  const { categories } = useProgrammes();
   const { categorySlug } = useParams();
   const category = categories.find((c) => c.slug === categorySlug);
   if (!category) return <NotFoundPage />;
@@ -38,6 +39,7 @@ export default function CategoryPage() {
         <ProgramCards category={category} />
       </section>
       <ProgrammeResources
+        resource={category}
         key={category.slug}
         slug={category.slug}
         title={category.title}

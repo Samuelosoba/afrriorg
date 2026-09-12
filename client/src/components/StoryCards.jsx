@@ -1,8 +1,10 @@
+import { useProgrammes } from "../utils/useProgrammes";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import { summerStories, summerSchoolUrl } from "../data/content";
+import { summerSchoolUrl } from "../data/content";
 
 export default function StoryCards({ exclude }) {
+  const { stories: summerStories } = useProgrammes();
   return (
     <div className="editorial-grid">
       {summerStories
@@ -14,7 +16,7 @@ export default function StoryCards({ exclude }) {
             to={summerSchoolUrl + "/" + s.year}
           >
             <img
-              src={s.image}
+              src={s.image || s.photos?.[0]?.src}
               alt={
                 s.verified
                   ? "Summer School " + s.year + " programme photograph"

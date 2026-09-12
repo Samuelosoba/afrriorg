@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import education from "../assets/afriihero.webp";
+import community from "../assets/skills.webp";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -14,6 +16,7 @@ export default function PageShell({
       <Navbar />
       <main className="content-page">
         <div className="page-intro">
+          <div className="page-intro-backdrop" aria-hidden="true"><img src={education} alt="" /><img src={community} alt="" /></div>
           <nav className="breadcrumbs" aria-label="Breadcrumb">
             <Link to="/">Home</Link>
             {crumbs.map((c) => (

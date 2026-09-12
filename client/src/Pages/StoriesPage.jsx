@@ -10,8 +10,7 @@ export default function StoriesPage() {
     >
       <h2>Summer School, year by year</h2>
       <p>
-        The 2025 programme report, alongside draft archive entries for 2024 and
-        2026.
+        Explore the annual Summer School journals, photographs and reports.
       </p>
       <StoryCards />
     </PageShell>

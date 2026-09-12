@@ -1,3 +1,4 @@
+import logo from "../assets/afrilogo.png";
 import { ArrowUpRight, Mail } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 
@@ -139,27 +140,7 @@ export default function Footer() {
                 gap-2
               "
             >
-              <span
-                className="
-                  text-[26px]
-                  font-bold
-                  tracking-[-0.05em]
-                  text-[var(--ink)]
-
-                  sm:text-[30px]
-                "
-              >
-                Africa-RII
-              </span>
-
-              <span
-                className="
-                  h-2.5
-                  w-2.5
-                  rounded-full
-                  bg-[var(--green-soft)]
-                "
-              />
+              <img className="footer-logo" src={logo} alt="Africa-RII" width="150" />
             </a>
 
             <h2

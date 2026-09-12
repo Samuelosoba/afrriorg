@@ -9,58 +9,22 @@ import {
   Quote,
 } from "lucide-react";
 
-import EducationImg from "../assets/afriihero.webp";
-import CommunityImg from "../assets/skills.webp";
-import HealthImg from "../assets/health.webp";
-import WomenImg from "../assets/sisters.webp";
-import InnovationImg from "../assets/computer2.webp";
-
-const programs = [
-  {
-    title: "Education", href: "/programs/education",
-    icon: BookOpen,
-    image: EducationImg,
-    dark: false,
-    links: [
-      { label: "TACT", href: "/programs/tact" },
-      { label: "Ajumobi", href: "/programs/ajumobi" },
-      { label: "Summer School", href: "/programs/summer-school" },
-    ],
-  },
-  {
-    title: "Community Resource Centre", href: "/programs/community-resource-centre",
-    icon: Building2,
-    image: CommunityImg,
-    dark: false,
-    links: [
-      { label: "CRC", href: "/programs/community-resource-centre" },
-      { label: "Skills Acquisition", href: "/programs/skills-acquisition" },
-    ],
-  },
-  {
-    title: "Community Health Awareness", href: "/programs/community-health",
-    icon: HeartPulse,
-    image: HealthImg,
-    dark: false,
-    links: [{ label: "LifeLine", href: "/programs/lifeline" }],
-  },
-  {
-    title: "Gender Advocacy, Rights & Mentorship", href: "/programs/women-and-girls",
-    icon: Venus,
-    image: WomenImg,
-    dark: false,
-    links: [{ label: "Sisters' Club", href: "/programs/sisters-club" }],
-  },
-  {
-    title: "Innovation & Social Enterprise", href: "/programs/innovation",
-    icon: Lightbulb,
-    image: InnovationImg,
-    dark: false,
-    links: [{ label: "Computer & IT", href: "/programs/computer-and-it" }],
-  },
-];
+import { useProgrammes } from "../utils/useProgrammes";
 
 export default function ProgramsPreview() {
+  const { categories } = useProgrammes();
+  const icons = [BookOpen, Building2, HeartPulse, Venus, Lightbulb];
+  const programs = categories.map((c, i) => ({
+    title: c.title,
+    href: "/programs/" + c.slug,
+    image: c.image,
+    icon: icons[i % icons.length],
+    dark: false,
+    links: c.programs.map((p) => ({
+      label: p.title,
+      href: "/programs/" + c.slug + "/" + p.slug,
+    })),
+  }));
   return (
     <section
       id="programs"
@@ -449,7 +413,9 @@ export default function ProgramsPreview() {
                       lg:group-hover:w-14
 
                       ${
-                        program.dark ? "bg-[var(--green-soft)]" : "bg-[var(--green)]"
+                        program.dark
+                          ? "bg-[var(--green-soft)]"
+                          : "bg-[var(--green)]"
                       }
                     `}
                   />

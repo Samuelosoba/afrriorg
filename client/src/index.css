@@ -12,7 +12,7 @@
   --muted: #5b635e;
 }
 html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
-body { margin: 0; background: var(--surface); color: var(--text); font-family: "Inter", "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--surface); color: var(--text); font-family: "Manrope Variable", "Manrope", "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
 * { box-sizing: border-box; }
 ::selection { background: var(--green-soft); color: var(--ink); }
 a, button, input { -webkit-tap-highlight-color: transparent; }
@@ -375,3 +375,117 @@ main > section h3 { font-size:clamp(18px,2vw,24px); }
  .journal .photo-collage-grid img { height:180px; }
 }
 @media (prefers-reduced-motion:reduce) { .journal .photo-collage-grid img { transition:none; } }
+
+.engagement-layout { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:48px; align-items:start; }
+.engagement-layout > * { min-width:0; }
+.engagement-copy > svg { color:var(--green); margin-bottom:20px; }
+.giving-note { background:#f0f7f3; padding:20px; border-radius:12px; margin:24px 0; }
+.contact-detail { display:flex; gap:16px; margin:28px 0; }
+.contact-detail > svg { flex-shrink:0; color:var(--green); }
+.site-form { padding:28px; border:1px solid #dce8e0; border-radius:18px; background:white; }
+.site-form fieldset { min-width:0; padding:0; border:0; margin:0; }
+.site-form label { display:flex; flex-direction:column; gap:8px; margin-bottom:18px; font-size:14px; font-weight:600; }
+.site-form input:not([type=checkbox]), .site-form select, .site-form textarea { width:100%; min-width:0; border:1px solid #b8c9bf; background:#fff; border-radius:8px; padding:12px; color:#183329; font:inherit; font-size:16px; }
+.site-form textarea { resize:vertical; }
+.site-form :is(input,select,textarea,button):focus-visible { outline:3px solid #008751; outline-offset:3px; }
+.site-form :disabled { opacity:.65; cursor:wait; }
+.form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 16px; }
+.form-full { grid-column:1/-1; }
+.site-form .form-check { flex-direction:row; align-items:flex-start; font-weight:400; line-height:1.6; }
+.form-check input { margin-top:5px; width:18px; height:18px; flex-shrink:0; accent-color:#008751; }
+.site-form .form-note { font-size:12px; line-height:1.6; margin:12px 0; }
+.form-note a { text-decoration:underline; color:var(--green); }
+.site-form .form-trap { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+.form-status { padding:14px; border-radius:8px; overflow-wrap:anywhere; }
+.is-success { background:#edf8f0; color:#006b40; }
+.is-error { background:#fff3f0; color:#923b25; }
+.amount-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:20px 0; }
+.amount-options button { padding:12px; border:1px solid #b8c9bf; border-radius:8px; font-size:14px; }
+.amount-options button[aria-pressed=true] { background:#008751; color:white; border-color:#008751; }
+.payment-reference { overflow-wrap:anywhere; }
+@media(max-width:900px) { .engagement-layout { gap:28px; } }
+@media(max-width:767px) { .engagement-layout,.form-grid { grid-template-columns:1fr; }.site-form { padding:20px; }.site-form .button-primary { width:100%; }.contact-detail a { overflow-wrap:anywhere; } }
+
+.admin-site { min-height:100svh; background:#f5f8f6; color:#183329; }
+.admin-header { display:flex; justify-content:space-between; gap:20px; padding:22px max(20px,calc((100vw - 1180px)/2)); background:#006b40; color:white; }
+.admin-main { max-width:1180px; margin:auto; padding:32px 24px; }
+.admin-main h1 { font-size:clamp(26px,4vw,40px); margin-bottom:24px; }
+.admin-main h2 { font-size:24px; margin:20px 0; }
+.admin-main h3 { font-size:18px; margin:12px 0; }
+.admin-main p { line-height:1.7; margin:12px 0; }
+.admin-login { max-width:480px; }
+.admin-tabs { display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 28px; }
+.admin-tabs button { padding:12px 20px; border-radius:8px; background:#e5eee8; text-transform:capitalize; }
+.admin-tabs button[aria-pressed=true] { background:#008751; color:white; }
+.admin-category { display:flex; align-items:center; justify-content:space-between; gap:20px; background:white; padding:20px; border:1px solid #dce8e0; border-radius:12px; margin:16px 0; }
+.admin-subcard { border:1px solid #dce8e0; border-radius:12px; padding:20px; background:#fff; margin:20px 0; }
+.admin-media { border-top:1px solid #dce8e0; margin:24px 0; }
+.asset-field img { width:180px; height:120px; object-fit:cover; border-radius:8px; margin-bottom:20px; }
+.admin-table-wrap { max-width:100%; overflow:auto; margin:20px 0; }
+.admin-table-wrap table { width:100%; text-align:left; border-collapse:collapse; background:white; }
+.admin-table-wrap :is(th,td) { padding:12px; border-bottom:1px solid #dce8e0; font-size:13px; }
+.admin-table-wrap small { display:block; max-width:240px; overflow-wrap:anywhere; margin-top:6px; }
+.admin-main select { padding:10px; border:1px solid #b8c9bf; border-radius:8px; background:white; max-width:100%; }
+.admin-main button:disabled { opacity:.5; cursor:not-allowed; }
+.admin-main :is(a,button):focus-visible { outline:3px solid #008751; outline-offset:4px; }
+@media(max-width:767px){.admin-main{padding:24px 16px}.admin-category{flex-direction:column;align-items:stretch}.admin-subcard{padding:16px}.admin-editor{padding:16px}.admin-main .resource-actions{flex-wrap:wrap}.admin-header{font-size:13px}.admin-tabs button{padding:10px 14px}}
+
+/* Admin screens use document flow rather than homepage viewport sections. */
+.admin-main > section { display:block; min-height:0; padding:0; scroll-snap-align:none; }
+.admin-category > * { min-width:0; }
+.admin-category h3, .admin-category p { overflow-wrap:anywhere; }
+
+/* Shared responsive rhythm for editorial, engagement and admin pages. */
+.content-page :is(h1,h2,h3,p,a,figcaption), .admin-main :is(h1,h2,h3,p,a) { overflow-wrap:anywhere; }
+.content-page h1 { font-size:clamp(26px,3vw,42px); line-height:1.18; }
+.content-page h2 { font-size:clamp(22px,2.3vw,30px); line-height:1.25; }
+.content-page .page-lead { font-size:clamp(14px,1.3vw,16px); max-width:68ch; }
+.page-split .feature-photo { width:100%; max-height:340px; object-fit:contain; }
+.engagement-layout { gap:clamp(22px,4vw,48px); grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); }
+.site-form { width:100%; min-width:0; }
+.site-form :is(label,input,select,textarea) { min-width:0; max-width:100%; }
+.resource-actions { flex-wrap:wrap; }
+.resource-card { min-width:0; overflow:hidden; }
+.resource-copy { overflow-wrap:anywhere; }
+.video-frame iframe { display:block; width:100%; height:100%; border:0; }
+.report-preview object { display:block; width:100%; max-width:100%; }
+.journal .article-prose p { white-space:pre-line; }
+.journal .photo-collage-grid img { height:clamp(150px,20vw,240px); }
+.photo-collage-grid a:only-child { grid-column:1/-1; }
+.admin-site { padding-top:var(--nav-height); }
+.admin-header { background:white; color:var(--green); border-bottom:1px solid #dce8e0; padding:14px max(20px,calc((100vw - 1180px)/2)); font-size:13px; }
+.admin-header button { font-weight:600; }
+.admin-title { margin-bottom:28px; }
+.admin-title h1 { margin:8px 0; font-size:clamp(26px,3vw,38px); }
+.admin-login { margin:24px auto; max-width:480px; box-shadow:0 12px 40px #163c2410; }
+.admin-site:has(.admin-login) .admin-title { text-align:center; max-width:560px; margin:24px auto; }
+.admin-tabs { position:sticky; top:80px; z-index:15; background:#f5f8f6; padding:12px 0; border-bottom:1px solid #dce8e0; }
+.admin-tabs button { min-height:44px; }
+.admin-category { transition:border-color .2s; }
+.admin-category:hover { border-color:#8cbba0; }
+.editor-save-bar { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; padding:16px 0; border-top:1px solid #dce8e0; }
+.admin-main .asset-field img { max-width:100%; }
+@media(max-width:1023px){ .engagement-layout { grid-template-columns:1fr; }.engagement-copy { max-width:72ch; }.site-form .form-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.summer-story-layout { gap:24px; } }
+@media(max-width:767px){
+ .content-page .page-intro { padding:24px 20px; }.content-page .page-body { padding:24px 20px 40px; }
+ .content-page p { font-size:14px; line-height:1.7; }.content-page .page-eyebrow { font-size:10px; }
+ .page-split { gap:20px; }.page-split .feature-photo { max-height:230px; }
+ .site-form .form-grid { grid-template-columns:1fr; }.site-form { padding:20px; }
+ .admin-tabs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; }.admin-tabs button{padding:10px;font-size:13px;}
+ .admin-login { padding:22px; }.admin-header { padding:12px 16px; }
+ .admin-category .resource-actions { width:100%; }.admin-category .resource-actions button { flex:1; }
+ .journal-chapters a { max-width:100%; }.summer-photo-panel { padding:16px; }
+ .site-form .button-primary { white-space:normal; }.programme-resources .resource-grid { grid-template-columns:1fr; }
+}
+@media(min-width:768px) and (max-width:1023px){.summer-story-layout {grid-template-columns:1fr;}.summer-photo-panel{max-width:680px;width:100%;}.page-split{gap:24px}}
+
+.pdf-reader { width:100%; min-width:0; }
+.pdf-controls { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; margin:12px 0; font-size:12px; }
+.pdf-controls .button-outline { padding:8px 12px; min-height:40px; font-size:12px; }
+.pdf-page { max-height:70svh; overflow:auto; background:#f0f3f1; border:1px solid #dce8e0; }
+.pdf-page canvas { display:block; max-width:100%; }
+.story-metrics { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:24px 0; }
+.story-metrics > div { background:#eff7f2; border-radius:12px; padding:18px; }
+.story-metrics dt { font-size:12px; line-height:1.5; color:var(--muted); }
+.story-metrics dd { font-size:clamp(18px,2vw,25px); font-weight:700; color:var(--green); margin-top:8px; overflow-wrap:anywhere; }
+@media(max-width:767px){.story-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.story-metrics>div{padding:14px}.pdf-controls{justify-content:center}.pdf-page{max-height:55svh}}

@@ -1,3 +1,4 @@
+import { useProgrammes } from "../utils/useProgrammes";
 import { Link, useParams } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import PageShell from "../components/PageShell";
@@ -5,26 +6,29 @@ import StoryCards from "../components/StoryCards";
 import PhotoCollage from "../components/PhotoCollage";
 import ProgrammeResources from "../components/ProgrammeResources";
 import NotFoundPage from "./NotFoundPage";
-import { summerStories, summerSchoolUrl } from "../data/content";
+import { summerSchoolUrl } from "../data/content";
 
 export default function SummerStoryPage() {
+  const { stories: summerStories } = useProgrammes();
   const { year } = useParams();
   const story = summerStories.find((s) => s.year === year);
   if (!story) return <NotFoundPage />;
-  const photos = story.photos || [
-    {
-      src: story.image,
-      alt: story.verified
-        ? "Summer School " + year + " learning activities"
-        : "Africa-RII community archive; edition unverified",
-    },
-    {
-      src: story.secondImage,
-      alt: story.verified
-        ? "Summer School " + year + " classroom"
-        : "Africa-RII community archive; date unverified",
-    },
-  ];
+  const photos = story.photos?.length
+    ? story.photos
+    : [
+        {
+          src: story.image,
+          alt: story.verified
+            ? "Summer School " + year + " learning activities"
+            : "Africa-RII community archive; edition unverified",
+        },
+        {
+          src: story.secondImage,
+          alt: story.verified
+            ? "Summer School " + year + " classroom"
+            : "Africa-RII community archive; date unverified",
+        },
+      ];
   return (
     <PageShell
       title={"Summer School " + year + ": " + story.title}
@@ -61,6 +65,16 @@ export default function SummerStoryPage() {
             This edition awaits a confirmed account. The text below is a draft,
             and the archive photos have not been attributed to this year.
           </p>
+        )}
+        {story.metrics?.length > 0 && (
+          <dl className="story-metrics">
+            {story.metrics.map((metric) => (
+              <div key={metric.label}>
+                <dt>{metric.label}</dt>
+                <dd>{metric.value}</dd>
+              </div>
+            ))}
+          </dl>
         )}
         <nav className="journal-chapters" aria-label="In this story">
           {story.sections.map((section, index) => (
@@ -113,11 +127,14 @@ export default function SummerStoryPage() {
             <p className="page-eyebrow">In pictures / {year}</p>
             <h2>Moments of connection</h2>
             <PhotoCollage
-              photos={photos}
+              photos={photos.filter((photo) => photo.src)}
               caption={
-                story.verified
-                  ? "Photographs from the Africa-RII 2025 Summer School archive."
-                  : "Community archive photographs shown for context; edition unverified."
+                story.caption ||
+                (story.verified
+                  ? "Photographs from the Africa-RII " +
+                    year +
+                    " Summer School archive."
+                  : "Community archive photographs shown for context; edition unverified.")
               }
             />
           </aside>
@@ -125,6 +142,7 @@ export default function SummerStoryPage() {
         <div id="edition-resources">
           <ProgrammeResources
             key={year}
+            resource={story}
             slug={"summer-school-" + year}
             title={"Summer School " + year}
           />

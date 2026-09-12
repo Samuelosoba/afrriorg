@@ -1,13 +1,14 @@
+import { useProgrammes } from "../utils/useProgrammes";
 import { Link, useParams } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import PageShell from "../components/PageShell";
 import Cta from "../components/Cta";
 import StoryCards from "../components/StoryCards";
 import NotFoundPage from "./NotFoundPage";
-import { categories } from "../data/content";
 import ProgrammeResources from "../components/ProgrammeResources";
 
 export default function ProgramPage() {
+  const { categories } = useProgrammes();
   const { categorySlug, programSlug } = useParams();
   const category = categories.find((c) => c.slug === categorySlug);
   const program = category?.programs.find((p) => p.slug === programSlug);
@@ -46,11 +47,12 @@ export default function ProgramPage() {
         </div>
         <img
           className="feature-photo"
-          src={category.image}
+          src={program.image || category.image}
           alt={category.title + " — community photograph"}
         />
       </section>
       <ProgrammeResources
+        resource={program}
         key={program.slug}
         slug={program.slug}
         title={program.title}
@@ -60,8 +62,8 @@ export default function ProgramPage() {
           <p className="page-eyebrow">The summer journal</p>
           <h2>Every year has a story.</h2>
           <p>
-            Read the 2025 programme report. The 2024 and 2026 entries await
-            confirmed records.
+            Explore annual Summer School stories, photographs, videos and
+            reports.
           </p>
           <StoryCards />
         </section>

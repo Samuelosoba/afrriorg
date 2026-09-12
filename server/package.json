@@ -1,0 +1,32 @@
+{
+  "name": "afrii-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --env-file=.env src/index.js",
+    "start": "node src/index.js",
+    "seed": "node --env-file=.env scripts/seed.js",
+    "admin:create": "node --env-file=.env scripts/create-admin.js",
+    "test": "node --test tests/*.test.js",
+    "check:connections": "node --env-file=.env scripts/check-connections.js",
+    "import:summer-report": "node --env-file=.env scripts/import-summer-report.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "cloudinary": "^2.11.0",
+    "connect-mongo": "^6.0.0",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "express-session": "^1.19.0",
+    "helmet": "^8.3.0",
+    "mongoose": "^9.10.0",
+    "multer": "^2.3.0",
+    "zod": "^4.6.2"
+  },
+  "devDependencies": {
+    "mongodb-memory-server-core": "^11.2.0",
+    "supertest": "^7.2.2"
+  }
+}

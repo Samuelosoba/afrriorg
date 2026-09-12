@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "education",
+    "title": "Education",
+    "image": "/seed-assets/afriihero.webp",
+    "intro": "Opening pathways to learning, from school supplies to mentorship and opportunities beyond the classroom.",
+    "description": "Education is where Africa-RII began. Through Train A Child Today, the initiative responded to barriers facing rural students. Our wider education work includes summer learning, JAMB support, university tuition scholarships and career mentorship.",
+    "programs": [
+      {
+        "slug": "tact",
+        "title": "Train A Child Today (TACT)",
+        "summary": "The starting point of our work: helping rural students access school supplies and educational opportunities.",
+        "paragraphs": [
+          "Africa-RII began its journey in 2012 through Train A Child Today. Providing school supplies to rural students became the foundation for a wider commitment to education and community development.",
+          "Our educational work recognises that access to learning depends on more than being enrolled in school. Materials, encouragement and opportunities to ask questions all contribute to a young person's ability to participate."
+        ]
+      },
+      {
+        "slug": "ajumobi",
+        "title": "Àjùmòbí Scholarships",
+        "summary": "Examination and undergraduate support, connected with mentorship and community responsibility.",
+        "paragraphs": [
+          "Àjùmòbí Scholarships combine financial assistance with an emphasis on self-reliance, integrity and service. Support includes entrance-examination fees, tuition, learning materials and mentorship.",
+          "The published programme history records seven awardees in the 2024 pilot and 37 in 2025. The initiative encourages scholars to contribute through volunteering, mentoring and leadership.",
+          "Contact Africa-RII for current eligibility criteria, application dates and support arrangements."
+        ],
+        "source": "https://africarii.org/ajumobi-scholarships/"
+      },
+      {
+        "slug": "summer-school",
+        "title": "Summer School",
+        "summary": "A space for learning, encouragement and connection during the school holidays.",
+        "paragraphs": [
+          "Africa-RII's free four-week Summer School combines classroom learning with meals and extracurricular opportunities. Local educators, volunteers and supporters help deliver the programme.",
+          "Browse the 2025 report and the journal spaces for 2024 and 2026 below. The latter two await confirmed records."
+        ],
+        "source": "https://africarii.org/education_project/skill-acquisition/"
+      }
+    ]
+  },
+  {
+    "slug": "community-resource-centre",
+    "title": "Community Resource Centre",
+    "image": "/seed-assets/skills.webp",
+    "intro": "A community space where young people can learn, develop practical skills and find mentorship.",
+    "description": "Africa-RII established a Community Resource Centre in Ilora as a safe space for learning and personal development. The centre brings education, skills and mentorship closer to the community.",
+    "programs": [
+      {
+        "slug": "crc",
+        "title": "CRC",
+        "summary": "Discover the Community Resource Centre in Ilora.",
+        "paragraphs": [
+          "A former family home in Ilora became a community learning space through local collaboration and fundraising. The centre opened in 2021 and developed from a library into a hub for study, mentorship and practical learning.",
+          "Its activities include reading and book lending, vocational workshops and computer learning. In 2025, the centre added new books, Sisters' Club activities and a donated projector.",
+          "Visit by arrangement at 5 First Baptist Church Cemetery Road, Oke-gege, Ilora, Oyo State."
+        ],
+        "source": "https://africarii.org/community-centre/"
+      },
+      {
+        "slug": "skills-acquisition",
+        "title": "Skills Acquisition",
+        "summary": "Practical learning to build confidence and support livelihoods.",
+        "paragraphs": [
+          "Free vocational and digital workshops help young people and women develop practical skills. Training is informed by community needs and delivered with local professionals and partner organisations.",
+          "In 2022, a three-day workshop introduced 35 participants to tie-dye and resin jewellery with the Women and Youths Arts Foundation. The 2023 programme reached 105 participants through digital skills, small-business learning, soap making, beads and Adire, working with the foundation and Master Art Classes.",
+          "Africa-RII's published programme report records 140 participants across these two cohorts. Contact the team about current training and opportunities to support equipment or facilitation."
+        ],
+        "source": "https://africarii.org/skill-acquisition/"
+      }
+    ]
+  },
+  {
+    "slug": "community-health",
+    "title": "Community Health Awareness",
+    "image": "/seed-assets/health.webp",
+    "intro": "Making health awareness part of community development.",
+    "description": "Our work includes community health awareness alongside education and empowerment. LifeLine is the programme within this area of our work.",
+    "programs": [
+      {
+        "slug": "lifeline",
+        "title": "LifeLine",
+        "summary": "Community health awareness through the LifeLine programme.",
+        "paragraphs": [
+          "LifeLine combines female-health education with fundraising for urgent healthcare needs. Awareness sessions connect with Sisters' Club and offer young women a space to discuss health questions without stigma.",
+          "Africa-RII's 2025 report describes an education session involving 12 girls and young women and financial assistance towards one woman's surgery. Enquiries about support and current activities should be directed to the team."
+        ],
+        "source": "https://africarii.org/enterprise-data-collection-survey/"
+      }
+    ]
+  },
+  {
+    "slug": "women-and-girls",
+    "title": "Gender Advocacy, Rights & Mentorship",
+    "image": "/seed-assets/sisters.webp",
+    "intro": "Creating space for girls and young women to learn, connect and grow.",
+    "description": "Gender-focused programmes are part of Africa-RII's expanded community work. Sisters' Club sits within our focus on gender advocacy, rights and mentorship.",
+    "programs": [
+      {
+        "slug": "sisters-club",
+        "title": "Sisters' Club",
+        "summary": "Connection and mentorship within our work with women and girls.",
+        "paragraphs": [
+          "Sisters' Club connects reading, discussion and writing with mentorship, leadership and digital access for girls and young women.",
+          "Its approach combines learning beyond literacy, role-model relationships, access to technology, inclusive community participation and collective advocacy. Together, these activities create space to question inequalities and develop the confidence to participate in change."
+        ],
+        "source": "https://africarii.org/education_project/sisters-club/"
+      }
+    ]
+  },
+  {
+    "slug": "innovation",
+    "title": "Innovation & Social Enterprise",
+    "image": "/seed-assets/computer2.webp",
+    "intro": "Connecting practical learning with digital opportunity.",
+    "description": "Innovation and social enterprise form one of Africa-RII's five programme areas. Computer & IT is the programme within this area.",
+    "programs": [
+      {
+        "slug": "computer-and-it",
+        "title": "Computer & IT",
+        "summary": "Digital learning as part of practical skills development.",
+        "paragraphs": [
+          "Computer & IT connects with Africa-RII's focus on practical skills and youth development. Digital learning is one pathway through which young people can explore new possibilities.",
+          "Contact the team to find out about current learning opportunities or discuss support for computer and IT activities."
+        ]
+      }
+    ]
+  }
+]

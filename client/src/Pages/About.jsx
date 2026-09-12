@@ -1,3 +1,6 @@
+import dapo from "../assets/dapo.jpg";
+import simisola from "../assets/simisola.jpg";
+const portraits = { "Oladapo O Ajayi": dapo, "Simisola Wright Esq": simisola };
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Users, BookOpen, HeartHandshake } from "lucide-react";
 import PageShell from "../components/PageShell";
@@ -102,16 +105,12 @@ export default function AboutPage() {
         </p>
         <div className="editorial-grid">
           {team.map((person) => (
-            <div className="editorial-card team-card" key={person.name}>
-              <div className="team-avatar" aria-hidden="true">
-                {person.name
-                  .split(" ")
-                  .slice(0, 2)
-                  .map((n) => n[0])
-                  .join("")}
-              </div>
+            <div className={"editorial-card team-card" + (portraits[person.name] ? " has-portrait" : "")} key={person.name}>
+              {portraits[person.name] && <img className="team-portrait" src={portraits[person.name]} alt={person.name} loading="lazy" />}
+              <div className="team-caption">
               <h3>{person.name}</h3>
               <p>{person.role}</p>
+              </div>
             </div>
           ))}
         </div>
