@@ -108,7 +108,7 @@ export default function AdminPage() {
         <nav className="admin-tabs" aria-label="Admin sections">
           {Object.entries(tabIcons).map(([name, Icon]) => <button key={name} aria-pressed={tab === name} onClick={() => { setTab(name); setError(""); }}><Icon size={18} />{name}</button>)}
         </nav>
-        <div className="admin-sidebar-footer"><p>Manage your community?s stories and support.</p><Link to="/">View website ?</Link></div>
+        <div className="admin-sidebar-footer"><p>Manage your community's stories and support.</p><Link to="/">View website</Link></div>
       </aside>}
       <header className="admin-header">
         <Link to="/">Africa-RII / Back to website</Link>
@@ -125,7 +125,7 @@ export default function AdminPage() {
           </p>
         </div>
         {loading ? (
-          <p>Loading�</p>
+          <p>Loading...</p>
         ) : !user ? (
           <form className="site-form admin-login" onSubmit={login}>
             <h2>Welcome back</h2>
@@ -149,7 +149,7 @@ export default function AdminPage() {
               />
             </label>
             <button className="button-primary" disabled={busy}>
-              {busy ? "Signing in�" : "Sign in"}
+              {busy ? "Signing in..." : "Sign in"}
             </button>
           </form>
         ) : (

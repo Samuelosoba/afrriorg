@@ -1,12 +1,22 @@
 import dapo from "../assets/dapo.jpg";
 import simisola from "../assets/simisola.jpg";
-const portraits = { "Oladapo O Ajayi": dapo, "Simisola Wright Esq": simisola };
+import chidinma from "../assets/chidinma.jpg";
+import yemisi from "../assets/yemisi.jpg";
+import femi from "../assets/femi.jpg";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Users, BookOpen, HeartHandshake } from "lucide-react";
 import PageShell from "../components/PageShell";
 import Cta from "../components/Cta";
 import { aboutParagraphs, team } from "../data/content";
 import aboutImage from "../assets/about.png";
+
+const portraits = {
+  "Oladapo O Ajayi": dapo,
+  "Simisola Wright Esq": simisola,
+  "Chidinma Pauletee": chidinma,
+  "Oluyemisi Olokun": yemisi,
+  "Oluwafemi Olubukola": femi,
+};
 
 export default function AboutPage() {
   return (
@@ -104,26 +114,41 @@ export default function AboutPage() {
           shared passion for sustainable social impact.
         </p>
         <div className="editorial-grid">
-          {team.map((person) => (
-            <div className={"editorial-card team-card" + (portraits[person.name] ? " has-portrait" : "")} key={person.name}>
-              {portraits[person.name] && <img className="team-portrait" src={portraits[person.name]} alt={person.name} loading="lazy" />}
-              <div className="team-caption">
-              <h3>{person.name}</h3>
-              <p>{person.role}</p>
+          {team
+            .filter((person) => portraits[person.name])
+            .map((person) => (
+              <div
+                className={
+                  "editorial-card team-card" +
+                  (portraits[person.name] ? " has-portrait" : "")
+                }
+                key={person.name}
+              >
+                {portraits[person.name] && (
+                  <img
+                    className="team-portrait"
+                    src={portraits[person.name]}
+                    alt={person.name}
+                    loading="lazy"
+                  />
+                )}
+                <div className="team-caption">
+                  <h3>{person.name}</h3>
+                  <p>{person.role}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
-        <p>
-          <a
-            className="source-link"
-            href="https://africarii.org/team/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Roles as listed on the published Africa-RII team page
-          </a>
-        </p>
+        <div className="team-directory">
+          {team
+            .filter((person) => !portraits[person.name])
+            .map((person) => (
+              <div key={person.name}>
+                <h3>{person.name}</h3>
+                <p>{person.role}</p>
+              </div>
+            ))}
+        </div>
       </section>
       <section className="page-section">
         <h2>Get to know Africa-RII</h2>

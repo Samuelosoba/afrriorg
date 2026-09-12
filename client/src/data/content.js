@@ -117,10 +117,10 @@ for (const category of categories) {
 }
 export const team = [
   { name: "Oladapo O Ajayi", role: "Founder" },
-  { name: "Ridwan Shittu", role: "IT / Documentation" },
+  { name: "Chidinma Pauletee", role: "Program Officerv- AFRI RII's Chap" },
   { name: "Simisola Wright Esq", role: "Secretary — Legal, Policy & HR" },
-  { name: "Celine Okpani", role: "Human Resources" },
-  { name: "Olamide Awoyemi", role: "Accounting" },
+  { name: "Oluyemisi Olokun", role: "Program Officer - Educational Project" },
+  { name: "Oluwafemi Olubukola", role: "Head of Admin / Accounting " },
 ];
 import summer2025Learning from "../assets/summer-2025-learning.jpg";
 import summer2025Classroom from "../assets/summer-2025-classroom.jpg";

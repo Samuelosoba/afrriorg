@@ -41,7 +41,7 @@ export default function ContactPage() {
           </div>
           <div className="contact-map">
             <iframe title="Map of Ilora, Nigeria" src="https://www.google.com/maps?q=Ilora%2C%20Oyo%2C%20Nigeria&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
-            <p className="form-note">Ilora area map. Contact us to confirm the centre?s entrance and visiting arrangements.</p>
+            <p className="form-note">Ilora area map. Contact us to confirm the centre's entrance and visiting arrangements.</p>
           </div>
           <div className="giving-note">
             <h3>Make your enquiry count</h3>
