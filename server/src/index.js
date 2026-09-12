@@ -17,11 +17,14 @@ await Promise.all([
   Story.init(),
 ]);
 const app = createApp();
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production" && !process.env.VERCEL) {
   const dist = fileURLToPath(new URL("../../client/dist", import.meta.url));
   app.use(express.static(dist));
   app.get("/{*path}", (_req, res) => res.sendFile(dist + "/index.html"));
 }
+export default app;
+
+if (!process.env.VERCEL) {
 const server = app.listen(process.env.PORT || 4000, () =>
   console.log("Africa-RII API listening on port " + (process.env.PORT || 4000)),
 );
@@ -32,3 +35,4 @@ for (const signal of ["SIGTERM", "SIGINT"])
       process.exit(0);
     }),
   );
+}
