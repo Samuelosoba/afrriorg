@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-import PartnerOne from "../assets/partner1.webp";
+import PartnerOne from "../assets/logo.Nav.png";
 import PartnerTwo from "../assets/partner2.webp";
 import PartnerThree from "../assets/partner3.webp";
 import PartnerFour from "../assets/logoNav.png";
-import PartnerFive from "../assets/partner1.webp";
+import PartnerFive from "../assets/partner3.webp";
 import PartnerSix from "../assets/partner2.webp";
 
 const partners = [
