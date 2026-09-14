@@ -5,13 +5,16 @@
 - Frontend: `https://afriiorg.vercel.app` (project root `client`)
 - Backend: `https://afiiorgserver.vercel.app` (project root `server`)
 
-`client/vercel.json` now proxies `/api/*` to this backend. Redeploy the frontend
-after pushing that change. The backend currently returns HTTP 500
-`FUNCTION_INVOCATION_FAILED`, including on `/api/health`; inspect its Vercel
-runtime logs to identify the failure before treating the connection as working.
+`client/vercel.json` proxies `/api/*` to this backend. Both projects have been
+deployed with this connection. Vercel originally selected `src/app.js`, which is
+an app factory, causing `FUNCTION_INVOCATION_FAILED`. The explicit `server/index.js`
+entry point exports the initialized Express application; `src/index.js` starts
+a listener only outside Vercel. Keep this entry point for future deployments.
 Configure backend secrets in the backend project's Production environment,
 including `CLIENT_URL=https://afriiorg.vercel.app`, then redeploy the backend.
 The local ignored `.env` is not automatically copied to Vercel.
+Set `NODE_ENV` to exactly `production` without trailing whitespace so secure
+session cookies and production proxy handling are enabled.
 
 The instructions below for a persistent Node.js host are an alternative hosting
 option; Vercel manages the function lifecycle for the current backend deployment.

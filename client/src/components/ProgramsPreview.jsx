@@ -673,8 +673,8 @@ export default function ProgramsPreview() {
                     xl:text-[31px]
                   "
                 >
-                  “The best way to find yourself is to lose yourself in the
-                  service of others.”
+                  “Do your little bit of good where you are; it's those little
+                  bits of good put together that overwhelm the world.”
                 </blockquote>
               </div>
 
@@ -692,7 +692,7 @@ export default function ProgramsPreview() {
                       tracking-[0.14em]
                     "
                   >
-                    Mahatma Gandhi
+                    Desmond Tutu
                   </p>
 
                   <p
