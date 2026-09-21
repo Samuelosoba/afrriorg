@@ -61,6 +61,8 @@ test("admin authentication, programme CRUD, publishing and enquiry inbox", async
         title: "Summer School",
         summary: "Summary",
         paragraphs: ["Some text"],
+        sections: [{ heading: "Centre history", text: "First paragraph.\n\nSecond paragraph.", items: ["Library"] }],
+        photos: [{ src: "/programmes/crc/01.jpg", alt: "Centre corridor" }],
         published: true,
       },
     ],
@@ -79,6 +81,10 @@ test("admin authentication, programme CRUD, publishing and enquiry inbox", async
     .set("Origin", origin)
     .send({ ...input, published: true, __v: 0 })
     .expect(200);
+  const publicProgram = (await request(app).get("/api/programmes")).body.categories[0].programs[0];
+  assert.equal(publicProgram.sections[0].text, input.programs[0].sections[0].text);
+  assert.deepEqual(publicProgram.sections[0].items, ["Library"]);
+  assert.equal(publicProgram.photos[0].src, "/programmes/crc/01.jpg");
   assert.equal(
     (await request(app).get("/api/programmes")).body.categories[0].programs[0]
       .title,

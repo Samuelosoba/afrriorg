@@ -6,6 +6,7 @@ import Cta from "../components/Cta";
 import StoryCards from "../components/StoryCards";
 import NotFoundPage from "./NotFoundPage";
 import ProgrammeResources from "../components/ProgrammeResources";
+import ProgrammeArticle from "../components/ProgrammeArticle";
 
 export default function ProgramPage() {
   const { categories } = useProgrammes();
@@ -25,7 +26,7 @@ export default function ProgramPage() {
     >
       <section className="page-split">
         <div>
-          <h2>About the programme</h2>
+          <h2>{program.slug === "crc" ? "A Story of Hope, Learning, and Possibility" : "About the programme"}</h2>
           {program.paragraphs.map((p) => (
             <p key={p}>{p}</p>
           ))}
@@ -48,9 +49,10 @@ export default function ProgramPage() {
         <img
           className="feature-photo"
           src={program.image || category.image}
-          alt={category.title + " — community photograph"}
+          alt={program.title + " - community photograph"}
         />
       </section>
+      <ProgrammeArticle key={program.slug} program={program} />
       <ProgrammeResources
         resource={program}
         key={program.slug}

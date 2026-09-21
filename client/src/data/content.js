@@ -1,4 +1,5 @@
-﻿import education from "../assets/afriihero.webp";
+import crcContent from "./crcContent.json";
+import education from "../assets/afriihero.webp";
 import skills from "../assets/skills.webp";
 import health from "../assets/health.webp";
 import sisters from "../assets/sisters.webp";
@@ -137,3 +138,7 @@ Object.assign(summerStories.find(s => s.year === "2025"), {
     { heading: "What the report records", text: "The organisation reports an average 87% increase in knowledge of subjects taught. This figure is presented as Africa-RII's reported result; the source does not provide a detailed assessment methodology. The photographs on this page come from the 2025 section of its Summer School archive." },
   ],
 });
+
+const crcCategory = categories.find(category => category.slug === "community-resource-centre");
+Object.assign(crcCategory.programs.find(program => program.slug === "crc"), crcContent);
+crcCategory.image = crcContent.image;

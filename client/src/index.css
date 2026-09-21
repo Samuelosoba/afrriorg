@@ -622,3 +622,15 @@ main > section:not(.hero-section), main > footer { min-height:0; padding-block:3
 .admin-authenticated .admin-main { align-self:start; margin:0 auto; }
 .admin-main > section { padding:0; }
 .admin-main :is(h1,h2,h3) { font-weight:700; }
+.programme-article { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr); gap:32px; margin-top:28px; align-items:start; }
+.programme-article > * { min-width:0; }
+.programme-article .article-prose ul { padding-left:20px; list-style:disc; line-height:1.7; margin:12px 0 24px; }
+.programme-article .article-prose li + li { margin-top:8px; }
+.programme-gallery { background:var(--background); padding:16px; border-radius:12px; }
+.programme-gallery .photo-collage-grid { gap:8px; }
+.programme-gallery .photo-collage-grid img { width:100%; height:160px; object-fit:cover; }
+.programme-gallery figcaption { font-size:11px; color:var(--muted); line-height:1.6; margin:12px 0; }
+.programme-gallery .photo-collage-grid a:nth-child(even) { margin-top:16px; }
+.admin-article-fields { margin:20px 0; }
+.admin-article-fields h4 { margin:16px 0; font-weight:700; }
+@media(max-width:767px) { .programme-article { grid-template-columns:1fr; gap:20px; }.programme-gallery .photo-collage-grid img { height:150px; } }

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-import PartnerOne from "../assets/logo.Nav.png";
+import PartnerOne from "../assets/logoNav.png";
 import PartnerTwo from "../assets/partner2.webp";
 import PartnerThree from "../assets/partner3.webp";
 import PartnerFour from "../assets/logoNav.png";

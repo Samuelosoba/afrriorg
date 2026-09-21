@@ -2,6 +2,7 @@ import { useState } from "react";
 import { adminRequest } from "../../utils/adminApi";
 import AssetField from "./AssetField";
 import MediaEditor from "./MediaEditor";
+import ProgrammeArticleEditor from "./ProgrammeArticleEditor";
 export default function ProgrammeEditor({ category, onSaved, onCancel }) {
   const [draft, setDraft] = useState(structuredClone(category)),
     [busy, setBusy] = useState(false),
@@ -24,6 +25,7 @@ export default function ProgrammeEditor({ category, onSaved, onCancel }) {
           programs: draft.programs.map((p) => ({
             ...p,
             paragraphs: p.paragraphs.filter((text) => text.trim()),
+            sections: (p.sections || []).map(s => ({ ...s, items: (s.items || []).filter(text => text.trim()) })),
           })),
         },
       });
@@ -152,6 +154,7 @@ export default function ProgrammeEditor({ category, onSaved, onCancel }) {
               />
               Published
             </label>
+            <ProgrammeArticleEditor value={program} onChange={next => field("programs", draft.programs.map((p, i) => i === index ? next : p))} />
             <MediaEditor
               value={program}
               onChange={(next) =>

@@ -54,6 +54,12 @@ export const categoryInput = z
           title: z.string().min(1).max(200),
           summary: z.string().max(2000),
           paragraphs: z.array(z.string().min(1).max(10000)).max(40),
+          sections: z.array(z.object({
+            heading: z.string().min(1).max(300),
+            text: z.string().max(20000).default(""),
+            items: z.array(z.string().min(1).max(2000)).max(30).default([]),
+          })).max(40).default([]),
+          photos: z.array(z.object({ src: safeUrl, alt: z.string().max(500) })).max(60).default([]),
           image: safeUrl.default(""),
           source: safeUrl.default(""),
           published: z.boolean().default(true),

@@ -150,3 +150,20 @@ is identified in its article. Funding goals are distinguished from donations;
 exam participation is not described as a pass rate. Student beneficiary names
 are omitted in favour of aggregate figures. No video links occur in the PDF;
 add confirmed year-specific YouTube links under Admin > Articles.
+
+## CRC source import
+
+The CRC programme uses the text and 30 photographs from
+https://africarii.org/community-centre/ (the destination of the supplied Google
+share link). Source image URLs are recorded in
+`client/public/programmes/crc/source.json`. The gallery is not assigned to
+individual years because the source does not provide year-specific captions.
+Programme wording and figures are retained; internal instructions about partner
+logos and the unfinished donor-list note are omitted.
+
+Edit the content in Admin > Programmes > Community Resource Centre > CRC.
+Article sections, list items and gallery images/descriptions are editable.
+`node --env-file=server/.env server/scripts/import-crc.js` from the repository root
+reimports the bundled `client/src/data/crcContent.json`, backing up the category
+first and preserving other programmes, existing videos/reports and publishing status.
+Reimporting replaces CRC article text and photos, so use the admin for later edits.

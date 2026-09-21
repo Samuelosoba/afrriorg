@@ -10,6 +10,8 @@ const program = new Schema(
     title: String,
     summary: String,
     paragraphs: [String],
+    sections: [{ heading: String, text: String, items: [String] }],
+    photos: [{ src: String, alt: String }],
     image: String,
     source: String,
     published: { type: Boolean, default: true },
